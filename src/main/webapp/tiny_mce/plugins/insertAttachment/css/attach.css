@@ -1,0 +1,21 @@
+/* CSS Document */
+#ajaxLoading{
+	position:absolute;
+	top:25%;
+	left:20%;
+	display:none;	
+}
+#ajaxLoading p{
+	text-align:center;	
+}
+#errorInfo{
+	text-align:center;
+	font-size:14px;
+	font-family:"黑体";
+	font-weight:bold;
+	color:#333;	
+	display:none;
+}
+input{
+	margin:5px;	
+}

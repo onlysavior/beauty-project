@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="css/attach.css" />
+<title>{#insertImg_dlg.title}</title>
+<script type="text/javascript" src="../../tiny_mce_popup.js"></script>
+<script type="text/javascript" src="js/dialog.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+</head>
+
+<body>
+<form action="${website}/upload/upload_imageUploadUsingTinyMCE.action" method="post" target="dd" name="attForm" id="attForm">
+	<div id="errorInfo">
+  	<p>对不起，您上传的文件格式不正确,请从新上传。文件后缀名为：.jpg, .png, .bmp, .gif</p>
+    <p>上传文件失败，请从新上传。</p>
+    <p>未选择上传文件</p>
+    <p>请输入附件名称</p>
+    <p>请上传图片<br />图片后缀名为：.jpg, .png, .bmp, .gif</p>
+  </div>
+  <input type="file" name="file" id="file" />
+  <div class="mceActionPanel">
+		<input type="button" id="insert" name="insert" value="插入" onclick="submitBefore();" />
+		<input type="button" id="cancel" name="cancel" value="取消" onclick="tinyMCEPopup.close();" />
+	</div>
+</form>
+<div id="ajaxLoading">
+	<p>图片上传中，请稍后。。。</p>
+	<img src="img/ajax-loader.gif" />
+</div>
+<iframe style="display:none;" src="url.php" id="dd" name="dd">
+</iframe>
+</body>
+<script type="text/javascript" src="js/imgValOptions.js"></script>
+<script type="text/javascript" src="js/imgVal.js"></script>
+<script type="text/javascript">
+infoDisplay(4);
+var store = "";
+var d = document;
+
+window.onload = function(){
+	imgValidateCons.store.init();
+	store = imgValidateCons.store;
+};
+
+var submitBefore = function(){
+	if (!validate(1)) return false;
+	var file = d.getElementById("file");
+	fileVal = file.value;
+	fileSuffix = fileVal.substr(fileVal.lastIndexOf(".") + 1, fileVal.length);
+	if(store.check(fileSuffix)) attachmentDialog.submits();
+	else{
+		infoDisplay(0);
+	}
+	//if(store.check[fileSuffix]) d.getElementById("form").submit();
+	return false;
+};
+</script>
+</html>

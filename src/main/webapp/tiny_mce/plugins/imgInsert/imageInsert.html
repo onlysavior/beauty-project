@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+	<title>{#imgInsert_dlg.title}</title>
+  <script type="text/javascript" src="js/common.js"></script>
+  <script type="text/javascript" src="js/jquery-form-plugins-download.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#formdd").submit(function(){
+			alert("The ajax form is ready! ");	
+			$('#formdd').ajaxSubmit	(option);
+			return false;
+		});
+			
+			var option = {
+					success : callback
+			};	
+			var callback = function(a , b, c, d){alert(a + b + c + d);};
+		});
+	
+	</script>
+</head>
+<body style="display: " role="application" aria-labelledby="app_title">
+<span style="display:none;" id="app_title">{#imgInsert_dlg.title}</span>
+<div align="center">
+	<div class="title">{#imgInsert_dlg.title}:<br /><br /></div>
+  <div>
+  	<form action="upload.php" method="post" id="formdd">
+    	<input type="file" width="30px" />
+      <div class="mceActionPanel">
+				<input type="submit" id="insert" name="insert" value="{#insert}" />
+				<input type="button" id="cancel" name="cancel" value="{#cancel}" onclick="tinyMCEPopup.close();" />
+			</div>
+    </form>
+  </div>
+</div>
+</body>
+</html>

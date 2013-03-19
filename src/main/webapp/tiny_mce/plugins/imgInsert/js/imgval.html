@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>图片上传验证</title>
+</head>
+
+<body>
+<form action="www.baidu.com" method="post" id="form">
+<input type="file" id="file" name="file" />
+<input type="button" onclick="submitBefore()"/>
+</form>
+</body>
+<script type="text/javascript" src="imgValOptions.js"></script>
+<script type="text/javascript" src="imgVal.js"></script>
+<script type="text/javascript">
+var store = "";
+var d = document;
+
+window.onload = function(){
+	imgValidateCons.store.init();
+	store = imgValidateCons.store;
+};
+
+var submitBefore = function(){
+	var file = d.getElementById("file");
+	fileVal = file.value;
+	fileSuffix = fileVal.substr(fileVal.lastIndexOf(".") + 1, fileVal.length);
+	if(store.check(fileSuffix)) d.getElementById("form").submit();
+	//if(store.check[fileSuffix]) d.getElementById("form").submit();
+	return false;
+};
+</script>
+</html>
