@@ -21,7 +21,6 @@
 	    <p>未选择上传文件</p>
 	    <p>请输入附件名称</p>
    </div>
-	附件名称：<input type="text" name="fileNameUseByUser" id="AttachName"/>
 
   <input type="file" name="img" id="img"/>
    <div class="mceActionPanel">

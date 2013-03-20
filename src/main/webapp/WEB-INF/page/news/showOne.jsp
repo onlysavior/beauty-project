@@ -1,12 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title></title>
+    <title>${news.title}</title>
 </head>
 <body>
-     <p>${title}</p>
+     <p>${news.title}</p>
+     <p>${news.type.name}</p>
+     <p><fmt:formatDate value="${news.updatetime}" pattern="yyyy-MM-dd" /></p>
      <span>
-         ${content}
+         ${news.content}
      </span>
 </body>
 </html>

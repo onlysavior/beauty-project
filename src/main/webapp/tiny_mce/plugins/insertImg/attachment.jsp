@@ -5,19 +5,17 @@
 <head>
 <link rel="stylesheet" type="text/css" href="css/attach.css" />
 <script type="text/javascript" src="../../tiny_mce_popup.js"></script>
-<script type="text/javascript" src="js/dialog.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="<c:url value='/tiny_mce/plugins/insertAttachment/js/dialog222.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='/tiny_mce/plugins/insertAttachment/js/common.js'/>"></script>
 </head>
 <body>
-<form  id="attForm" name="attForm"   target="dd" action="${website}upload/upload_imageUploadUsingTinyMCE.action" method="post" enctype="multipart/form-data"  >
+<form  id="attForm" name="attForm"   target="dd" action="/upload" method="post" enctype="multipart/form-data"  >
 	<div id="errorInfo">
 	  	<p>对不起，您上传的文件格式不正确,请从新上传。</p>
 	    <p>上传文件失败，请从新上传。</p>
 	    <p>未选择上传文件</p>
 	    <p>请输入附件名称</p>
    </div>
-	附件名称：<input type="text" name="imgFileName" id="AttachName"/>
-
   <input type="file" name="img" id="img"/>
    <div class="mceActionPanel">
 	<input type="button" id="insert" name="insert" value="{#insert}" onclick="attachmentDialog.submits();" />
