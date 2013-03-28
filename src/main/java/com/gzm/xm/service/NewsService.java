@@ -1,17 +1,23 @@
 package com.gzm.xm.service;
 
 import com.gzm.xm.common.entity.News;
+import com.gzm.xm.common.entity.News_;
 import com.gzm.xm.common.entity.Type;
 import com.gzm.xm.dao.NewsDao;
 import com.gzm.xm.dao.TypeDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -20,6 +26,8 @@ public class NewsService {
     private TypeDao typeDao;
     @Autowired
     private NewsDao newsDao;
+    @Autowired
+    private EntityManagerFactory entityManagerFactory;
 
     public List<Type> getTypeList() {
         List<Type> typeList = new ArrayList<Type>();
@@ -48,21 +56,148 @@ public class NewsService {
         return newsDao.findOne(id);
     }
 
-    public long count() {
+    public long count(String key,
+                      Date startTime,
+                      Date endTime) {
         //TODO search
-        return newsDao.count();
+        EntityManager em = entityManagerFactory.createEntityManager();
+        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+
+
+        CriteriaQuery<Long> count = criteriaBuilder.createQuery(Long.class);
+        //count = count.where(where);
+        //count = count.select(criteriaBuilder.countDistinct(root));
+        //criteriaQuery.select(criteriaBuilder.countDistinct(root));
+        Root<News> root = count.from(News.class);
+        Predicate time = null;
+        Predicate title = null;
+        if(startTime != null){
+            if(endTime == null)
+                endTime = new Date();
+            time = criteriaBuilder.between(root.get(News_.updatetime),startTime,endTime);
+        }
+        if (StringUtils.hasText(key)) {
+            title = criteriaBuilder.like(root.get(News_.title),like(key));
+        }
+
+        Predicate where = null;
+        if (title != null && time != null) {
+            where = criteriaBuilder.and(time,title);
+        } else if(title != null) {
+            where = title;
+        } else if (time != null) {
+            where = time;
+        }
+        count.select(criteriaBuilder.count(root));
+
+        if(where != null)
+            count.where(where);
+        return em.createQuery(count).getSingleResult();
     }
 
-    public List<News> query(long pageNo,long size) {
+    public List<News> query(int pageNo,
+                            int size,
+                            String key,
+                            Date startTime,
+                            Date endTime) {
         //TODO search
-        //Pageable pageable = new PageRequest(pageNo,size);
-        List<News> newsList = new ArrayList<News>();
-        Iterable<News> iterable = newsDao.findAll();
-        if (iterable != null) {
-            for (News news : iterable) {
-                newsList.add(news);
-            }
+        int firstPosistion;
+        if (pageNo == 1) {
+            firstPosistion = 0;
+        } else {
+            firstPosistion = (pageNo - 1) * size;
         }
-        return newsList;
+        EntityManager em = entityManagerFactory.createEntityManager();
+
+        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+        CriteriaQuery<News> criteriaQuery = criteriaBuilder.createQuery(News.class);
+        Root<News> root = criteriaQuery.from(News.class);
+        Predicate time = null;
+        Predicate title = null;
+        if(startTime != null){
+            if(endTime == null)
+                endTime = new Date();
+            time = criteriaBuilder.between(root.get(News_.updatetime),startTime,endTime);
+        }
+        if (StringUtils.hasText(key)) {
+            title = criteriaBuilder.like(root.get(News_.title),like(key));
+        }
+
+        Predicate where = null;
+        if (title != null && time != null) {
+            where = criteriaBuilder.and(time,title);
+        } else if(title != null) {
+            where = title;
+        } else if (time != null) {
+            where = time;
+        }
+
+        if (where != null) {
+            criteriaQuery.where(where);
+        }
+
+
+
+        //List<News> newsList = new ArrayList<News>();
+        //Iterable<News> iterable = newsDao.findAll();
+        //if (iterable != null) {
+        //    for (News news : iterable) {
+        //        newsList.add(news);
+        //    }
+        //}
+       return em.createQuery(criteriaQuery.select(root)).setFirstResult(firstPosistion)
+                .setMaxResults(size).getResultList();
+    }
+
+    private String like(String key) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("%");
+        sb.append(key);
+        sb.append("%");
+
+        return sb.toString();
+    }
+
+    public static Specification<News> querySpecification(final String key,
+                                                         final Date startTime,
+                                                         final Date endTime) {
+        return new Specification<News>() {
+            @Override
+            public Predicate toPredicate(Root<News> newsRoot, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+                Predicate like = null;
+                Predicate time = null;
+                if(StringUtils.hasText(key)){
+                    like = criteriaBuilder.like(newsRoot.get(News_.title),likePredicate(key));
+                }
+
+                if(startTime != null) {
+                    Date end = null;
+                    if(endTime == null) {
+                        end = new Date();
+                    } else {
+                        end = endTime;
+                    }
+                    time = criteriaBuilder.between(newsRoot.get(News_.updatetime),startTime,end);
+                }
+
+                Predicate where = null;
+                if (like != null && time != null) {
+                    where = criteriaBuilder.and(time,like);
+                } else if(like != null) {
+                    where = like;
+                } else if (time != null) {
+                    where = time;
+                }
+
+                return where;
+            }
+
+            private String likePredicate(String searchTerm) {
+                StringBuilder pattern = new StringBuilder();
+                pattern.append(searchTerm.toLowerCase());
+                pattern.append("%");
+                return pattern.toString();
+            }
+        };
     }
 }

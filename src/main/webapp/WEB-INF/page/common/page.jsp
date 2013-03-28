@@ -1,6 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style type="text/css">
 .fenye{
 	font-size:12px;
@@ -51,7 +49,6 @@ var url = "${navUrl}";
 var currentPage = "${currentPage}";
 
 $(document).ready(function() {
-	//分页
 	$("#pagebutton").click(letsGo);
 });
 
@@ -61,7 +58,6 @@ function letsGo() {
 	location.href=url1;
 }
 </script>
-<!--分页-->
 <div class="fenye pagesNav">
 <div class="pages">
 <c:if test="${page.recordCount > page.pageSize}">

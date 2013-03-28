@@ -6,31 +6,20 @@ import java.util.Arrays;
 import java.util.List;
 
 public class PageUtil {
-    private long currentPage = 1;// 当前页数,默认为第一页
+    private long currentPage = 1;
 
-    private long recordCount;// 总记录条数
+    private long recordCount;
 
-    private long pageCount;// 总页数
+    private long pageCount;
 
-    private long pageSize;// 每页记录条数
+    private long pageSize;
 
-    private long currentFristPosition; // 当前的页面的记录在总的记录中的起始位置
+    private long currentFristPosition;
 
-    // 根据当前页码 返回在当前页面下显示的其他页码列表(默认为当前页面的前3后3)
-    // 假设总共为100页
-    // 如当前是第四页 那么 列表的值为 {1，2，3，4，5，6，7}
-    // 如果当前页码为第9页 列表的值为{ 6, 7, 8, 9, 10, 11, 12 }
-    // 如果当前页码为第98页 列表的值为{ 94, 95, 96, 97, 98, 99, 100 }
     private List<Long> pageList;
 
-    /******************************* 构造函数 ****************************************/
 
-    /**
-     * 传入总记录数，传入每页显示条数，传入当前页码
-     * @param recordCount 总记录条数
-     * @param pageSize  每页记录条数
-     * @param currentPage 当前的页面的记录在总的记录中的起始位置
-     */
+
     public PageUtil(long recordCount, int pageSize, long currentPage) {
         this.recordCount = recordCount;
         this.pageSize = pageSize;
@@ -40,13 +29,9 @@ public class PageUtil {
         this.currentFristPosition = calculateRecordPosition();
     }
 
-    /******************************* 构造函数 ****************************************/
 
-    /**
-     * 计算总页数
-     *
-     * @return
-     */
+
+
     public long calculatePageCount() {
         long pageCount = 1;
         if (recordCount % pageSize == 0) {
@@ -62,25 +47,12 @@ public class PageUtil {
         return (currentPage - 1) * pageSize;
     }
 
-    /**
-     * 计算当前页码
-     *
-     * @param currentPage
-     * @return
-     */
     private long calculateCurrentPage(long currentPage) {
         if (currentPage < 1) currentPage = 1;
         else if (currentPage > pageCount) currentPage = pageCount;
         return currentPage;
     }
 
-    /**
-     * 根据当前页码 返回在当前页面下显示的其他页码列表(默认为当前页面的前3后3) 假设总共为100页 如当前是第四页 那么 列表的值为
-     * {1，2，3，4，5，6，7} 如果当前页码为第9页 列表的值为{ 6, 7, 8, 9, 10, 11, 12 }
-     * 如果当前页码为第98页 列表的值为{ 94, 95, 96, 97, 98, 99, 100 } pageList
-     *
-     * @return
-     */
     private List<Long> calculatePageList() {
         List<Long> pageTmpList = new ArrayList<Long>();
         if (pageCount < 7) {
@@ -103,7 +75,6 @@ public class PageUtil {
         return pageTmpList;
     }
 
-    /********************** 首页，上一页，下一页，末页 *****************************/
     private long firstPage;
 
     private long prevPage;
