@@ -27,7 +27,6 @@ public class LoginService {
             return null;
         }
         userDao.save(user);
-
         return user;
     }
 
