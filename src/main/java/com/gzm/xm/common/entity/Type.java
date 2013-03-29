@@ -19,7 +19,7 @@ public class Type extends AbstractEntity {
 	private Integer id;
 	
 	private String name;
-	
+
 	private Integer type;
 
 	public Integer getId() {

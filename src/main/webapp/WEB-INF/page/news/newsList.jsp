@@ -6,13 +6,39 @@
     <title>News List</title>
     <script type="text/javascript" src="<c:url value='/My97DatePicker/WdatePicker.js'/>"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".del").click(function(){
+                if(confirm("Detele it ?")){
+                    $.ajax({
+                        url:"/delNews",
+                        type:"post",
+                        data:{
+                            id:$(this).attribute("data")
+                        },
+                        success:function(){
+                            $(this).parent().parent().remove();
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </head>
 <body>
+<p>
+    <a href="/addNews"><input type="button" value="add News" id="addNews"></a>
+</p>
 <form id="form" method="post">
     <p>
         title:<input type="text" name="keyWord" id="title"/>
         start:<input name="startTime" type="text" onClick="WdatePicker()" id="start"  />
         end:<input name="endTime" type="text" onClick="WdatePicker()" id="end" />
+        type:<select id="type" name="type">
+            <c:forEach items="${typeList}" var="i">
+                <option value="${i.id}">${i.name}</option>
+            </c:forEach>
+        </select>
         <input type="submit" value="go" id="go">
     </p>
 </form>
@@ -31,8 +57,8 @@
                      <fmt:formatDate value="${i.updatetime}" pattern="yyyy-MM-dd" />
                  </td>
                  <td>
-                      <input type="button" value="edit" class="edit">
-                      <input type="button" value="del" class="del">
+                      <a href="/editNews/${i.id}"><input type="button" value="edit" class="edit" /></a>
+                      <input type="button" value="del" class="del" data="${i.id}"/>
                  </td>
              </tr>
          </c:forEach>

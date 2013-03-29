@@ -44,8 +44,7 @@ public class NewsController extends AbstractContoller{
                           @RequestParam("content")String content,
                           @RequestParam("type")Integer type) {
         newsService.addNews(title, content, type);
-        //TODO
-        return "/welcome";
+        return "redirect:/newsList";
     }
 
     @RequestMapping(value = "/newsList",method = {RequestMethod.POST,RequestMethod.GET})
@@ -53,44 +52,70 @@ public class NewsController extends AbstractContoller{
                              @RequestParam(value = "keyWord",required = false) String key,
                              @RequestParam(value = "startTime",required = false) Date startTime,
                              @RequestParam(value = "endTime",required = false) Date endTime,
+                             @RequestParam(value = "type", required = false) Integer typeId,
                              ModelMap map) {
-       //TODO search
         if(pageNo == null || pageNo == 0) {
             pageNo = 1;
         }
 
-        long count = newsService.count(key, startTime, endTime);
+        long count = newsService.count(key, startTime, endTime,typeId);
         PageUtil page = new PageUtil(count,pageSize,pageNo);
         map.put("page",page);
 
         List<News> newsList;
-        newsList = newsService.query(pageNo, pageSize, key, startTime, endTime);
+        newsList = newsService.query(pageNo, pageSize, key, startTime, endTime,typeId);
         map.put("newList",newsList);
-        map.put("query",appendParameter(key, startTime, endTime));
+        map.put("query",appendParameter(key, startTime, endTime, typeId));
         return "/news/newsList";
     }
 
-    private String appendParameter(String key,Date startTime, Date endTime) {
+    @RequestMapping(value = "/delNews",method = RequestMethod.POST)
+    public int delNews(@RequestParam Integer id){
+        newsService.delNes(id);
+        return 1;
+    }
+
+    @RequestMapping(value = "/editNews/{id}",method = RequestMethod.GET)
+    public String editNews(@PathVariable int id, ModelMap map) {
+        News news = newsService.showOne(id);
+        map.put("news",news);
+        return "/news/editNews";
+    }
+
+    public String saveNews(@RequestParam News news,Integer type) {
+        news.setType(newsService.getType(type));
+        news.setUpdatetime(new Date());
+
+        newsService.saveNews(news);
+
+        return "redirect:/newsList";
+    }
+
+    private String appendParameter(String key,
+                                   Date startTime,
+                                   Date endTime,
+                                   Integer typeId) {
         StringBuilder sb = new StringBuilder();
         if (StringUtils.hasText(key)) {
             sb.append("?keyWord=");
             sb.append(key);
+            sb.append("&");
         }
 
         if(startTime != null){
-            if(sb.toString().contains("?")){
-               sb.append("?");
-            } else{
-               sb.append("&");
-            }
             sb.append("startTime=");
             sb.append(startTime);
-
+            sb.append("&");
             if(endTime == null)
                 endTime = new Date();
-            sb.append("&");
             sb.append("endTime=");
             sb.append(endTime);
+            sb.append("&");
+        }
+
+        if(typeId != null && typeId != 0) {
+            sb.append("typeId=");
+            sb.append(typeId);
         }
 
         return sb.toString();

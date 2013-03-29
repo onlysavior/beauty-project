@@ -58,19 +58,18 @@ public class NewsService {
 
     public long count(String key,
                       Date startTime,
-                      Date endTime) {
-        //TODO search
+                      Date endTime,
+                      Integer typeId) {
+
         EntityManager em = entityManagerFactory.createEntityManager();
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
 
 
         CriteriaQuery<Long> count = criteriaBuilder.createQuery(Long.class);
-        //count = count.where(where);
-        //count = count.select(criteriaBuilder.countDistinct(root));
-        //criteriaQuery.select(criteriaBuilder.countDistinct(root));
         Root<News> root = count.from(News.class);
         Predicate time = null;
         Predicate title = null;
+        Predicate type = null;
         if(startTime != null){
             if(endTime == null)
                 endTime = new Date();
@@ -79,15 +78,14 @@ public class NewsService {
         if (StringUtils.hasText(key)) {
             title = criteriaBuilder.like(root.get(News_.title),like(key));
         }
+        if (typeId != null && typeId != 0) {
+            type = criteriaBuilder.equal(root.get(News_.type),typeDao.findOne(typeId));
+        }
+
 
         Predicate where = null;
-        if (title != null && time != null) {
-            where = criteriaBuilder.and(time,title);
-        } else if(title != null) {
-            where = title;
-        } else if (time != null) {
-            where = time;
-        }
+        where = title == null ? time : time == null ? title : criteriaBuilder.and(time,title);
+        where = type == null ? where : where == null ? type : criteriaBuilder.and(where,type);
         count.select(criteriaBuilder.count(root));
 
         if(where != null)
@@ -99,8 +97,8 @@ public class NewsService {
                             int size,
                             String key,
                             Date startTime,
-                            Date endTime) {
-        //TODO search
+                            Date endTime,
+                            Integer typeId) {
         int firstPosistion;
         if (pageNo == 1) {
             firstPosistion = 0;
@@ -114,6 +112,7 @@ public class NewsService {
         Root<News> root = criteriaQuery.from(News.class);
         Predicate time = null;
         Predicate title = null;
+        Predicate type = null;
         if(startTime != null){
             if(endTime == null)
                 endTime = new Date();
@@ -122,31 +121,32 @@ public class NewsService {
         if (StringUtils.hasText(key)) {
             title = criteriaBuilder.like(root.get(News_.title),like(key));
         }
+        if (typeId != null && typeId != 0) {
+            type = criteriaBuilder.equal(root.get(News_.type),typeDao.findOne(typeId));
+        }
 
         Predicate where = null;
-        if (title != null && time != null) {
-            where = criteriaBuilder.and(time,title);
-        } else if(title != null) {
-            where = title;
-        } else if (time != null) {
-            where = time;
-        }
+        where = title == null ? time : time == null ? title : criteriaBuilder.and(time,title);
+        where = type == null ? where : where == null ? type : criteriaBuilder.and(where,type);
 
         if (where != null) {
             criteriaQuery.where(where);
         }
 
-
-
-        //List<News> newsList = new ArrayList<News>();
-        //Iterable<News> iterable = newsDao.findAll();
-        //if (iterable != null) {
-        //    for (News news : iterable) {
-        //        newsList.add(news);
-        //    }
-        //}
        return em.createQuery(criteriaQuery.select(root)).setFirstResult(firstPosistion)
                 .setMaxResults(size).getResultList();
+    }
+
+    public void delNes(Integer id) {
+        newsDao.delete(id);
+    }
+
+    public Type getType(Integer id) {
+        return typeDao.findOne(id);
+    }
+
+    public void saveNews(News news) {
+        newsDao.save(news);
     }
 
     private String like(String key) {
