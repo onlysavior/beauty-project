@@ -3,12 +3,9 @@ package com.gzm.xm.common.entity;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,7 +23,7 @@ public class Reply  extends AbstractEntity{
 	
 	private String title;
 	
-	private String content;
+	private Integer flag;//用来标识是否是管理员发的
 	
 	private Date updatetime;
 	
@@ -48,12 +45,14 @@ public class Reply  extends AbstractEntity{
 		this.title = title;
 	}
 
-	public String getContent() {
-		return content;
+	
+
+	public Integer getFlag() {
+		return flag;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setFlag(Integer flag) {
+		this.flag = flag;
 	}
 
 	public Date getUpdatetime() {

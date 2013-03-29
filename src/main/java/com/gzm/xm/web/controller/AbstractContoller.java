@@ -15,6 +15,7 @@ public class AbstractContoller {
    @Autowired
    protected ReplyService replyService;
    
+   
    public static final String CAPTCHA_IMAGE_FORMAT = "jpeg";
 
    public static final int pageSize = 1;
