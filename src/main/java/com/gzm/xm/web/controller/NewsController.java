@@ -8,11 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -126,5 +131,18 @@ public class NewsController extends AbstractContoller{
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         dateFormat.setLenient(false);
         binder.registerCustomEditor(Date.class, null, new CustomDateEditor(dateFormat, true));
+    }
+
+    @RequestMapping(value = "/fileupload",method = RequestMethod.POST)
+    public String upload(@RequestParam("img")MultipartFile file,
+                         MultipartHttpServletRequest request,
+                         ModelMap map) throws IOException {
+        String fileName = new Date().getTime() + "."
+                + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."),file.getOriginalFilename().length());
+        String path = request.getRealPath("");
+        File dist = new File((path + BASE_UPLOAD_FOLDER),fileName);
+        FileCopyUtils.copy(file.getBytes(), dist);
+        map.put("imageURLList",SHOW_UPLOAD_FOLDER+fileName);
+        return "upload/upload";
     }
 }

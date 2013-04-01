@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <html>
 <head>
-    <title>Add Product</title>
+    <title>Add News</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8"  src="<c:url value='/tiny_mce/tiny_mce.js'/>"></script>
     <script type="text/javascript">
@@ -44,37 +44,24 @@
     </script>
 </head>
 <body>
-    <form action="/addProduct" method="post" enctype="multipart/form-data">
-        <p>
-            name:
-            <input type="text" name="name">
-        </p>
-        <p>
-            function:
-            <input type="text" name="function">
-        </p>
-        <p>
-            price:
-            <input type="text" name="price">
-        </p>
-        <p>
-            include:
-            <input type="text" name="include">
-        </p>
-        <p>
-            volume:
-            <input type="text" name="volume">
-        </p>
-        <p>
-            <input type="file" name="file" id="file">
-        </p>
-        <p>
-            description:
-            <textarea name="description" rows="25"></textarea>
-        </p>
-        <p>
+<form id="form" action="/saveProduct" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="product.id" value="${product.id}">
+    <p>name:<input type="text" name="product.name" value="${product.name}"></p>
+    <p>function:<input type="text" name="product.function" value="${product.function}"></p>
+    <p>price:<input type="text" name="product.price" value="${product.price}"></p>
+    <p>volume:<input type="text" name="product.volume" value="${product.volume}"></p>
+    <p>include:<input type="text" name="product.include" value="${product.include}"></p>
+    <p>
+        <textarea name="product.description" rows="25">${product.description}</textarea>
+    </p>
+    <p>
+        <img src="${product.picUrl}">
+        <input type="file" name="file">
+    </p>
+    <p>
         <input type="submit" value="submit">
-        </p>
-    </form>
+        <input type="reset" value="reset">
+    </p>
+</form>
 </body>
 </html>
