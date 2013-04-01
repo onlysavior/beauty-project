@@ -1,9 +1,8 @@
 package com.gzm.xm.service;
 
-import com.gzm.xm.common.entity.Product;
-import com.gzm.xm.common.entity.Product_;
-import com.gzm.xm.common.enums.TypeEnum;
-import com.gzm.xm.dao.ProductDao;
+import com.gzm.xm.common.entity.Certificate;
+import com.gzm.xm.common.entity.Certificate_;
+import com.gzm.xm.dao.CertificateDao;
 import com.gzm.xm.dao.TypeDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,36 +17,29 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 
 @Service
-public class ProductService {
+public class CertificateService {
     @Autowired
-    private ProductDao productDao;
+    private CertificateDao certificateDao;
+
     @Autowired
     private TypeDao typeDao;
 
     @Autowired
     private EntityManagerFactory entityManagerFactory;
 
-    public void addProduct(String name,
-                           String function,
-                           Float price,
-                           String include,
-                           String volume,
-                           String description,
-                           String picUrl) {
-        Product product = new Product();
-        product.setFunction(function);
-        product.setInclude(include);
-        product.setName(name);
-        product.setPicUrl(picUrl);
-        product.setVolume(volume);
-        product.setType(typeDao.findOne(TypeEnum.PRODUCT_TYPE.getId()));
+    public void addProduct(
+            String instruction,
+            String picUrl) {
+        Certificate project = new Certificate();
+        project.setInstruction(instruction);
+        project.setPicUrl(picUrl);
 
-        productDao.save(product);
+        certificateDao.save(project);
     }
 
-    public void saveProduct(Product p,String picUrl) {
+    public void saveProduct(Certificate p,String picUrl) {
         p.setPicUrl(picUrl);
-        productDao.save(p);
+        certificateDao.save(p);
     }
 
     public long count(String key) {
@@ -57,10 +49,10 @@ public class ProductService {
 
 
         CriteriaQuery<Long> count = criteriaBuilder.createQuery(Long.class);
-        Root<Product> root = count.from(Product.class);
+        Root<Certificate> root = count.from(Certificate.class);
         Predicate title = null;
         if (StringUtils.hasText(key)) {
-            title = criteriaBuilder.like(root.get(Product_.name), like(key));
+            title = criteriaBuilder.like(root.get(Certificate_.instruction), like(key));
         }
 
 
@@ -71,9 +63,9 @@ public class ProductService {
         return em.createQuery(count).getSingleResult();
     }
 
-    public List<Product> query(int pageNo,
-                            int size,
-                            String key) {
+    public List<Certificate> query(int pageNo,
+                               int size,
+                               String key) {
         int firstPosistion;
         if (pageNo == 1) {
             firstPosistion = 0;
@@ -83,11 +75,11 @@ public class ProductService {
         EntityManager em = entityManagerFactory.createEntityManager();
 
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-        CriteriaQuery<Product> criteriaQuery = criteriaBuilder.createQuery(Product.class);
-        Root<Product> root = criteriaQuery.from(Product.class);
+        CriteriaQuery<Certificate> criteriaQuery = criteriaBuilder.createQuery(Certificate.class);
+        Root<Certificate> root = criteriaQuery.from(Certificate.class);
         Predicate title = null;
         if (StringUtils.hasText(key)) {
-            title = criteriaBuilder.like(root.get(Product_.name),like(key));
+            title = criteriaBuilder.like(root.get(Certificate_.instruction),like(key));
         }
 
         if (title != null) {
@@ -98,12 +90,12 @@ public class ProductService {
                 .setMaxResults(size).getResultList();
     }
 
-    public Product showOne(Integer id){
-        return productDao.findOne(id);
+    public Certificate showOne(Integer id){
+        return certificateDao.findOne(id);
     }
 
-    public void delProduct(Integer id) {
-        productDao.delete(id);
+    public void delCertificate(Integer id) {
+        certificateDao.delete(id);
     }
 
     private String like(String key) {

@@ -1,8 +1,8 @@
 package com.gzm.xm.web.controller;
 
-import com.gzm.xm.common.entity.Product;
+import com.gzm.xm.common.entity.Project;
 import com.gzm.xm.common.util.PageUtil;
-import com.gzm.xm.service.ProductService;
+import com.gzm.xm.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -22,73 +21,67 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
-public class ProductController extends AbstractContoller{
+public class ProjectController extends AbstractContoller{
     @Autowired
-    private ProductService productService;
+    private ProjectService projectService;
 
-    @RequestMapping(value = "/toAddProduct",method = RequestMethod.GET)
-    public String toAddProduct(){
-        return "/product/addProduct";
+    @RequestMapping(value = "/toAddProject",method = RequestMethod.GET)
+    public String toAddProject() {
+        return "/project/addProject";
     }
 
-    @RequestMapping(value = "/addProduct",method = RequestMethod.POST)
-    public String addProduct(@RequestParam String name,
-                             @RequestParam String function,
-                             @RequestParam Float price,
-                             @RequestParam String include,
-                             @RequestParam String volume,
-                             @RequestParam String description,
+    @RequestMapping(value = "/addProject",method = RequestMethod.POST)
+    public String addProject(@RequestParam String description,
                              @RequestParam MultipartFile file,
-                             MultipartHttpServletRequest request) throws IOException {
+                             HttpServletRequest request) throws IOException {
         String fileName = new Date().getTime() + "."
                 + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".")+1,file.getOriginalFilename().length());
         String path = request.getRealPath("");
         File dist = new File((path + BASE_UPLOAD_FOLDER),fileName);
         FileCopyUtils.copy(file.getBytes(), dist);
 
-        productService.addProduct(name,function,price,include,volume,description,
-                request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER+fileName);
+        projectService.addProduct(description,request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER + fileName);
 
-       return "redirect:/productList";
+        return "redirect:/projectList";
     }
 
-    @RequestMapping(value = "/productList",method = {RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(value = "/projectList",method = {RequestMethod.POST,RequestMethod.GET})
     public String toProductList(@RequestParam(value = "pageNo",required = false) Integer pageNo,
-                             @RequestParam(value = "keyWord",required = false) String key,
-                             ModelMap map) {
+                                @RequestParam(value = "keyWord",required = false) String key,
+                                ModelMap map) {
         if(pageNo == null || pageNo == 0) {
             pageNo = 1;
         }
 
-        long count = productService.count(key);
+        long count = projectService.count(key);
         PageUtil page = new PageUtil(count,pageSize,pageNo);
         map.put("page",page);
 
-        List<Product> productList;
-        productList = productService.query(pageNo, pageSize, key);
+        List<Project> productList;
+        productList = projectService.query(pageNo, pageSize, key);
         map.put("productList",productList);
         map.put("query",appendParameter(key));
-        return "/product/productList";
+        return "project/projectList";
     }
 
-    @RequestMapping(value = "/showProduct/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "/showProject/{id}",method = RequestMethod.GET)
     public String showProduct(@PathVariable Integer id,
                               ModelMap map) {
-        Product p = productService.showOne(id);
-        map.put("product",p);
-        return "product/showOne";
+        Project p = projectService.showOne(id);
+        map.put("project",p);
+        return "project/showOne";
     }
 
-    @RequestMapping(value = "/editProduct/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "/editProject/{id}",method = RequestMethod.GET)
     public String toEditProduct(@PathVariable Integer id,
                                 ModelMap map){
-       Product p = productService.showOne(id);
-       map.put("product",p);
-       return "product/editProduct";
+        Project p = projectService.showOne(id);
+        map.put("product",p);
+        return "project/editProject";
     }
 
-    @RequestMapping(value = "/saveProduct",method = RequestMethod.POST)
-    public String saveProduct(Product p,
+    @RequestMapping(value = "/saveProject",method = RequestMethod.POST)
+    public String saveProduct(Project p,
                               @RequestParam MultipartFile file,
                               HttpServletRequest request) throws IOException{
         String fileName = new Date().getTime() + "."
@@ -97,14 +90,14 @@ public class ProductController extends AbstractContoller{
         File dist = new File((path + BASE_UPLOAD_FOLDER),fileName);
         FileCopyUtils.copy(file.getBytes(), dist);
 
-        productService.saveProduct(p,request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER+fileName);
+        projectService.saveProduct(p,request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER+fileName);
 
-        return "redirect:/productList";
+        return "redirect:/projectList";
     }
 
-    @RequestMapping(value = "/delProduct",method = RequestMethod.POST)
-    public int delProduct(@RequestParam Integer id) {
-        productService.delProduct(id);
+    @RequestMapping(value = "/delProject",method = RequestMethod.POST)
+    public int delProject(@RequestParam Integer id) {
+        projectService.delProject(id);
         return 1;
     }
 
