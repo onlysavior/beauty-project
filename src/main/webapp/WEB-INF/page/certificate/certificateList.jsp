@@ -10,7 +10,7 @@
             $(".del").click(function(){
                 if(confirm("Detele it ?")){
                     $.ajax({
-                        url:"/delCertificate",
+                        url:"/backend/delCertificate",
                         type:"post",
                         data:{
                             id:$(this).attribute("data")
@@ -26,7 +26,7 @@
 </head>
 <body>
 <p>
-    <a href="/toAddCertificate"><input type="button" value="add Certificate" id="addNews"></a>
+    <a href="/backend/toAddCertificate"><input type="button" value="add Certificate" id="addNews"></a>
 </p>
 <form id="form" method="post">
     <p>
@@ -52,7 +52,7 @@
         <h3>No Product</h3>
     </c:otherwise>
 </c:choose>
-<c:set scope="request" var="navUrl" value="/certificateList" />
+<c:set scope="request" var="navUrl" value="/backend/certificateList" />
 <c:set scope="request" var="navUrlEnd" value="${query}"/>
 <c:set scope="request" var="currentPage" value="pageNo"/>
 <%@ include file="../common/page.jsp" %>

@@ -44,7 +44,7 @@
     </script>
 </head>
 <body>
-<form id="form" action="/saveNews" method="post">
+<form id="form" action="/backend/saveNews" method="post">
     <input type="hidden" value="${news.id}" name="news.id">
     <p>title:<input type="text" name="news.title" value="${news.title}"></p>
     <p>

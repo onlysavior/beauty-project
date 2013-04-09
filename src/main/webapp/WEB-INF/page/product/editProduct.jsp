@@ -44,7 +44,7 @@
     </script>
 </head>
 <body>
-<form id="form" action="/saveProduct" method="post" enctype="multipart/form-data">
+<form id="form" action="/backend/saveProduct" method="post" enctype="multipart/form-data">
     <input type="hidden" name="product.id" value="${product.id}">
     <p>name:<input type="text" name="product.name" value="${product.name}"></p>
     <p>function:<input type="text" name="product.function" value="${product.function}"></p>

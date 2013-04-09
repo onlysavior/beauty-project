@@ -14,14 +14,14 @@
             });
 
             $(".register").click(function(){
-                window.location = "/register";
+                window.location = "/backend/register";
             });
         });
     </script>
 </head>
 <body>
 
-	<form style="margin:20px" method="post" action="login">
+	<form style="margin:20px" method="post" action="/backend/login">
 		<p style="color:red">${error}</p>
 		Login Name:<input type="text" name="name"/>
 		<p>Password ： <input type="password" name="pwd"/></p>

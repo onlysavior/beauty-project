@@ -5,5 +5,4 @@
        default-autowire="byName" default-lazy-init="false">
 
     <import resource="spring-data.xml" />
-    <import resource="spring-mvc.xml" />
 </beans>

@@ -44,7 +44,7 @@
     </script>
 </head>
 <body>
-<form id="form" action="/saveProject" method="post" enctype="multipart/form-data">
+<form id="form" action="/backend/saveProject" method="post" enctype="multipart/form-data">
     <input type="hidden" name="project.id" value="${product.id}">
     <p>
         <textarea name="project.description" rows="25">${product.description}</textarea>

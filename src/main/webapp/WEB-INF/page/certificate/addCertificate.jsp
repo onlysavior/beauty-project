@@ -44,7 +44,7 @@
     </script>
 </head>
 <body>
-<form action="/addCertificate" method="post" enctype="multipart/form-data">
+<form action="/backend/addCertificate" method="post" enctype="multipart/form-data">
     <p>
         <input type="file" name="file" id="file">
     </p>

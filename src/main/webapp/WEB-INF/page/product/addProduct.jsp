@@ -44,7 +44,7 @@
     </script>
 </head>
 <body>
-    <form action="/addProduct" method="post" enctype="multipart/form-data">
+    <form action="/backend/addProduct" method="post" enctype="multipart/form-data">
         <p>
             name:
             <input type="text" name="name">

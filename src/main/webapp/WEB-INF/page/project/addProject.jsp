@@ -44,7 +44,7 @@
     </script>
 </head>
 <body>
-<form action="/addProject" method="post" enctype="multipart/form-data">
+<form action="/backend/addProject" method="post" enctype="multipart/form-data">
     <p>
         <input type="file" name="file" id="file">
     </p>

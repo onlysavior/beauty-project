@@ -17,7 +17,7 @@
            });
             $("#check").blur(function(){
                 $.ajax({
-                    url:"/check",
+                    url:"/backend/check",
                     type:"post",
                     data:{name:$(this).val()},
                     success:function(d){

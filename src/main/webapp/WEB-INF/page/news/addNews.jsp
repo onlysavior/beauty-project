@@ -44,7 +44,7 @@
     </script>
 </head>
 <body>
-    <form id="form" action="/addNews" method="post">
+    <form id="form" action="/backend/addNews" method="post">
         <p>title:<input type="text" name="title"></p>
         <p>
             <textarea name="content" rows="25"></textarea>

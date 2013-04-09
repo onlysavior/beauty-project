@@ -14,7 +14,7 @@
 </script>
 </head>
 <body>
-<form  id="attForm" name="attForm"   target="dd" action="/fileupload" method="post" enctype="multipart/form-data"  >
+<form  id="attForm" name="attForm"   target="dd" action="/backend/fileupload" method="post" enctype="multipart/form-data"  >
 	<div id="errorInfo">
 	  	<p>对不起，您上传的文件格式不正确,请从新上传。</p>
 	    <p>上传文件失败，请从新上传。</p>

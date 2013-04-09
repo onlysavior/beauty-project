@@ -44,7 +44,7 @@
     </script>
 </head>
 <body>
-<form id="form" action="/saveCertificate" method="post" enctype="multipart/form-data">
+<form id="form" action="/backend/saveCertificate" method="post" enctype="multipart/form-data">
     <input type="hidden" name="p.id" value="${product.id}">
     <p>
         <textarea name="p.instruction" rows="25">${product.instruction}</textarea>

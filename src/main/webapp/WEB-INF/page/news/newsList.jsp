@@ -11,7 +11,7 @@
             $(".del").click(function(){
                 if(confirm("Detele it ?")){
                     $.ajax({
-                        url:"/delNews",
+                        url:"/backend/delNews",
                         type:"post",
                         data:{
                             id:$(this).attribute("data")
@@ -27,7 +27,7 @@
 </head>
 <body>
 <p>
-    <a href="/addNews"><input type="button" value="add News" id="addNews"></a>
+    <a href="/backend/addNews"><input type="button" value="add News" id="addNews"></a>
 </p>
 <form id="form" method="post">
     <p>
@@ -57,7 +57,7 @@
                      <fmt:formatDate value="${i.updatetime}" pattern="yyyy-MM-dd" />
                  </td>
                  <td>
-                      <a href="/editNews/${i.id}"><input type="button" value="edit" class="edit" /></a>
+                      <a href="/backend/editNews/${i.id}"><input type="button" value="edit" class="edit" /></a>
                       <input type="button" value="del" class="del" data="${i.id}"/>
                  </td>
              </tr>
@@ -68,7 +68,7 @@
     <h3>No News</h3>
 </c:otherwise>
 </c:choose>
-   <c:set scope="request" var="navUrl" value="/newsList" />
+   <c:set scope="request" var="navUrl" value="/backend/newsList" />
    <c:set scope="request" var="navUrlEnd" value="${query}"/>
    <c:set scope="request" var="currentPage" value="pageNo"/>
    <%@ include file="../common/page.jsp" %>
