@@ -12,7 +12,7 @@
        default-autowire="byName" default-lazy-init="false">
 
     <context:annotation-config />
-    <context:component-scan base-package="com" />
+    <context:component-scan base-package="com.gzm.xm.web.front" />
     <mvc:annotation-driven  />
     <mvc:interceptors>
         <mvc:interceptor>
@@ -21,19 +21,17 @@
         </mvc:interceptor>
     </mvc:interceptors>
 
-    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
         <property name="definitions">
             <list>
-               <value>/WEB-INF/defs/index.xml</value>
+                <value>/WEB-INF/def/index.xml</value>
             </list>
         </property>
     </bean>
 
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView" />
-        <property name="suffix" value=".jsp" />
-        <property name="prefix" value="/WEB-INF/page/front"/>
+        <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
     </bean>
 
 </beans>

@@ -13,10 +13,25 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    
+    <servlet>
+        <servlet-name>springmvc-front</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath*:spring-mvc-front.xml</param-value>
+        </init-param>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>springmvc-backend</servlet-name>
         <url-pattern>/backend/*</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>springmvc-front</servlet-name>
+        <url-pattern>/front/*</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>

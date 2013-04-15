@@ -1,0 +1,24 @@
+/* ============ËÑË÷±íµ¥============== */
+div.globalsearchformzone{
+background:url(../images/search_9001.png) no-repeat;
+padding-left:80px;
+padding-top:5px;
+height:55px;
+line-height:55px;
+}
+
+
+div.globalsearchformzone div.globalsearchform{
+float:left;
+padding:5px 3px 0px 0px;
+line-height:22px;
+}
+
+div.globalsearchformzone div.globalsearchform .input{
+border:1px #ddd solid;
+height:22px;
+line-height:22px;
+padding-bottom:4px;
+margin-bottom:7px;
+background:#fbfbfb
+}
