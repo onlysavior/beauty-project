@@ -1,0 +1,32 @@
+/* ============分类列表============== */
+
+ul.productclass7003{
+margin:0px;
+padding:0px;
+}
+
+li.productclass7003 {
+float:left;
+margin-right:2px;
+list-style-type: none;
+white-space: nowrap;
+height:30px;
+width:135px;
+background:url(../images/titlemenu_703.gif) 0px 0px no-repeat;
+padding-left:55px;
+padding-top:13px;
+}
+
+
+
+a.productclass7003:link,a.productclass7003:visited,a.productclass7003:active{
+color:#555;
+text-decoration: none;
+font: 12px/18px simsun;
+}
+
+a.productclass7003:hover{
+color:#ff0000;
+text-decoration: underline;
+font: 12px/18px simsun;
+}

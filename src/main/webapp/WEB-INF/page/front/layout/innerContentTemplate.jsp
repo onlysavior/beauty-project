@@ -145,70 +145,7 @@
 
     <div id='pdv_5041' class='pdv_class'   style='width:656px;height:59px;top:0px;left:0px; z-index:11'>
         <div id='spdv_5041' class='pdv_top' style='overflow:hidden;width:100%;height:100%'>
-            <div class="pdv_border" style="margin:0;padding:0;height:100%;border:0px  solid;background:;">
-                <div style="height:25px;margin:1px;display:none;background:;">
-                    <div style="float:left;margin-left:12px;line-height:25px;font-weight:bold;color:">
-                        导航菜单
-                    </div>
-                    <div style="float:right;margin-right:10px;display:none">
-                        <a href="-1" style="line-height:25px;color:">更多</a>
-                    </div>
-                </div>
-                <div style="padding:0px">
-
-                    <link href="<c:url value='/menu/templates/images/mainmenu_9001/A.css' />" rel="stylesheet" type="text/css" />
-                    <div id="menumain">
-                        <div class="mainmenuleft"></div><div class="mainmenuright"></div>
-
-                        <div id="menumain_" class="menumain">
-                            <a href="#" >网站首页</a>
-                        </div>
-
-
-                        <div id="menumain_" class="menumain">
-                            <a href="#" >公司简介</a>
-                        </div>
-
-
-                        <div id="menumain_" class="menumain">
-                            <a href="#" >新闻动态</a>
-                        </div>
-
-
-                        <div id="menumain_" class="menumain">
-                            <a href="#" >服务项目</a>
-                        </div>
-
-
-                        <div id="menumain_" class="menumain">
-                            <a href="#" >产品展示</a>
-                        </div>
-
-
-                        <div id="menumain_" class="menumain">
-                            <a href="#" >产品订购</a>
-                        </div>
-
-
-                        <div id="menumain_" class="menumain">
-                            <a href="#" >人才招聘</a>
-                        </div>
-
-
-                        <div id="menumain_" class="menumain">
-                            <a href="#" >联系方式</a>
-                        </div>
-
-
-                        <div id="menumain_" class="menumain">
-                            <a href="#" >给我留言</a>
-                        </div>
-
-
-                    </div>
-
-                </div>
-            </div>
+            <tiles:insertAttribute name="leftlink" />
 
         </div>
     </div>
@@ -331,33 +268,7 @@
 
     <div id='pdv_5039' class='pdv_class'   style='width:331px;height:33px;top:7px;left:0px; z-index:8'>
         <div id='spdv_5039' class='pdv_bottom' style='overflow:hidden;width:100%;height:100%'>
-            <div class="pdv_border" style="margin:0;padding:0;height:100%;border:0px  solid;background:;">
-                <div style="height:25px;margin:1px;display:none;background:;">
-                    <div style="float:left;margin-left:12px;line-height:25px;font-weight:bold;color:">
-                        脚注栏目
-                    </div>
-                    <div style="float:right;margin-right:10px;display:none">
-                        <a href="#" style="line-height:25px;color:">更多</a>
-                    </div>
-                </div>
-                <div style="padding:0px">
-
-                    <link href="<c:url value='/menu/templates/images/bottommenu_1/E.css' />" rel="stylesheet" type="text/css" />
-                    <div id="bottommenu">|
-
-                        <a href="#" target="_self">公司介绍</a>|
-
-                        <a href="#" target="_self">联系方法</a>|
-
-                        <a href="#" target="_self">资料下载</a>|
-
-                        <a href="#" target="_self">友情链接</a>|
-
-                    </div>
-
-
-                </div>
-            </div>
+           <tiles:insertAttribute name="bottomlink" />
 
         </div>
     </div>

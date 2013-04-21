@@ -15,6 +15,8 @@ public class Constant extends AbstractEntity {
 
     private String content;
 
+    private String picUrl;
+
     @Override
     public Object getId() {
         return id;
@@ -34,5 +36,13 @@ public class Constant extends AbstractEntity {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getPicUrl() {
+        return picUrl;
+    }
+
+    public void setPicUrl(String picUrl) {
+        this.picUrl = picUrl;
     }
 }

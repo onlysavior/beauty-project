@@ -47,6 +47,15 @@
 <form id="form" action="/backend/saveProject" method="post" enctype="multipart/form-data">
     <input type="hidden" name="project.id" value="${product.id}">
     <p>
+        <select name="type">
+            <c:if test="${typeList != null}">
+                <c:forEach items="${typeList}" var="i">
+                    <option value="${i.id}">${i.name}</option>
+                </c:forEach>
+            </c:if>
+        </select>
+    </p>
+    <p>
         <textarea name="project.description" rows="25">${product.description}</textarea>
     </p>
     <p>

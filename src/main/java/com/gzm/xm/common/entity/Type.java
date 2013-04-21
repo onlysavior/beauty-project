@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
-@Table( name="type" )
+@Table( name="t_type" )
 public class Type extends AbstractEntity {
 
 	/**
@@ -21,6 +21,8 @@ public class Type extends AbstractEntity {
 	private String name;
 
 	private Integer type;
+
+    private Integer parentType;
 
 	public Integer getId() {
 		return id;
@@ -45,9 +47,12 @@ public class Type extends AbstractEntity {
 	public void setType(Integer type) {
 		this.type = type;
 	}
-	
-	
-	
-	
-	
+
+    public Integer getParentType() {
+        return parentType;
+    }
+
+    public void setParentType(Integer parentType) {
+        this.parentType = parentType;
+    }
 }

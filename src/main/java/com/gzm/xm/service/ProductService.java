@@ -33,20 +33,22 @@ public class ProductService {
                            String include,
                            String volume,
                            String description,
-                           String picUrl) {
+                           String picUrl,
+                           Integer type) {
         Product product = new Product();
         product.setFunction(function);
         product.setInclude(include);
         product.setName(name);
         product.setPicUrl(picUrl);
         product.setVolume(volume);
-        product.setType(typeDao.findOne(TypeEnum.PRODUCT_TYPE.getId()));
+        product.setType(typeDao.findOne(type));
 
         productDao.save(product);
     }
 
-    public void saveProduct(Product p,String picUrl) {
+    public void saveProduct(Product p,String picUrl,Integer type) {
         p.setPicUrl(picUrl);
+        p.setType(typeDao.findOne(type));
         productDao.save(p);
     }
 

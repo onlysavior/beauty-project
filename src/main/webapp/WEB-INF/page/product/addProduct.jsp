@@ -46,6 +46,15 @@
 <body>
     <form action="/backend/addProduct" method="post" enctype="multipart/form-data">
         <p>
+            <select name="type">
+                <c:if test="${typeList != null}">
+                    <c:forEach items="${typeList}" var="i">
+                        <option value="${i.id}">${i.name}</option>
+                    </c:forEach>
+                </c:if>
+            </select>
+        </p>
+        <p>
             name:
             <input type="text" name="name">
         </p>

@@ -16,11 +16,13 @@ public class ConstantService {
         return constantDao.findOne(id);
     }
 
-    public void saveConstant(String title,String content) {
+    public void saveConstant(String title,
+                             String content,
+                             String picUrl) {
         Constant constant = new Constant();
         constant.setContent(content);
         constant.setTitle(title);
-
+        constant.setPicUrl(picUrl);
         constantDao.save(constant);
     }
 

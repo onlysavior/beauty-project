@@ -2,8 +2,10 @@ package com.gzm.xm.web.controller;
 
 import com.gzm.xm.common.entity.News;
 import com.gzm.xm.common.entity.Type;
+import com.gzm.xm.common.enums.TypeEnum;
 import com.gzm.xm.common.util.PageUtil;
 import com.gzm.xm.service.NewsService;
+import com.gzm.xm.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -26,6 +28,8 @@ import java.util.List;
 public class NewsController extends AbstractContoller{
     @Autowired
     private NewsService newsService;
+    @Autowired
+    private TypeService typeService;
 
     @RequestMapping(value = "/addNews",method = RequestMethod.GET)
     public String toNewAddPage() {
@@ -87,6 +91,7 @@ public class NewsController extends AbstractContoller{
         return "/news/editNews";
     }
 
+    @RequestMapping(value = "/saveNews",method = RequestMethod.POST)
     public String saveNews(@RequestParam News news,Integer type) {
         news.setType(newsService.getType(type));
         news.setUpdatetime(new Date());
@@ -144,5 +149,10 @@ public class NewsController extends AbstractContoller{
         FileCopyUtils.copy(file.getBytes(), dist);
         map.put("imageURLList",request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER+fileName);
         return "upload/upload";
+    }
+
+    @ModelAttribute("typeList")
+    public List<Type> getNewsList() {
+        return typeService.getSubTypeListUnderType(TypeEnum.NEWS_TYPE.getId());
     }
 }

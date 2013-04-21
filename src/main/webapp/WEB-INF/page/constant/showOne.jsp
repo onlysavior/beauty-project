@@ -7,6 +7,9 @@
 </head>
 <body>
 <p>${news.title}</p>
+    <p>
+        ${news.picUrl}
+    </p>
      <span>
          ${news.content}
      </span>

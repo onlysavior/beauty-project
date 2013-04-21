@@ -49,6 +49,15 @@
         <input type="file" name="file" id="file">
     </p>
     <p>
+        <select name="type">
+            <c:if test="${typeList != null}">
+                <c:forEach items="${typeList}" var="i">
+                    <option value="${i.id}">${i.name}</option>
+                </c:forEach>
+            </c:if>
+        </select>
+    </p>
+    <p>
         description:
         <textarea name="description" rows="25"></textarea>
     </p>

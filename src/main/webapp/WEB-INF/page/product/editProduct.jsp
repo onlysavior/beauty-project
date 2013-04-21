@@ -52,6 +52,15 @@
     <p>volume:<input type="text" name="product.volume" value="${product.volume}"></p>
     <p>include:<input type="text" name="product.include" value="${product.include}"></p>
     <p>
+        <select name="type">
+            <c:if test="${typeList != null}">
+                <c:forEach items="${typeList}" var="i">
+                    <option value="${i.id}">${i.name}</option>
+                </c:forEach>
+            </c:if>
+        </select>
+    </p>
+    <p>
         <textarea name="product.description" rows="25">${product.description}</textarea>
     </p>
     <p>

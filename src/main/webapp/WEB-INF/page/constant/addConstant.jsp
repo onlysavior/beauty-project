@@ -44,8 +44,11 @@
     </script>
 </head>
 <body>
-<form id="form" action="/backend/addConstant" method="post">
+<form id="form" action="/backend/addConstant" method="post" enctype="multipart/form-data">
     <p>title:<input type="text" name="title"></p>
+    <p>
+        file:<input type="file" name="file">
+    </p>
     <p>
         <textarea name="content" rows="25"></textarea>
     </p>

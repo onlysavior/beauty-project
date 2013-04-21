@@ -32,17 +32,21 @@ public class ProjectService {
 
     public void addProduct(
                            String description,
-                           String picUrl) {
+                           String picUrl,
+                           Integer type) {
         Project project = new Project();
         project.setDescription(description);
         project.setPicUrl(picUrl);
-        project.setType(typeDao.findOne(TypeEnum.PROJECT_TYPE.getId()));
+        project.setType(typeDao.findOne(type));
 
         productDao.save(project);
     }
 
-    public void saveProduct(Project p,String picUrl) {
+    public void saveProduct(Project p,
+                            String picUrl,
+                            Integer type) {
         p.setPicUrl(picUrl);
+        p.setType(typeDao.findOne(type));
         productDao.save(p);
     }
 

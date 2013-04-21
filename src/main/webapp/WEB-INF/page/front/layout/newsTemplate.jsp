@@ -10,7 +10,7 @@
                     文章正文
                 </div>
                 <div style="float:right;margin-right:10px;display:none">
-                    <a href="-1" style="line-height:25px;color:#fff">更多</a>
+                    <a href="#" style="line-height:25px;color:#fff">更多</a>
                 </div>
             </div>
             <div style="padding:10px">

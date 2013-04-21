@@ -1,17 +1,17 @@
 package com.gzm.xm.web.controller;
 
 import com.gzm.xm.common.entity.Product;
+import com.gzm.xm.common.entity.Type;
+import com.gzm.xm.common.enums.TypeEnum;
 import com.gzm.xm.common.util.PageUtil;
 import com.gzm.xm.service.ProductService;
+import com.gzm.xm.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -25,6 +25,8 @@ import java.util.List;
 public class ProductController extends AbstractContoller{
     @Autowired
     private ProductService productService;
+    @Autowired
+    private TypeService typeService;
 
     @RequestMapping(value = "/toAddProduct",method = RequestMethod.GET)
     public String toAddProduct(){
@@ -33,6 +35,7 @@ public class ProductController extends AbstractContoller{
 
     @RequestMapping(value = "/addProduct",method = RequestMethod.POST)
     public String addProduct(@RequestParam String name,
+                             @RequestParam Integer type,
                              @RequestParam String function,
                              @RequestParam Float price,
                              @RequestParam String include,
@@ -47,7 +50,7 @@ public class ProductController extends AbstractContoller{
         FileCopyUtils.copy(file.getBytes(), dist);
 
         productService.addProduct(name,function,price,include,volume,description,
-                request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER+fileName);
+                request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER+fileName,type);
 
        return "redirect:/productList";
     }
@@ -89,6 +92,7 @@ public class ProductController extends AbstractContoller{
 
     @RequestMapping(value = "/saveProduct",method = RequestMethod.POST)
     public String saveProduct(Product p,
+                              Integer type,
                               @RequestParam MultipartFile file,
                               HttpServletRequest request) throws IOException{
         String fileName = new Date().getTime() + "."
@@ -97,7 +101,7 @@ public class ProductController extends AbstractContoller{
         File dist = new File((path + BASE_UPLOAD_FOLDER),fileName);
         FileCopyUtils.copy(file.getBytes(), dist);
 
-        productService.saveProduct(p,request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER+fileName);
+        productService.saveProduct(p,request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER+fileName,type);
 
         return "redirect:/productList";
     }
@@ -116,5 +120,11 @@ public class ProductController extends AbstractContoller{
         }
 
         return sb.toString();
+    }
+
+    @ModelAttribute("typeList")
+    public List<Type> getType() {
+       return typeService
+               .getSubTypeListUnderType(TypeEnum.PRODUCT_TYPE.getId());
     }
 }

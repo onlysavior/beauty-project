@@ -5,14 +5,19 @@ import com.gzm.xm.service.ConstantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.util.Date;
 import java.util.List;
 
 @Controller
-public class ConstantController {
+public class ConstantController extends AbstractContoller{
     @Autowired
     private ConstantService constantService;
 
@@ -31,8 +36,18 @@ public class ConstantController {
     }
 
     @RequestMapping(value = "/addConstant",method = RequestMethod.POST)
-    public String addConstant(String title,String content) {
-        constantService.saveConstant(title,content);
+    public String addConstant(String title,
+                              String content,
+                              MultipartFile file,
+                              HttpServletRequest request) throws Exception{
+        String fileName = new Date().getTime() + "."
+                + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."),file.getOriginalFilename().length());
+        String path = request.getRealPath("");
+        File dist = new File((path + BASE_UPLOAD_FOLDER),fileName);
+        FileCopyUtils.copy(file.getBytes(), dist);
+        constantService.saveConstant(title,
+                content,
+                request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER+fileName);
         return "redirect:/constantList";
     }
 
