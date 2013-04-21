@@ -15,11 +15,10 @@
         <link href="<c:url value='/templates/css/nav.css' />" rel="stylesheet" type="text/css" />
 
         <div id="nav">
-            您现在的位置：<a href="#">root</a>
-
-            &gt; <a href="#" >child</a>
-
-            &gt; 价格优惠，美丽不打折
+            您现在的位置：<a href="/front/index">index</a>
+            <c:forEach items="${crumbList}" var="i">
+                &gt; <a href="i.url" >${i.title}</a>
+            </c:forEach>
 
         </div>
 
