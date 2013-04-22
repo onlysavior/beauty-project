@@ -91,7 +91,7 @@
 
                     </div>
                     <div style="float:right;margin-right:10px;display:none">
-                        <a href="-1" style="line-height:25px;color:">更多</a>
+                        <a href="#" style="line-height:25px;color:">更多</a>
                     </div>
                 </div>
                 <div style="padding:0px">
@@ -119,7 +119,7 @@
 
     <div id='pdv_5041' class='pdv_class'   style='width:656px;height:59px;top:0px;left:0px; z-index:11'>
         <div id='spdv_5041' class='pdv_top' style='overflow:hidden;width:100%;height:100%'>
-            <tiles:insertAttribute name="leftlink" />
+            <tiles:insertAttribute name="toplink" />
 
         </div>
     </div>

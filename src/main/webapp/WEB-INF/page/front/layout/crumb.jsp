@@ -17,7 +17,7 @@
         <div id="nav">
             您现在的位置：<a href="/front/index">index</a>
             <c:forEach items="${crumbList}" var="i">
-                &gt; <a href="i.url" >${i.title}</a>
+                &gt; <a href="${i.url}" >${i.title}</a>
             </c:forEach>
 
         </div>

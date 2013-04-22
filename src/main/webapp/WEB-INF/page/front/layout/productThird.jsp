@@ -25,7 +25,7 @@
                                 <tr>
                                     <td align="center">
                                         <div id="productview">
-                                            <img src="<c:url value='/templates/images/loading.gif'/>" border="0" id="productloading" class="productloading">
+                                            <img src="<c:url value='${product.picUrl}'/>" border="0" id="productloading" class="productloading">
                                         </div>
                                     </td>
                                 </tr>
@@ -35,11 +35,12 @@
                     </div>
 
                     <div class="introzone">
-                        <div id="prodtitle">室外SPA水疗</div>
+                        <div id="prodtitle">${product.name}</div>
                         <div id="prop">
-                            适合：<br>
-
-                            功效：<br>
+                            适合：${product.include}<br>
+                            功效：${product.function}<br>
+							价格：${product.price}<br>
+							容量：${product.volume}<br>
                         </div>
                         <div id="memo" class="memo" style="display:none"></div>
                     </div>

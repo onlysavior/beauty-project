@@ -69,7 +69,7 @@ public class ProductService {
         count.select(criteriaBuilder.count(root));
 
         if(title != null)
-            count.where(title);
+            count.where(title).orderBy(criteriaBuilder.desc(root.get("id")));
         return em.createQuery(count).getSingleResult();
     }
 

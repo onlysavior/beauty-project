@@ -5,7 +5,9 @@ import com.gzm.xm.common.entity.News_;
 import com.gzm.xm.common.entity.Type;
 import com.gzm.xm.dao.NewsDao;
 import com.gzm.xm.dao.TypeDao;
+import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -130,7 +132,7 @@ public class NewsService {
         where = type == null ? where : where == null ? type : criteriaBuilder.and(where,type);
 
         if (where != null) {
-            criteriaQuery.where(where);
+            criteriaQuery.where(where).orderBy(criteriaBuilder.desc(root.get("updatetime")));
         }
 
        return em.createQuery(criteriaQuery.select(root)).setFirstResult(firstPosistion)

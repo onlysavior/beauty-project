@@ -6,7 +6,10 @@
 <tiles-definitions>
     <definition name="front/contentTemplate"
                 template="/WEB-INF/page/front/layout/cotentTemplate.jsp">
-
+        <put-attribute name="searchform" value="/WEB-INF/page/front/layout/searchform.jsp" />
+        <put-attribute name="leftlink" value="/WEB-INF/page/front/layout/leftlink.jsp" />
+        <put-attribute name="bottomlink" value="/WEB-INF/page/front/layout/bottomlink.jsp" />
+        <put-attribute name="toplink" value="/WEB-INF/page/front/layout/toplink.jsp"/>
     </definition>
 
     <definition name="front/constant" extends="front/contentTemplate">
@@ -15,5 +18,42 @@
 
     <definition name="front/mutipic" extends="front/contentTemplate">
         <put-attribute name="content" value="/WEB-INF/page/front/layout/mutipicTemplate.jsp" />
+    </definition>
+
+    <definition name="front/singlepic" extends="front/contentTemplate">
+        <put-attribute name="cotent" value="/WEB-INF/page/front/layout/singlePicTemplate.jsp"/>
+    </definition>
+
+    <definition name="front/index"
+                template="/WEB-INF/page/front/index.jsp">
+        <put-attribute name="searchform" value="/WEB-INF/page/front/layout/searchform.jsp" />
+        <put-attribute name="leftlink" value="/WEB-INF/page/front/layout/leftlink.jsp" />
+        <put-attribute name="bottomlink" value="/WEB-INF/page/front/layout/bottomlink.jsp" />
+        <put-attribute name="toplink" value="/WEB-INF/page/front/layout/toplink.jsp"/>
+    </definition>
+
+    <definition name="front/contentwithsearch"
+                template="/WEB-INF/page/front/layout/innerContentTemplate.jsp">
+        <put-attribute name="searchform" value="/WEB-INF/page/front/layout/searchform.jsp" />
+        <put-attribute name="bottomlink" value="/WEB-INF/page/front/layout/bottomlink.jsp" />
+        <put-attribute name="toplink" value="/WEB-INF/page/front/layout/toplink.jsp"/>
+    </definition>
+
+    <definition name="front/oneNews" extends="front/contentwithsearch">
+        <put-attribute name="crumb" value="/WEB-INF/page/front/layout/crumb.jsp" />
+        <put-attribute name="subTemplate" value="/WEB-INF/page/front/layout/newsTemplate.jsp" />
+    </definition>
+
+    <definition name="front/productTemplate"
+                template="/WEB-INF/page/front/layout/productTemplate.jsp">
+        <put-attribute name="searchform" value="/WEB-INF/page/front/layout/searchform.jsp" />
+        <put-attribute name="bottomlink" value="/WEB-INF/page/front/layout/bottomlink.jsp" />
+        <put-attribute name="toplink" value="/WEB-INF/page/front/layout/toplink.jsp"/>
+        <put-attribute name="crumb" value="/WEB-INF/page/front/layout/crumb.jsp" />
+        <put-attribute name="productleftlink" value="/WEB-INF/page/front/layout/productleftlink.jsp" />
+    </definition>
+
+    <definition name="front/oneProduct" extends="front/productTemplate">
+        <put-attribute name="content" value="/WEB-INF/page/front/layout/productThird.jsp" />
     </definition>
 </tiles-definitions>

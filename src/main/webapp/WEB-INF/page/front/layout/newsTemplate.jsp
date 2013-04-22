@@ -18,14 +18,14 @@
                 <link href="<c:url value='/templates/css/newscontent.css' />" rel="stylesheet" type="text/css"/>
                 <script type=text/javascript src="<c:url value='/js/newscontent.js' />"></script>
                 <div id="newscontent">
-                    <div class="newstitle">价格优惠，美丽不打折</div>
+                    <div class="newstitle">${news.title}</div>
 
-                    <div class="info">作者：管理员 &nbsp;&nbsp; 发布于：2009-10-20 09:22:02 &nbsp;&nbsp; 文字：【<a
+                    <div class="info">作者：管理员 &nbsp;&nbsp; 发布于：<fmt:formatDate value="${news.updatetime}" pattern="yyyy/MM/dd:HH:mm:ss" /> &nbsp;&nbsp; 文字：【<a
                             href="javascript:fontZoom(16)">大</a>】【<a href="javascript:fontZoom(14)">中</a>】【<a
                             href="javascript:fontZoom(12)">小</a>】
                     </div>
                     <div id="memo" class="memo" style="display:none"><span style="color:#ff6600">摘要：</span></div>
-                    <div id="con" class="con">价格优惠，美丽不打折</div>
+                    <div id="con" class="con">${news.content}</div>
                     <div id="contentpages">
                     </div>
                     <div class="bzone">

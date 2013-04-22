@@ -120,6 +120,7 @@
     <div id='pdv_4963' class='pdv_class'   style='width:656px;height:59px;top:0px;left:0px; z-index:15'>
         <div id='spdv_4963' class='pdv_top' style='overflow:hidden;width:100%;height:100%'>
             <!--top link-->
+            <tiles:insertAttribute name="toplink" />
         </div>
     </div>
 </div>
@@ -176,11 +177,11 @@
                 <div class="productlist">
                     <div class="fang" style="width:135px;height:115px">
                         <div class="picFit" style="width:135px;height:115px">
-                            <a href="#" target="_self" ><img src="<c:url value='${p.picUrl}' />" style="width:135px;height:115px" border="0" /></a>
+                            <a href="/front/showProduct/${p.id}" target="_self" ><img src="<c:url value='${p.picUrl}' />" style="width:135px;height:115px" border="0" /></a>
                         </div>
                     </div>
                     <div class="title">
-                        <a href="#" target="_self" class="title" >${p.title}</a>
+                        <a href="/front/showProduct/${p.id}" target="_self" class="title" >${p.name}</a>
                     </div>
                 </div>
                 </c:forEach>
@@ -209,9 +210,9 @@
                     <c:forEach items="${newList}" var="i">
                         <li class="newslist_time">
                             <div class="time">
-                                <fmt:formatDate value="${i.updatetime}" dateStyle="MM/dd" />
+                              <fmt:formatDate value="${i.updatetime}" pattern="yyyy/MM/dd" />
                             </div>
-                            <a href="#" target="_self" class="newslist_time"   >${i.title}</a>
+                            <a href="/front/news/showOne/${i.id}" target="_self" class="newslist_time"   >${i.title}</a>
                         </li>
                     </c:forEach>
 
@@ -286,9 +287,9 @@
                     <c:forEach items="${newList2}" var="i">
                         <li class="newslist_time">
                             <div class="time">
-                                <fmt:formatDate value="${i.updatetime}" dateStyle="MM/dd" />
+                                <fmt:formatDate value="${i.updatetime}" pattern="yyyy/MM/dd" />
                             </div>
-                            <a href="#" target="_self" class="newslist_time"   >${i.title}</a>
+                            <a href="#" target="_self" class="newslist_time">${i.title}</a>
                         </li>
                     </c:forEach>
                 </ul>
@@ -307,7 +308,7 @@
             <div style="background:#fff5dd;height:26px;border-bottom:1px #ffd2a3 solid">
                 <div style="float:left;background:url(base/border/509/images/li.gif) 10px no-repeat;padding-left:28px;color:#555;text-align:left;font:12px/26px simsun;">联系我们</div>
                 <div style="float:right;margin-right:8px">
-                    <a href="-1" style="font:12px/24px simsun;color:#555;display:none">更多&gt;&gt;</a>
+                    <a href="#" style="font:12px/24px simsun;color:#555;display:none">更多&gt;&gt;</a>
                 </div>
             </div>
             <div  style="padding:12px">
