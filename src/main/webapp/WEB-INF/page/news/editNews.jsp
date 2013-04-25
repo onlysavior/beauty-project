@@ -6,6 +6,10 @@
     <title>Edit News</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8"  src="<c:url value='/tiny_mce/tiny_mce.js'/>"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel='stylesheet' href="${website}resources/css/bootstrap.css"/>
+	<link rel='stylesheet' href="${website}resources/css/adminLeftMenu.css"/>
+  	<script  type="text/javascript" src="${website}resources/js/bootstrap.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
             tinyMCE.init({
@@ -44,26 +48,66 @@
     </script>
 </head>
 <body>
-<form id="form" action="/backend/saveNews" method="post">
-    <input type="hidden" value="${news.id}" name="news.id">
-    <p>title:<input type="text" name="news.title" value="${news.title}"></p>
-    <p>
-        <textarea name="content" rows="25">${news.content}</textarea>
-    </p>
-    <p>
-        <select name="type">
-            <c:if test="${typeList != null}">
-                <c:forEach items="${typeList}" var="i">
-                    <option value="${i.id}">${i.name}</option>
-                </c:forEach>
-            </c:if>
-        </select>
-    </p>
-    <input type="hidden" name="news.id" value="${news.id}">
-    <p>
-        <input type="submit" value="submit">
-        <input type="reset" value="reset">
-    </p>
-</form>
+<jsp:include page="../admin/common/adminHeader.jsp" flush="true" /> 
+
+<div class="container-fluid ">
+
+ <div class="row-fluid ">
+ 	<div class="span3 bs-docs-sidebar" >  
+ 		<ul class="nav nav-list bs-docs-sidenav">
+	      <li ><a href="${website}backend/newsList"><i class="icon-chevron-right"></i> 新闻列表</a></li>
+	      <li><a href="${website}backend/addNews"><i class="icon-chevron-right"></i>添加新闻 </a></li>
+		</ul>
+ 	</div>
+ 	<div class="span9">
+
+		<form id="form" action="${website }backend/saveNews" method="post" class="form-horizontal">
+		    <input type="hidden" value="${news.id}" name="news.id">
+		    <div class="control-group">    
+			    <label class="control-label" >
+					标题：
+				</label>    
+				<div class="controls">      
+			    	<input type="text" name="news.title" style="height:30px" value="${news.title}" class="input-large"/>
+			    </div>
+		    </div>
+		    
+		    <div class="control-group">    
+			    <label class="control-label" >
+					内容：
+				</label>    
+				<div class="controls">      
+			    	<textarea name="content" rows="25">${news.content}</textarea>
+			    </div>
+		    </div>
+		    
+		    <div class="control-group">    
+			    <label class="control-label" >
+					新闻类型：
+				</label>    
+				<div class="controls">      
+			    	 <select name="type">
+			            <c:if test="${typeList != null}">
+			                <c:forEach items="${typeList}" var="i">
+			                    <option value="${i.id}">${i.name}</option>
+			                </c:forEach>
+			            </c:if>
+			        </select>
+			    </div>
+		    </div>
+		    
+		    <div class="control-group">    
+			    <label class="control-label" >
+				</label>    
+				<div class="controls">      
+			    	<input type="submit" value="提交" class="btn btn-success">
+		        	<input type="reset" value="重置" class="btn btn-primary">
+			    </div>
+		    </div>
+		    <input type="hidden" name="news.id" value="${news.id}">
+		</form>
+		</div>
+	</div>
+</div>
 </body>
 </html>

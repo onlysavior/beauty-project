@@ -4,6 +4,10 @@
 <head>
     <title>Add Type</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel='stylesheet' href="${website}resources/css/bootstrap.css"/>
+	<link rel='stylesheet' href="${website}resources/css/adminLeftMenu.css"/>
+  	<script  type="text/javascript" src="${website}resources/js/bootstrap.js"></script>
     <script type="text/javascript">
          $(document).ready(function(){
              $(".addDiv").hide();
@@ -83,7 +87,7 @@
           </div>
 
           <div class="addDiv">
-              <form class="addform" action="/backend/type/addType" method="post">
+              <form class="addform" action="${website}backend/type/addType" method="post">
                   <input type="hidden" name="parentType" class="addTypeId">
                   <input type="text" name="name" />
                   <input type="submit" value="add" />
@@ -91,7 +95,7 @@
           </div>
 
           <div class="editDiv">
-              <form class="editform" action="/backend/type/editType" method="post">
+              <form class="editform" action="${websitebackend/type/editType" method="post">
                   <input type="hidden" name="type.id" class="typeId">
                   <input type="hidden" name="type.parentType" class="typeParentId">
                   <input type="hidden" name="type.type" class="typeType">

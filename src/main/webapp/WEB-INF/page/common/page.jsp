@@ -26,7 +26,7 @@
 }
 #pagenumber{
 	width:30px;
-	height:14px;
+	height:25px;
 	text-align:center;
 	margin-left:10px;
 	margin-right:10px;

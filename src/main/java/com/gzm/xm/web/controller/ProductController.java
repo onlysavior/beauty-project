@@ -1,25 +1,33 @@
 package com.gzm.xm.web.controller;
 
-import com.gzm.xm.common.entity.Product;
-import com.gzm.xm.common.entity.Type;
-import com.gzm.xm.common.enums.TypeEnum;
-import com.gzm.xm.common.util.PageUtil;
-import com.gzm.xm.service.ProductService;
-import com.gzm.xm.service.TypeService;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.IOException;
-import java.util.Date;
-import java.util.List;
+import com.gzm.xm.common.entity.Product;
+import com.gzm.xm.common.entity.Type;
+import com.gzm.xm.common.enums.PageEnum;
+import com.gzm.xm.common.enums.TypeEnum;
+import com.gzm.xm.common.util.PageUtil;
+import com.gzm.xm.service.ProductService;
+import com.gzm.xm.service.TypeService;
 
 @Controller
 public class ProductController extends AbstractContoller{
@@ -52,7 +60,7 @@ public class ProductController extends AbstractContoller{
         productService.addProduct(name,function,price,include,volume,description,
                 request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER+fileName,type);
 
-       return "redirect:/productList";
+       return "redirect:productList";
     }
 
     @RequestMapping(value = "/productList",method = {RequestMethod.POST,RequestMethod.GET})
@@ -103,7 +111,7 @@ public class ProductController extends AbstractContoller{
 
         productService.saveProduct(p,request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER+fileName,type);
 
-        return "redirect:/productList";
+        return "redirect:productList";
     }
 
     @RequestMapping(value = "/delProduct",method = RequestMethod.POST)
@@ -126,5 +134,10 @@ public class ProductController extends AbstractContoller{
     public List<Type> getType() {
        return typeService
                .getSubTypeListUnderType(TypeEnum.PRODUCT_TYPE.getId());
+    }
+    
+    @ModelAttribute("pageType")
+    public Integer getPageType() {
+        return PageEnum.PRODUCT.getId();
     }
 }

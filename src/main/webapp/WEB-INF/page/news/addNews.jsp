@@ -6,6 +6,10 @@
     <title>Add News</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8"  src="<c:url value='/tiny_mce/tiny_mce.js'/>"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel='stylesheet' href="${website}resources/css/bootstrap.css"/>
+	<link rel='stylesheet' href="${website}resources/css/adminLeftMenu.css"/>
+  	<script  type="text/javascript" src="${website}resources/js/bootstrap.js"></script>
     <script type="text/javascript">
        $(document).ready(function(){
            tinyMCE.init({
@@ -44,24 +48,61 @@
     </script>
 </head>
 <body>
-    <form id="form" action="/backend/addNews" method="post">
-        <p>title:<input type="text" name="title"></p>
-        <p>
-            <textarea name="content" rows="25"></textarea>
-        </p>
-        <p>
-            <select name="type">
+<jsp:include page="../admin/common/adminHeader.jsp" flush="true" /> 
+
+<div class="container-fluid ">
+
+ <div class="row-fluid ">
+ 	<div class="span3 bs-docs-sidebar" >  
+ 		<ul class="nav nav-list bs-docs-sidenav">
+	      <li ><a href="${website }backend/newsList"><i class="icon-chevron-right"></i> 新闻列表</a></li>
+	      <li class="active"><a href="${website}backend/addNews"><i class="icon-chevron-right"></i>添加新闻 </a></li>
+		</ul>
+ 	</div>
+ 	<div class="span9">
+    <form id="form" action="${website}backend/addNews" method="post" class="form-horizontal">
+    	<div class="control-group">    
+		    <label class="control-label" >
+				标题：
+			</label>    
+			<div class="controls">      
+		    	<input type="text" class="input-xlarge" style="height:30px" name="title">
+		    </div>
+	    </div>
+	    <div class="control-group">    
+		    <label class="control-label" >
+				内容：
+			</label>    
+			<div class="controls">      
+		    	<textarea name="content" rows="25"></textarea>
+		    </div>
+	    </div>
+	    <div class="control-group">    
+		    <label class="control-label" >
+				新闻类型：
+			</label>    
+			<div class="controls">      
+		    	<select name="type">
                 <c:if test="${typeList != null}">
                     <c:forEach items="${typeList}" var="i">
                         <option value="${i.id}">${i.name}</option>
                     </c:forEach>
                 </c:if>
             </select>
-        </p>
-        <p>
-            <input type="submit" value="submit">
-            <input type="reset" value="reset">
-        </p>
+		    </div>
+	    </div>
+	    <div class="control-group">    
+		    <label class="control-label" >
+			</label>    
+			<div class="controls">      
+		    	<input type="submit" value="提交" class="btn btn-success">
+		        	<input type="reset" value="重置" class="btn btn-primary">
+		    </div>
+	    </div>
+        
     </form>
+    </div>
+   </div>
+ </div>
 </body>
 </html>

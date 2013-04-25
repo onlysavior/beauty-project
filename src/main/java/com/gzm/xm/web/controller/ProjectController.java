@@ -1,24 +1,32 @@
 package com.gzm.xm.web.controller;
 
-import com.gzm.xm.common.entity.Project;
-import com.gzm.xm.common.entity.Type;
-import com.gzm.xm.common.enums.TypeEnum;
-import com.gzm.xm.common.util.PageUtil;
-import com.gzm.xm.service.ProjectService;
-import com.gzm.xm.service.TypeService;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.IOException;
-import java.util.Date;
-import java.util.List;
+import com.gzm.xm.common.entity.Project;
+import com.gzm.xm.common.entity.Type;
+import com.gzm.xm.common.enums.PageEnum;
+import com.gzm.xm.common.enums.TypeEnum;
+import com.gzm.xm.common.util.PageUtil;
+import com.gzm.xm.service.ProjectService;
+import com.gzm.xm.service.TypeService;
 
 @Controller
 public class ProjectController extends AbstractContoller{
@@ -47,7 +55,7 @@ public class ProjectController extends AbstractContoller{
                 request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER + fileName,
                 type);
 
-        return "redirect:/projectList";
+        return "redirect:projectList";
     }
 
     @RequestMapping(value = "/projectList",method = {RequestMethod.POST,RequestMethod.GET})
@@ -100,7 +108,7 @@ public class ProjectController extends AbstractContoller{
                 request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER+fileName,
                 type);
 
-        return "redirect:/projectList";
+        return "redirect:projectList";
     }
 
     @RequestMapping(value = "/delProject",method = RequestMethod.POST)
@@ -121,7 +129,11 @@ public class ProjectController extends AbstractContoller{
 
     @ModelAttribute("typeList")
     public List<Type> getType() {
-        return typeService
-                .getSubTypeListUnderType(TypeEnum.PROJECT_TYPE.getId());
+        return typeService.getSubTypeListUnderType(TypeEnum.PROJECT_TYPE.getId());
+    }
+    
+    @ModelAttribute("pageType")
+    public Integer getPageType() {
+        return PageEnum.PROJECT.getId();
     }
 }

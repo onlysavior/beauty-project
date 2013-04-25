@@ -2,6 +2,7 @@ package com.gzm.xm.web.controller;
 
 import com.gzm.xm.common.entity.News;
 import com.gzm.xm.common.entity.Type;
+import com.gzm.xm.common.enums.PageEnum;
 import com.gzm.xm.common.enums.TypeEnum;
 import com.gzm.xm.common.util.PageUtil;
 import com.gzm.xm.service.NewsService;
@@ -53,7 +54,7 @@ public class NewsController extends AbstractContoller{
                           @RequestParam("content")String content,
                           @RequestParam("type")Integer type) {
         newsService.addNews(title, content, type);
-        return "redirect:/newsList";
+        return "redirect:newsList";
     }
 
     @RequestMapping(value = "/newsList",method = {RequestMethod.POST,RequestMethod.GET})
@@ -98,7 +99,7 @@ public class NewsController extends AbstractContoller{
 
         newsService.saveNews(news);
 
-        return "redirect:/newsList";
+        return "redirect:newsList";
     }
 
     private String appendParameter(String key,
@@ -154,5 +155,9 @@ public class NewsController extends AbstractContoller{
     @ModelAttribute("typeList")
     public List<Type> getNewsList() {
         return typeService.getSubTypeListUnderType(TypeEnum.NEWS_TYPE.getId());
+    }
+    @ModelAttribute("pageType")
+    public Integer getPageType() {
+        return PageEnum.NEWS.getId();
     }
 }

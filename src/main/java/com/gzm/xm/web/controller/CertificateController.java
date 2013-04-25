@@ -2,6 +2,7 @@ package com.gzm.xm.web.controller;
 
 import com.gzm.xm.common.entity.Certificate;
 import com.gzm.xm.common.entity.Project;
+import com.gzm.xm.common.enums.PageEnum;
 import com.gzm.xm.common.util.PageUtil;
 import com.gzm.xm.service.CertificateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,7 +45,7 @@ public class CertificateController extends AbstractContoller {
 
         certificateService.addProduct(description, request.getAttribute("baseUrl") + SHOW_UPLOAD_FOLDER + fileName);
 
-        return "redirect:/certificateList";
+        return "redirect:certificateList";
     }
 
     @RequestMapping(value = "/certificateList", method = {RequestMethod.POST, RequestMethod.GET})
@@ -93,7 +95,7 @@ public class CertificateController extends AbstractContoller {
 
         certificateService.saveProduct(p, request.getAttribute("baseUrl") + SHOW_UPLOAD_FOLDER + fileName);
 
-        return "redirect:/certificateList";
+        return "redirect:certificateList";
     }
 
     @RequestMapping(value = "/delCertificate",method = RequestMethod.POST)
@@ -110,5 +112,10 @@ public class CertificateController extends AbstractContoller {
         }
 
         return sb.toString();
+    }
+    
+    @ModelAttribute("pageType")
+    public Integer getPageType() {
+        return PageEnum.CERTIFICATE.getId();
     }
 }

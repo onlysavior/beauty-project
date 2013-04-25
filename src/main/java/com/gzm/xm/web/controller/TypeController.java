@@ -1,6 +1,7 @@
 package com.gzm.xm.web.controller;
 
 import com.gzm.xm.common.entity.Type;
+import com.gzm.xm.common.enums.PageEnum;
 import com.gzm.xm.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -53,5 +54,9 @@ public class TypeController {
         t.setName(name);
         typeService.saveType(t);
         return "redirect:/backend/type/toAddType";
+    }
+    @ModelAttribute("pageType")
+    public Integer getPageType() {
+        return PageEnum.TYPE.getId();
     }
 }

@@ -6,6 +6,10 @@
     <title>Add News</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8"  src="<c:url value='/tiny_mce/tiny_mce.js'/>"></script>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel='stylesheet' href="${website}resources/css/bootstrap.css"/>
+	<link rel='stylesheet' href="${website}resources/css/adminLeftMenu.css"/>
+  	<script  type="text/javascript" src="${website}resources/js/bootstrap.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
             tinyMCE.init({
@@ -44,33 +48,109 @@
     </script>
 </head>
 <body>
-<form id="form" action="/backend/saveProduct" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="product.id" value="${product.id}">
-    <p>name:<input type="text" name="product.name" value="${product.name}"></p>
-    <p>function:<input type="text" name="product.function" value="${product.function}"></p>
-    <p>price:<input type="text" name="product.price" value="${product.price}"></p>
-    <p>volume:<input type="text" name="product.volume" value="${product.volume}"></p>
-    <p>include:<input type="text" name="product.include" value="${product.include}"></p>
-    <p>
-        <select name="type">
-            <c:if test="${typeList != null}">
-                <c:forEach items="${typeList}" var="i">
-                    <option value="${i.id}">${i.name}</option>
-                </c:forEach>
-            </c:if>
-        </select>
-    </p>
-    <p>
-        <textarea name="product.description" rows="25">${product.description}</textarea>
-    </p>
-    <p>
-        <img src="${product.picUrl}">
-        <input type="file" name="file">
-    </p>
-    <p>
-        <input type="submit" value="submit">
-        <input type="reset" value="reset">
-    </p>
-</form>
+<jsp:include page="../admin/common/adminHeader.jsp" flush="true" /> 
+
+<div class="container-fluid ">
+
+ <div class="row-fluid ">
+ 	<div class="span3 bs-docs-sidebar" >  
+ 		<ul class="nav nav-list bs-docs-sidenav">
+	      <li><a href="${website }backend/productList"><i class="icon-chevron-right"></i> 产品列表</a></li>
+	      <li><a href="${website}backend/toAddProduct"><i class="icon-chevron-right"></i>添加产品 </a></li>
+		</ul>
+ 	</div>
+ 	<div class="span9">
+
+<form id="form" action="${website }/backend/saveProduct" method="post" enctype="multipart/form-data"  class="form-horizontal">
+<div class="control-group">    
+		    <label class="control-label" >
+				产品类型：
+			</label>    
+			<div class="controls">      
+		    	<select name="type">
+		            <c:if test="${typeList != null}">
+		                <c:forEach items="${typeList}" var="i">
+		                    <option value="${i.id}">${i.name}</option>
+		                </c:forEach>
+		            </c:if>
+		        </select>
+		    </div>
+	    </div>
+	    <div class="control-group">    
+		    <label class="control-label" >
+				产品名称：
+			</label>    
+			<div class="controls">      
+		    	<input type="text" name="product.name" value="${product.name}">
+		    </div>
+	    </div>
+	    <div class="control-group">    
+		    <label class="control-label" >
+				产品功能：
+			</label>    
+			<div class="controls">      
+		    	<input type="text" name="product.function" value="${product.function}">
+		    </div>
+	    </div>
+        
+	    <div class="control-group">    
+		    <label class="control-label" >
+				产品价格：
+			</label>    
+			<div class="controls">      
+		    	<input type="text" name="product.price" value="${product.price}">
+		    </div>
+	    </div>
+         <div class="control-group">    
+		    <label class="control-label" >
+				产品成分：
+			</label>    
+			<div class="controls">      
+		    	<input type="text" name="product.include" value="${product.include}">
+		    </div>
+	    </div>
+        
+         <div class="control-group">    
+		    <label class="control-label" >
+				产品容量：
+			</label>    
+			<div class="controls">      
+		    	 <input type="text" name="product.volume" value="${product.volume}">
+		    </div>
+	    </div>
+        
+         <div class="control-group">    
+		    <label class="control-label" >
+				产品图片：
+			</label>    
+			<div class="controls">      
+		    	<img src="${product.picUrl}">
+        		<input type="file" name="file">
+		    </div>
+	    </div>
+        
+         <div class="control-group">    
+		    <label class="control-label" >
+				产品描述：
+			</label>    
+			<div class="controls">      
+		    	<textarea name="product.description" rows="25">${product.description}</textarea>
+		    </div>
+	    </div>
+        
+         <div class="control-group">    
+		    <label class="control-label" >
+			</label>    
+			<div class="controls">      
+		    	<input type="submit" value="提交" class="btn btn-success">
+		        <input type="reset" value="重置" class="btn btn-primary">
+		    </div>
+	    </div>
+	    <input type="hidden" name="product.id" value="${product.id}">
+    </form>
+    </div>
+   </div>
+ </div>
+   
 </body>
 </html>

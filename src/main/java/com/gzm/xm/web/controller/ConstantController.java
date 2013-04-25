@@ -1,11 +1,13 @@
 package com.gzm.xm.web.controller;
 
 import com.gzm.xm.common.entity.Constant;
+import com.gzm.xm.common.enums.PageEnum;
 import com.gzm.xm.service.ConstantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,19 +50,24 @@ public class ConstantController extends AbstractContoller{
         constantService.saveConstant(title,
                 content,
                 request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER+fileName);
-        return "redirect:/constantList";
+        return "redirect:constantList";
     }
 
     @RequestMapping(value = "/delConstant",method = RequestMethod.POST)
     public String delConstant(Integer id) {
         constantService.deleteConstant(id);
-        return "redirect:/backend/constantList";
+        return "redirect:constantList";
     }
 
     @RequestMapping(value = "/showOne/{id}")
     public String showConstant(@PathVariable Integer id, ModelMap map){
         Constant constant = constantService.getConstant(id);
-        map.put("news",constant);
+        map.put("constant",constant);
         return "/constant/showOne";
+    }
+    
+    @ModelAttribute("pageType")
+    public Integer getPageType() {
+        return PageEnum.CONSTANT.getId();
     }
 }

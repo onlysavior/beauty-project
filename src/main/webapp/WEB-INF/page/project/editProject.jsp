@@ -5,6 +5,10 @@
 <head>
     <title>edit Project</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel='stylesheet' href="${website}resources/css/bootstrap.css"/>
+	<link rel='stylesheet' href="${website}resources/css/adminLeftMenu.css"/>
+  	<script  type="text/javascript" src="${website}resources/js/bootstrap.js"></script>
     <script type="text/javascript" charset="utf-8"  src="<c:url value='/tiny_mce/tiny_mce.js'/>"></script>
     <script type="text/javascript">
         $(document).ready(function(){
@@ -44,28 +48,68 @@
     </script>
 </head>
 <body>
-<form id="form" action="/backend/saveProject" method="post" enctype="multipart/form-data">
+
+<jsp:include page="../admin/common/adminHeader.jsp" flush="true" /> 
+
+<div class="container-fluid ">
+
+ <div class="row-fluid ">
+ 	<div class="span3 bs-docs-sidebar" >  
+ 		<ul class="nav nav-list bs-docs-sidenav">
+	      <li><a href="${website}backend/projectList"><i class="icon-chevron-right"></i> 项目列表</a></li>
+	      <li><a href="${website}backend/toAddProject"><i class="icon-chevron-right"></i>添加项目</a></li>
+		</ul>
+ 	</div>
+ 	<div class="span9">
+
+<form id="form" action="${website }/backend/saveProject" method="post" enctype="multipart/form-data" class="form-horizontal">
+	 <div class="control-group">    
+		    <label class="control-label" >
+				图片：
+			</label>    
+			<div class="controls">   
+				 <img src="${product.picUrl}">
+        		<input type="file" name="file"> 
+		    </div>
+	    </div>
+		    
+	    <div class="control-group">    
+		    <label class="control-label" >
+				项目类型：
+			</label>    
+			<div class="controls">      
+		    	<select name="type">
+		            <c:if test="${typeList != null}">
+		                <c:forEach items="${typeList}" var="i">
+		                    <option value="${i.id}">${i.name}</option>
+		                </c:forEach>
+		            </c:if>
+		        </select>
+		    </div>
+	    </div>
+		    
+	    <div class="control-group">    
+		    <label class="control-label" >
+				项目描述：
+			</label>    
+			<div class="controls">   
+				<textarea name="project.description" rows="25">${product.description}</textarea>
+		    </div>
+	    </div>
+		    
+	    <div class="control-group">    
+		    <label class="control-label" >
+			</label>    
+			<div class="controls">   
+				<input type="submit" value="提交" class="btn btn-success">
+	        	<input type="reset" value="重置" class="btn btn-primary">
+		    </div>
+	    </div>
     <input type="hidden" name="project.id" value="${product.id}">
-    <p>
-        <select name="type">
-            <c:if test="${typeList != null}">
-                <c:forEach items="${typeList}" var="i">
-                    <option value="${i.id}">${i.name}</option>
-                </c:forEach>
-            </c:if>
-        </select>
-    </p>
-    <p>
-        <textarea name="project.description" rows="25">${product.description}</textarea>
-    </p>
-    <p>
-        <img src="${product.picUrl}">
-        <input type="file" name="file">
-    </p>
-    <p>
-        <input type="submit" value="submit">
-        <input type="reset" value="reset">
-    </p>
+   
 </form>
+</div>
+</div>
+</div>
 </body>
 </html>

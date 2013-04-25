@@ -15,7 +15,7 @@
     <script type="text/javascript" src="<c:url value='/base/js/common.js' />"></script>
     <script type="text/javascript" src="<c:url value='/base/js/form.js' />"></script>
     <script type="text/javascript" src="<c:url value='/base/js/blockui.js' />"></script>
-    <!-reload-!>
+    <!--  reload-->
 </head>
 <body style='background:#ffd700 url(../../effect/source/bg/x09.jpg) no-repeat fixed center top'>
 <script>

@@ -1,13 +1,6 @@
 package com.gzm.xm.service;
 
-import com.gzm.xm.common.entity.Product;
-import com.gzm.xm.common.entity.Product_;
-import com.gzm.xm.common.enums.TypeEnum;
-import com.gzm.xm.dao.ProductDao;
-import com.gzm.xm.dao.TypeDao;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -15,7 +8,15 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
+import com.gzm.xm.common.entity.Product;
+import com.gzm.xm.common.entity.Product_;
+import com.gzm.xm.dao.ProductDao;
+import com.gzm.xm.dao.TypeDao;
 
 @Service
 public class ProductService {

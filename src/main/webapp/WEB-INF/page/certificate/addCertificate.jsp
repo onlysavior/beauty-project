@@ -6,6 +6,10 @@
     <title>Add Certificate</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8"  src="<c:url value='/tiny_mce/tiny_mce.js'/>"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel='stylesheet' href="${website}resources/css/bootstrap.css"/>
+	<link rel='stylesheet' href="${website}resources/css/adminLeftMenu.css"/>
+  	<script  type="text/javascript" src="${website}resources/js/bootstrap.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
             tinyMCE.init({
@@ -44,17 +48,50 @@
     </script>
 </head>
 <body>
-<form action="/backend/addCertificate" method="post" enctype="multipart/form-data">
-    <p>
-        <input type="file" name="file" id="file">
-    </p>
-    <p>
-        description:
-        <textarea name="description" rows="25"></textarea>
-    </p>
-    <p>
-        <input type="submit" value="submit">
-    </p>
-</form>
+<jsp:include page="../admin/common/adminHeader.jsp" flush="true" /> 
+
+<div class="container-fluid ">
+
+ <div class="row-fluid ">
+ 	<div class="span3 bs-docs-sidebar" >  
+ 		<ul class="nav nav-list bs-docs-sidenav">
+	      <li><a href="${website }backend/certificateList"><i class="icon-chevron-right"></i> 证书列表</a></li>
+	      <li class="active"><a href="${website }backend/toAddCertificate"><i class="icon-chevron-right"></i>添加新证书信息 </a></li>
+		</ul>
+ 	</div>
+ 	<div class="span9">
+
+		<form action="${website }backend/addCertificate" method="post" enctype="multipart/form-data"  class="form-horizontal">
+		    <div class="control-group">    
+			    <label class="control-label" >
+					上传图片
+				</label>    
+				<div class="controls">      
+			    	<input type="file" name="file" id="file">
+			    </div>
+		    </div>
+		     <div class="control-group">    
+			    <label class="control-label" >
+					描述
+				</label>    
+				<div class="controls">      
+			    	<textarea name="description" rows="25"></textarea>
+			    </div>
+		    </div>
+		    
+		    
+		     <div class="control-group">    
+			    <label class="control-label" >
+				</label>    
+				<div class="controls">      
+			    	<input type="submit" value="提交" class="btn btn-success">
+		        	<input type="reset" value="重置" class="btn btn-primary">
+			    </div>
+		    </div>
+		   
+		</form>
+	</div>
+	</div>
+</div>
 </body>
 </html>
