@@ -56,4 +56,9 @@
     <definition name="front/oneProduct" extends="front/productTemplate">
         <put-attribute name="content" value="/WEB-INF/page/front/layout/productThird.jsp" />
     </definition>
+    
+    <definition name="front/newsList" extends="front/contentwithsearch">
+        <put-attribute name="crumb" value="/WEB-INF/page/front/layout/border.jsp" />
+        <put-attribute name="subTemplate" value="/WEB-INF/page/front/layout/newslist.jsp" />
+    </definition>
 </tiles-definitions>

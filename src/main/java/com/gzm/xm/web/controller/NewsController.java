@@ -102,7 +102,7 @@ public class NewsController extends AbstractContoller{
         return "redirect:newsList";
     }
 
-    private String appendParameter(String key,
+    public static String appendParameter(String key,
                                    Date startTime,
                                    Date endTime,
                                    Integer typeId) {

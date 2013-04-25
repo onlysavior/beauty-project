@@ -22,7 +22,12 @@ public abstract class AbstractEntity  implements Serializable{
 		
 	}
 
-	
-	
+	public String getName(){
+        return "";
+    }
+
+    public String getPicUrl(){
+        return "";
+    }
 
 }

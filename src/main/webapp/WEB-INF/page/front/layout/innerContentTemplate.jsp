@@ -141,12 +141,13 @@
                 <div  style="padding:10px">
                     <link href="<c:url value = '/templates/css/searchform.css' />" rel="stylesheet" type="text/css" />
                     <div class="newssearchform">
-                        <form id="searchform" method="get" action="#">
+                        <form id="searchform" method="post" action="/front/news/search">
                             <div class="searchform">
                                 <select name="catid" id="catid"  >
                                     <option value="0" >请选择分类</option>
-
-                                    <option value='1'>企业新闻</option><option value='2'>行业动态</option><option value='73'>产品知识</option>
+									<c:forEach items=${newsType} var="i">
+										<option value="${i.id}">${i.name}</option>
+									</c:foreEach>
 
                                 </select>
                             </div>
