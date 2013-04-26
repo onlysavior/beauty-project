@@ -146,7 +146,11 @@ public class NewsController extends AbstractContoller{
         String fileName = new Date().getTime() + "."
                 + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."),file.getOriginalFilename().length());
         String path = request.getRealPath("");
-        File dist = new File((path + BASE_UPLOAD_FOLDER),fileName);
+        File container = new File((path + BASE_UPLOAD_FOLDER));
+        if(!container.exists()){
+            container.mkdirs();
+        }
+        File dist = new File(container,fileName);
         FileCopyUtils.copy(file.getBytes(), dist);
         map.put("imageURLList",request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER+fileName);
         return "upload/upload";

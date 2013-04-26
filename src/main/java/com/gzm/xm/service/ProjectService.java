@@ -71,6 +71,32 @@ public class ProjectService {
         return em.createQuery(count).getSingleResult();
     }
 
+    public long count(String key,Integer typeId) {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+
+
+        CriteriaQuery<Long> count = criteriaBuilder.createQuery(Long.class);
+        Root<Project> root = count.from(Project.class);
+        Predicate title = null;
+        if (StringUtils.hasText(key)) {
+            title = criteriaBuilder.like(root.get(Project_.description), like(key));
+        }
+        Predicate type = null;
+        if (typeId != null && typeId != 0) {
+            type = criteriaBuilder.equal(root.get(Project_.type),typeDao.findOne(typeId));
+        }
+        Predicate where = null;
+        where = title == null ? (type == null ? null : type)
+                : (type == null ? where : criteriaBuilder.and(title,type));
+
+        count.select(criteriaBuilder.count(root));
+
+        if(where != null)
+            count.where(where);
+        return em.createQuery(count).getSingleResult();
+    }
+
     public List<Project> query(int pageNo,
                                int size,
                                String key) {
@@ -92,6 +118,43 @@ public class ProjectService {
 
         if (title != null) {
             criteriaQuery.where(title);
+        }
+
+        return em.createQuery(criteriaQuery.select(root)).setFirstResult(firstPosistion)
+                .setMaxResults(size).getResultList();
+    }
+
+    public List<Project> query(int pageNo,
+                               int size,
+                               String key,
+                               Integer typeId) {
+        int firstPosistion;
+        if (pageNo == 1) {
+            firstPosistion = 0;
+        } else {
+            firstPosistion = (pageNo - 1) * size;
+        }
+        EntityManager em = entityManagerFactory.createEntityManager();
+
+        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+        CriteriaQuery<Project> criteriaQuery = criteriaBuilder.createQuery(Project.class);
+        Root<Project> root = criteriaQuery.from(Project.class);
+        Predicate title = null;
+        if (StringUtils.hasText(key)) {
+            title = criteriaBuilder.like(root.get(Project_.description),like(key));
+        }
+
+        Predicate type = null;
+        if (typeId != null && typeId != 0) {
+            type = criteriaBuilder.equal(root.get(Project_.type),typeDao.findOne(typeId));
+        }
+        Predicate where = null;
+        where = title == null ? (type == null ? null : type)
+                : (type == null ? where : criteriaBuilder.and(title,type));
+
+        if (where != null) {
+            criteriaQuery.where(where)
+                    .orderBy(criteriaBuilder.desc(root.get("id")));
         }
 
         return em.createQuery(criteriaQuery.select(root)).setFirstResult(firstPosistion)

@@ -12,8 +12,7 @@ public class BaseUrlInjectInterceptor extends HandlerInterceptorAdapter {
                              HttpServletResponse response,
                              Object handler) throws Exception {
         StringBuilder sb = new StringBuilder();
-        sb.append(request.getRequestURL().substring(0,request.getRequestURL().indexOf(request.getRequestURI())));
-        request.setAttribute("baseUrl",sb.toString());
+        request.setAttribute("baseUrl",request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/");
         return super.preHandle(request, response, handler);
     }
 }

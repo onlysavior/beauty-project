@@ -102,7 +102,7 @@ public class FrontIndexController extends AbstractContoller {
         return "front/oneProduct";
     }
 
-    @RequestMapping(value = "/news/search", method = RequestMethod.POST)
+    @RequestMapping(value = "/news/search", method = RequestMethod.GET)
     public String searchNews(@RequestParam Integer catid,
                              @RequestParam String key,
                              @RequestParam(required = false) Integer pageNo,
@@ -117,13 +117,15 @@ public class FrontIndexController extends AbstractContoller {
 
         List<News> newsList;
         newsList = newsService.query(pageNo, pageSize, key, null, null, catid);
-        map.put("newList", newsList);
+        map.put("newsList", newsList);
         map.put("query", NewsController.appendParameter(key, null, null, catid));
 
+        List<Type> typeList = typeService.getSubTypeListUnderType(TypeEnum.NEWS_TYPE.getId());
+        map.put("newsType",typeList);
         return "front/newsList";
     }
 
-    @RequestMapping(value = "/news/typenews/{id}")
+    @RequestMapping(value = "/news/typenews/{typeId}",method = RequestMethod.GET)
     public String typeNews(@PathVariable Integer typeId,
                            @RequestParam(required = false) Integer pageNo,
                            ModelMap map) {
@@ -136,14 +138,65 @@ public class FrontIndexController extends AbstractContoller {
         map.put("page", page);
         List<News> newsList;
         newsList = newsService.query(pageNo,pageSize,null,null,null,typeId);
-        map.put("newList", newsList);
+        map.put("newsList", newsList);
         map.put("query", NewsController.appendParameter(null, null, null, typeId));
-
+        List<Type> typeList = typeService.getSubTypeListUnderType(TypeEnum.NEWS_TYPE.getId());
+        map.put("newsTypes",typeList);
         return "front/newsList";
     }
 
-    public String productList(ModelMap map) {
-         return "";
+    @RequestMapping(value = "/news/typeproduct/{id}", method = RequestMethod.GET)
+    public String productList(@PathVariable Integer id,
+                              @RequestParam(required = false) Integer pageNo,
+                              ModelMap map) {
+        if (pageNo == null || pageNo <= 0) {
+            pageNo = 1;
+        }
+        map.put("typeId",id);
+        long count = productService.count(null,id);
+        PageUtil page = new PageUtil(count,pic_page_size,pageNo);
+        map.put("page",page);
+        List<Product> products = productService.query(pageNo,pic_page_size,null,id);
+        map.put("productList",products);
+        return "front/productList";
+    }
+
+    @RequestMapping(value = "/news/typeproject/{id}", method = RequestMethod.GET)
+    public String projectList(@PathVariable Integer id,
+                              @RequestParam(required = false) Integer pageNo,
+                              ModelMap map) {
+        if (pageNo == null || pageNo <= 0) {
+            pageNo = 1;
+        }
+        map.put("typeId",id);
+        long count = projectService.count(null,id);
+        PageUtil page = new PageUtil(count,pic_page_size,pageNo);
+        map.put("page",page);
+        List<Project> projects = projectService.query(pageNo,pic_page_size,null,id);
+        map.put("productList",projects);
+        return "front/projectList";
+    }
+
+    @RequestMapping(value = "/project/showOne/{id}",method = RequestMethod.GET)
+    public String showOneProject(@PathVariable Integer id,
+                                 ModelMap map) {
+        List<Type> productTypes = typeService
+                .getSubTypeListUnderType(TypeEnum.PRODUCT_TYPE.getId());
+        map.put("productTypes", productTypes);
+        List<Type> projectTypes = typeService
+                .getSubTypeListUnderType(TypeEnum.PROJECT_TYPE.getId());
+        map.put("projectList", projectTypes);
+
+        Project p = projectService.showOne(id);
+        map.put("product", p);
+
+        List<Crumb> crumbs = new ArrayList<Crumb>();
+        Crumb pc = new Crumb();
+        pc.setTitle(p.getName());
+        pc.setUrl("#");
+        crumbs.add(pc);
+        map.put("crumbList", crumbs);
+        return "front/oneProject";
     }
 
     @InitBinder

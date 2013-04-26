@@ -54,7 +54,11 @@ public class ProductController extends AbstractContoller{
         String fileName = new Date().getTime() + "."
                 + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".")+1,file.getOriginalFilename().length());
         String path = request.getRealPath("");
-        File dist = new File((path + BASE_UPLOAD_FOLDER),fileName);
+        File container = new File((path + BASE_UPLOAD_FOLDER));
+        if(!container.exists()){
+            container.mkdirs();
+        }
+        File dist = new File(container,fileName);
         FileCopyUtils.copy(file.getBytes(), dist);
 
         productService.addProduct(name,function,price,include,volume,description,

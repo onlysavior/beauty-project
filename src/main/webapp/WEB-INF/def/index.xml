@@ -56,9 +56,21 @@
     <definition name="front/oneProduct" extends="front/productTemplate">
         <put-attribute name="content" value="/WEB-INF/page/front/layout/productThird.jsp" />
     </definition>
+
+    <definition name="front/oneProject" extends="front/productTemplate">
+        <put-attribute name="content" value="/WEB-INF/page/front/layout/projectThird.jsp" />
+    </definition>
     
     <definition name="front/newsList" extends="front/contentwithsearch">
         <put-attribute name="crumb" value="/WEB-INF/page/front/layout/border.jsp" />
         <put-attribute name="subTemplate" value="/WEB-INF/page/front/layout/newslist.jsp" />
+    </definition>
+
+    <definition name="front/productList" extends="front/productTemplate">
+        <put-attribute name="content" value="/WEB-INF/page/front/layout/productSecond.jsp"/>
+    </definition>
+
+    <definition name="front/projectList" extends="front/productTemplate">
+        <put-attribute name="content" value="/WEB-INF/page/front/layout/projectSecond.jsp" />
     </definition>
 </tiles-definitions>

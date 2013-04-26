@@ -21,5 +21,6 @@ public class AbstractContoller {
     protected static final String SHOW_UPLOAD_FOLDER = "/upload/";
 
     protected static final int GZM_JIESHAO_ID = 1;
+    protected static final int product_pagesize = 12;
 
 }

@@ -70,7 +70,33 @@ public class ProductService {
         count.select(criteriaBuilder.count(root));
 
         if(title != null)
-            count.where(title).orderBy(criteriaBuilder.desc(root.get("id")));
+            count.where(title);
+        return em.createQuery(count).getSingleResult();
+    }
+
+    public long count(String key,Integer typeId) {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+
+
+        CriteriaQuery<Long> count = criteriaBuilder.createQuery(Long.class);
+        Root<Product> root = count.from(Product.class);
+        Predicate title = null;
+        if (StringUtils.hasText(key)) {
+            title = criteriaBuilder.like(root.get(Product_.name), like(key));
+        }
+        Predicate type = null;
+        if (typeId != null && typeId != 0) {
+            type = criteriaBuilder.equal(root.get(Product_.type),typeDao.findOne(typeId));
+        }
+        Predicate where = null;
+        where = title == null ? (type == null ? null : type)
+                : (type == null ? where : criteriaBuilder.and(title,type));
+
+        count.select(criteriaBuilder.count(root));
+
+        if(where != null)
+            count.where(where);
         return em.createQuery(count).getSingleResult();
     }
 
@@ -94,7 +120,45 @@ public class ProductService {
         }
 
         if (title != null) {
-            criteriaQuery.where(title);
+            criteriaQuery.where(title)
+                    .orderBy(criteriaBuilder.desc(root.get("id")));
+        }
+
+        return em.createQuery(criteriaQuery.select(root)).setFirstResult(firstPosistion)
+                .setMaxResults(size).getResultList();
+    }
+
+    public List<Product> query(int pageNo,
+                               int size,
+                               String key,
+                               Integer typeId) {
+        int firstPosistion;
+        if (pageNo == 1) {
+            firstPosistion = 0;
+        } else {
+            firstPosistion = (pageNo - 1) * size;
+        }
+        EntityManager em = entityManagerFactory.createEntityManager();
+
+        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+        CriteriaQuery<Product> criteriaQuery = criteriaBuilder.createQuery(Product.class);
+        Root<Product> root = criteriaQuery.from(Product.class);
+        Predicate title = null;
+        if (StringUtils.hasText(key)) {
+            title = criteriaBuilder.like(root.get(Product_.name),like(key));
+        }
+
+        Predicate type = null;
+        if (typeId != null && typeId != 0) {
+            type = criteriaBuilder.equal(root.get(Product_.type),typeDao.findOne(typeId));
+        }
+        Predicate where = null;
+        where = title == null ? (type == null ? null : type)
+                : (type == null ? where : criteriaBuilder.and(title,type));
+
+        if (where != null) {
+            criteriaQuery.where(where)
+                    .orderBy(criteriaBuilder.desc(root.get("id")));
         }
 
         return em.createQuery(criteriaQuery.select(root)).setFirstResult(firstPosistion)

@@ -9,7 +9,7 @@
     <title>室外SPA水疗-健康美容SPA养生馆</title>
     <meta content="" name="keywords" />
     <meta content="" name="description" />
-    <link href="../../base/templates/css/common.css" rel="stylesheet" type="text/css" />
+    <link href="<c:url value='/base/templates/css/common.css' />" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="<c:url value='/base/js/base.js'/>"></script>
     <script type="text/javascript" src="<c:url value='/base/js/common.js'/>"></script>
     <script type="text/javascript" src="<c:url value='/base/js/form.js' />"></script>

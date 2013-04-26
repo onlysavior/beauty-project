@@ -126,7 +126,6 @@
 </div>
 <div id='content' style='width:990px;height:407px;background:#ffffff;margin:0px auto'>
 
-
     <!-- 文章搜索表单 -->
 
     <div id='pdv_4286' class='pdv_class'  title='新闻搜索' style='width:230px;height:197px;top:1px;left:755px; z-index:1'>
@@ -145,9 +144,9 @@
                             <div class="searchform">
                                 <select name="catid" id="catid"  >
                                     <option value="0" >请选择分类</option>
-									<c:forEach items=${newsType} var="i">
+									<c:forEach items="${newsType}" var="i">
 										<option value="${i.id}">${i.name}</option>
-									</c:foreEach>
+									</c:forEach>
 
                                 </select>
                             </div>
@@ -195,7 +194,7 @@
                     <link href="<c:url value='/templates/css/newsclass_menu703.css' />" rel="stylesheet" type="text/css" />
                     <div class="newsclass_menu703">
                         <c:forEach items="${newsTypes}" var="i">
-                            <a href="#" target="_self" class="newsclass_menu703">${i.name}</a>
+                            <a href="/front/news/typenews/${i.id}" target="_self" class="newsclass_menu703">${i.name}</a>
                         </c:forEach>
                     </div>
 
