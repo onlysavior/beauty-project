@@ -72,8 +72,8 @@ public class FrontIndexController extends AbstractContoller {
 
         map.put("crumbList", crumbs);
 
-        List<Type> types = typeService.getSubTypeListUnderType(2);
-        map.put("newsTypes", types);
+        List<Type> types = typeService.getSubTypeListUnderType(TypeEnum.NEWS_TYPE.getId());
+        map.put("newsType", types);
 
         return "front/oneNews";
     }
@@ -102,7 +102,7 @@ public class FrontIndexController extends AbstractContoller {
         return "front/oneProduct";
     }
 
-    @RequestMapping(value = "/news/search", method = RequestMethod.GET)
+    @RequestMapping(value = "/news/search", method = RequestMethod.POST)
     public String searchNews(@RequestParam Integer catid,
                              @RequestParam String key,
                              @RequestParam(required = false) Integer pageNo,
@@ -141,11 +141,11 @@ public class FrontIndexController extends AbstractContoller {
         map.put("newsList", newsList);
         map.put("query", NewsController.appendParameter(null, null, null, typeId));
         List<Type> typeList = typeService.getSubTypeListUnderType(TypeEnum.NEWS_TYPE.getId());
-        map.put("newsTypes",typeList);
+        map.put("newsType",typeList);
         return "front/newsList";
     }
 
-    @RequestMapping(value = "/news/typeproduct/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/typeproduct/{id}", method = RequestMethod.GET)
     public String productList(@PathVariable Integer id,
                               @RequestParam(required = false) Integer pageNo,
                               ModelMap map) {
@@ -161,7 +161,7 @@ public class FrontIndexController extends AbstractContoller {
         return "front/productList";
     }
 
-    @RequestMapping(value = "/news/typeproject/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/typeproject/{id}", method = RequestMethod.GET)
     public String projectList(@PathVariable Integer id,
                               @RequestParam(required = false) Integer pageNo,
                               ModelMap map) {
@@ -204,5 +204,15 @@ public class FrontIndexController extends AbstractContoller {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         dateFormat.setLenient(false);
         binder.registerCustomEditor(Date.class, null, new CustomDateEditor(dateFormat, true));
+    }
+
+    @ModelAttribute("productType")
+    public List<Type> getProductType() {
+        return typeService.getSubTypeListUnderType(TypeEnum.PRODUCT_TYPE.getId());
+    }
+
+    @ModelAttribute("projectType")
+    public List<Type> getProjectType() {
+        return typeService.getSubTypeListUnderType(TypeEnum.PROJECT_TYPE.getId());
     }
 }

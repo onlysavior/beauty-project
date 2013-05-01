@@ -66,11 +66,15 @@
         <put-attribute name="subTemplate" value="/WEB-INF/page/front/layout/newslist.jsp" />
     </definition>
 
-    <definition name="front/productList" extends="front/productTemplate">
-        <put-attribute name="content" value="/WEB-INF/page/front/layout/productSecond.jsp"/>
+    <definition name="front/productList" template="/WEB-INF/page/front/layout/productlistTemplate.jsp">
+        <put-attribute name="searchform" value="/WEB-INF/page/front/layout/searchform.jsp" />
+        <put-attribute name="bottomlink" value="/WEB-INF/page/front/layout/bottomlink.jsp" />
+        <put-attribute name="toplink" value="/WEB-INF/page/front/layout/toplink.jsp"/>
     </definition>
 
-    <definition name="front/projectList" extends="front/productTemplate">
-        <put-attribute name="content" value="/WEB-INF/page/front/layout/projectSecond.jsp" />
+    <definition name="front/projectList" template="/WEB-INF/page/front/layout/productlistTemplate.jsp">
+        <put-attribute name="searchform" value="/WEB-INF/page/front/layout/searchform.jsp" />
+        <put-attribute name="bottomlink" value="/WEB-INF/page/front/layout/bottomlink.jsp" />
+        <put-attribute name="toplink" value="/WEB-INF/page/front/layout/toplink.jsp"/>
     </definition>
 </tiles-definitions>

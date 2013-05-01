@@ -121,7 +121,7 @@ public class ProductService {
 
         if (title != null) {
             criteriaQuery.where(title)
-                    .orderBy(criteriaBuilder.desc(root.get("id")));
+                    .orderBy(criteriaBuilder.desc(root.get(Product_.Id)));
         }
 
         return em.createQuery(criteriaQuery.select(root)).setFirstResult(firstPosistion)
@@ -158,7 +158,7 @@ public class ProductService {
 
         if (where != null) {
             criteriaQuery.where(where)
-                    .orderBy(criteriaBuilder.desc(root.get("id")));
+                    .orderBy(criteriaBuilder.desc(root.get(Product_.Id)));
         }
 
         return em.createQuery(criteriaQuery.select(root)).setFirstResult(firstPosistion)

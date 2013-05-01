@@ -44,10 +44,6 @@ public class NewsController extends AbstractContoller{
        return "/news/showOne";
     }
 
-    public @ModelAttribute("typeList")
-    List<Type> injectTypeList() {
-       return newsService.getTypeList();
-    }
 
     @RequestMapping(value = "/addNews",method = RequestMethod.POST)
     public String addNews(@RequestParam("title")String title,
