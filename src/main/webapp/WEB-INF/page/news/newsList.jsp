@@ -9,6 +9,7 @@
   	<script  type="text/javascript" src="${website}resources/js/jquery.js"></script> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel='stylesheet' href="${website}resources/css/bootstrap.css"/>
+	<link rel='stylesheet' href="${website}resources/css/ie6.css"/>
 	<link rel='stylesheet' href="${website}resources/css/adminLeftMenu.css"/>
   	<script  type="text/javascript" src="${website}resources/js/bootstrap.js"></script>
     <script type="text/javascript">
@@ -27,6 +28,10 @@
                     });
                 }
             });
+            
+            $(".edit").click(function(){
+            	window.location.href="${website}backend/editNews/"+$(this).attr("data");
+            })
         });
     </script>
 </head>
@@ -84,9 +89,9 @@
 	                     <fmt:formatDate value="${i.updatetime}" pattern="yyyy-MM-dd" />
 	                 </td>
 	                 <td>
-	                      <a href="${website }backend/editNews/${i.id}">
-	                      	<input type="button" value="修改" class="edit btn btn-success" />
-	                      </a>
+	                      <%-- <a href="${website }backend/editNews/${i.id}"> --%>
+	                      <input type="button" value="修改" data="${i.id }" class="edit btn btn-success" />
+	                     <!--  </a> -->
 	                      <input type="button" value="删除" class="del btn btn-danger" data="${i.id}"/>
 	                 </td>
 	             </tr>

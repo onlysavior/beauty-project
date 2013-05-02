@@ -7,6 +7,7 @@
     <title>Product List</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel='stylesheet' href="${website}resources/css/bootstrap.css"/>
+	<link rel='stylesheet' href="${website}resources/css/ie6.css"/>
 	<link rel='stylesheet' href="${website}resources/css/adminLeftMenu.css"/>
   	<script  type="text/javascript" src="${website}resources/js/jquery.js"></script> 
   	<script  type="text/javascript" src="${website}resources/js/bootstrap.js"></script>
@@ -26,6 +27,10 @@
                     });
                 }
             });
+            
+            $(".edit").click(function(){
+            	window.location.href="${website}backend/editCertificate/"+$(this).attr("data");	
+            })
         });
     </script>
 </head>
@@ -61,9 +66,9 @@
 		                <tr>
 		                    <td><a href="${website }backend/showCertificate/${i.id}"> ${i.id}</a></td>
 		                    <td>
-		                        <a href="${website }backend/editCertificate/${i.id}">
-		                        	<input type="button" value="修改" class="edit btn btn-success" />
-		                        </a>
+		                        <%-- <a href="${website }backend/editCertificate/${i.id}"> --%>
+		                        	<input type="button" value="修改" class="edit btn btn-success" data="${i.id}" />
+		                        <!-- </a> -->
 		                        <input type="button" value="删除" class="del btn btn-danger" data="${i.id}"/>
 		                    </td>
 		                </tr>
