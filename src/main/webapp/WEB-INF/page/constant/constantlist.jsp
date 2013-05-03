@@ -30,7 +30,7 @@
             });
             
             $(".edit").click(function(){
-            	window.location.href="${website}backend/editConstant/"+$(this).attr("data");
+            	window.location.href="/backend/editConstant/"+$(this).attr("data");
             })
         });
     </script>
@@ -64,7 +64,7 @@
 		                <tr>
 		                    <td>${i.id}</td>
 		                    <td>
-		                        <a href="#">
+		                        <a href="/backend/constant/showOne/${i.id}">
 		                                ${i.title}
 		                        </a>
 		                    </td>
