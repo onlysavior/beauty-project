@@ -36,7 +36,7 @@ tinyMCEPopup.onInit.add(attachmentDialog.init, attachmentDialog);
 var validate = function (b, suffix){
 	
 	var file = document.attForm.img.value;
-	var name = document.attForm.fileNameUseByUser.value;
+	//var name = document.attForm.fileNameUseByUser.value;
 	
 	//b is the boolean weather the name of attachment is empty
 	var isEmpty = b;
@@ -56,12 +56,8 @@ var validate = function (b, suffix){
 	}
 	else if(!isEmpty && !suffix)
 	{
-		if(name == "")
-		{
-			infoDisplay(3);
-			return false;
-		}	
-		else if(file === "")
+
+		if(file === "")
 		{
 			infoDisplay(2);
 			return false;
