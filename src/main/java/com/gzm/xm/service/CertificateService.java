@@ -65,11 +65,11 @@ public class CertificateService {
         return em.createQuery(count).getSingleResult();
     }
 
-    public List<Certificate> query(int pageNo,
+    public List<Certificate> query(Integer pageNo,
                                int size,
                                String key) {
         int firstPosistion;
-        if (pageNo == 1) {
+        if (pageNo == null || pageNo == 1) {
             firstPosistion = 0;
         } else {
             firstPosistion = (pageNo - 1) * size;

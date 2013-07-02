@@ -22,6 +22,8 @@ public class Constant extends AbstractEntity {
 
     private String picUrl;
 
+
+
     @Override
     public Object getId() {
         return id;

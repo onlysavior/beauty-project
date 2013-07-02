@@ -42,16 +42,22 @@ public class NewsService {
         return typeList;
     }
 
-    public void addNews(String title, String content, Integer typeId) {
+    public void addNews(String title, String content, Integer typeId,
+                        String picUrl) {
         News news = new News();
         news.setContent(content);
         news.setTitle(title);
-
+        if (picUrl != null)
+            news.setPicUrl(picUrl);
         Type type = typeDao.findOne(typeId);
         news.setType(type);
         news.setUpdatetime(new Date());
 
         newsDao.save(news);
+    }
+
+    public void addNews(String title, String content, Integer typeId) {
+        addNews(title, content, typeId, null);
     }
 
     public News showOne(Integer id) {

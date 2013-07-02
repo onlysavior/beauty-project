@@ -28,6 +28,8 @@ public class News extends AbstractEntity {
 	private String content;
 	
 	private Date updatetime;
+
+    private String picUrl;
 	
 	@ManyToOne( optional = false, fetch = FetchType.EAGER )
 	@JoinColumn( name = "type_id" )
@@ -72,7 +74,12 @@ public class News extends AbstractEntity {
 	public void setType(Type type) {
 		this.type = type;
 	}
-	
-	
 
+    public String getPicUrl() {
+        return picUrl;
+    }
+
+    public void setPicUrl(String picUrl) {
+        this.picUrl = picUrl;
+    }
 }

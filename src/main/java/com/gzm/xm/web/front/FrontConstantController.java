@@ -34,7 +34,7 @@ public class FrontConstantController extends AbstractContoller{
         return "front/constant";
     }
 
-    @RequestMapping(value = "/front/pic",method = RequestMethod.GET)
+    @RequestMapping(value = "/pic",method = RequestMethod.GET)
     public String showMutiPic(@RequestParam(required = false) Integer pageNo,
                               ModelMap map) {
         if(pageNo == null || pageNo <= 0)
@@ -52,5 +52,10 @@ public class FrontConstantController extends AbstractContoller{
         return "front/mutipic";
     }
 
-
+    @RequestMapping(value = "/front/pic/{id}",method = RequestMethod.GET)
+    public String showSinglePic(@PathVariable Integer id, ModelMap map) {
+        News single = newsService.showOne(id);
+        map.put("news",single);
+        return "front/singlepic";
+    }
 }

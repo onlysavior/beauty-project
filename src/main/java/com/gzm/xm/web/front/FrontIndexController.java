@@ -32,6 +32,8 @@ public class FrontIndexController extends AbstractContoller {
     private TypeService typeService;
     @Autowired
     private ProjectService projectService;
+    @Autowired
+    private CertificateService certificateService;
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index(ModelMap map) {
@@ -175,6 +177,23 @@ public class FrontIndexController extends AbstractContoller {
         List<Project> projects = projectService.query(pageNo,pic_page_size,null,id);
         map.put("productList",projects);
         return "front/projectList";
+    }
+
+    @RequestMapping(value = "/certificate",method = RequestMethod.GET)
+    public String certificateList(@RequestParam(required = false) Integer pageNo,
+                                  ModelMap map) {
+        List<Certificate> certificates = certificateService.query(pageNo,
+                pic_page_size,null);
+        map.put("picList",certificates);
+        return "front/certificate";
+    }
+
+    @RequestMapping(value = "/certificate/{id}",method = RequestMethod.GET)
+    public String certificateOne(@PathVariable Integer id,
+                                 ModelMap map) {
+        Certificate certificate = certificateService.showOne(id);
+        map.put("cert",certificate);
+        return "front/certOne";
     }
 
     @RequestMapping(value = "/project/showOne/{id}",method = RequestMethod.GET)
