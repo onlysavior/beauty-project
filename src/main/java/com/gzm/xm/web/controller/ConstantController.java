@@ -1,20 +1,26 @@
 package com.gzm.xm.web.controller;
 
-import com.gzm.xm.common.entity.Constant;
-import com.gzm.xm.common.enums.PageEnum;
-import com.gzm.xm.service.ConstantService;
+import java.io.File;
+import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.util.Date;
-import java.util.List;
+import com.gzm.xm.common.entity.Constant;
+import com.gzm.xm.common.enums.PageEnum;
+import com.gzm.xm.service.ConstantService;
 
 @Controller
 public class ConstantController extends AbstractContoller{

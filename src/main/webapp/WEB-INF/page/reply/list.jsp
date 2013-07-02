@@ -6,7 +6,7 @@
 	<link rel='stylesheet' href="${website}resources/css/pagination.css">
   	<script src="<c:url value='/webjars/jquery/1.9.1/jquery.js'/>"></script>
   	<script  type="text/javascript" src="${website}resources/js/jquery.pagination.js"></script> 
-    <title></title>
+    <title>回复</title>
     
     <script  type="text/javascript">
   	$(function(){

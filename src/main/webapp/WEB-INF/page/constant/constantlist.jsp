@@ -4,7 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
-    <title>News List</title>
+    <title>静态文件列表 </title>
    <script  type="text/javascript" src="${website}resources/js/jquery.js"></script> 
     <script type="text/javascript" src="<c:url value='/My97DatePicker/WdatePicker.js'/>"></script>
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

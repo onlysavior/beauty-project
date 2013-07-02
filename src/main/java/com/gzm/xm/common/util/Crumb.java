@@ -6,7 +6,7 @@ public class Crumb {
     private String url;
 
     public String getTitle() {
-        return title;
+        return title;  
     }
 
     public void setTitle(String title) {

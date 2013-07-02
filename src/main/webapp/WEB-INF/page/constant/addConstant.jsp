@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <html>
 <head>
-    <title>Add News</title>
+    <title>添加静态文件</title>
     <script  type="text/javascript" src="${website}resources/js/jquery.js"></script> 
     <script type="text/javascript" charset="utf-8"  src="<c:url value='/tiny_mce/tiny_mce.js'/>"></script>
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -61,7 +61,7 @@
 		</ul>
  	</div>
  	<div class="span9">
-		<form id="form" action="${website }backend/addConstant" method="post" enctype="multipart/form-data">
+		<form id="form" action="${website}backend/addConstant" method="post" enctype="multipart/form-data">
 		 <div class="control-group">    
 		    <label class="control-label" >
 				标题：

@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <html>
 <head>
-    <title>edit Project</title>
+    <title>修改项目</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel='stylesheet' href="${website}resources/css/bootstrap.css"/>
@@ -69,7 +69,7 @@
 				图片：
 			</label>    
 			<div class="controls">   
-				 <img src="${product.picUrl}">
+				 <img src="${website}${product.picUrl}">
         		<input type="file" name="file"> 
 		    </div>
 	    </div>

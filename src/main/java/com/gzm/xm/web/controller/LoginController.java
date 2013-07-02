@@ -28,6 +28,11 @@ public class LoginController extends AbstractContoller {
     @Qualifier("imageCaptchaService")
     private ImageCaptchaService imageCaptchaService;
 
+    @RequestMapping(value = "/back/index",method = RequestMethod.GET)
+    public String goBackIndex() {
+       return "admin/backend";
+    }
+    
 	@RequestMapping(value = "/login",method =RequestMethod.GET)
 	public String toLogin(HttpServletRequest request,
                           @RequestParam( required = false )Boolean error, ModelMap map ){

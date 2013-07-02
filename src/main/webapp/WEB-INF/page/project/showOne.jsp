@@ -3,7 +3,7 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>gzm</title>   <!--TODO simple description show-->
+    <title>美容项目</title>   <!--TODO simple description show-->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel='stylesheet' href="${website}resources/css/bootstrap.css"/>

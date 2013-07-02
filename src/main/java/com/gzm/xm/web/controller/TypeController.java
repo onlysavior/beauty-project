@@ -1,11 +1,13 @@
 package com.gzm.xm.web.controller;
 
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.gzm.xm.common.entity.Type;
 import com.gzm.xm.common.enums.PageEnum;
 import com.gzm.xm.common.enums.TypeEnum;
+import com.gzm.xm.common.util.JsonUtils;
 import com.gzm.xm.service.TypeService;
 
 @Controller
@@ -25,10 +28,21 @@ public class TypeController {
     List<Type> insertMainTypeList() {
         return typeService.getAllMainType();
     }
+    
+   
+    
     @RequestMapping(value = "/types",method = RequestMethod.GET)
-    public List<Type> getAllTypeList(@RequestParam(required = false)Integer id) {
+    public String getAllTypeList(@RequestParam(required = false)Integer id,  ModelMap map) {
        List<Type> typeList = typeService.getAllType(id);
-       return typeList;
+       Map<Integer, String> typeEnums = TypeEnum.getAll();
+       map.put("typeList", typeList);
+       map.put("typeEnums", typeEnums);
+       return "type/list";
+    }
+    
+    @RequestMapping(value="type/parents", method = RequestMethod.GET ,produces="text/plain;charset=UTF-8")
+    public @ResponseBody String getAllTypeEnum(){
+    	return JsonUtils.toJson(TypeEnum.getAll());
     }
     
     
@@ -43,10 +57,9 @@ public class TypeController {
         return typeService.getType(id);
     }
 
-    @RequestMapping(value = "/type/delType",method = RequestMethod.POST)
-    public @ResponseBody int delType(Integer id) {
+    @RequestMapping(value = "/type/{id}",method = RequestMethod.DELETE)
+    public @ResponseBody void delType(@PathVariable Integer id) {
         typeService.delType(id);
-        return 1;
     }
 
     @RequestMapping(value = "/type/toAddType",method = RequestMethod.GET)
@@ -58,23 +71,20 @@ public class TypeController {
     public String addType(Integer parentType,
                           String name) {
         typeService.addType(name, parentType);
-        return "redirect:/backend/type/toAddType";
+        return "redirect:/backend/types";
     }
 
-    @RequestMapping(value = "/type/editType",method = RequestMethod.POST)
-    public String editType(Integer id,String name) {
-        Type t = typeService.getType(id);
-        t.setName(name);
+    @RequestMapping(value = "/admin/type/editType", method = RequestMethod.POST)
+    public @ResponseBody void editType(Type type) {
+        Type t = typeService.getType(type.getId());
+        t.setName(type.getName());
+        t.setParentType(type.getParentType());
         typeService.saveType(t);
-        return "redirect:/backend/type/toAddType";
     }
+    
     @ModelAttribute("pageType")
     public Integer getPageType() {
         return PageEnum.TYPE.getId();
     }
     
-    @ModelAttribute("typeEnums")
-    public HashMap<Integer, String> getTypeEnums(){
-    	return TypeEnum.getAll();
-    }
 }

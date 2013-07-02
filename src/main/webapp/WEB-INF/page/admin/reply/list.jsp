@@ -16,7 +16,7 @@
 	<%-- <link rel="stylesheet" href="<c:url value='/webjars/bootstrap/2.3.1/css/bootstrap.css'/>"/> --%>
   	<%-- <script  type="text/javascript"  src="<c:url value='/webjars/jquery/1.9.1/jquery.js'/>"></script>
   	<script  type="text/javascript"  src="<c:url value='/webjars/bootstrap/2.3.1/js/bootstrap.js'/>"></script> --%>
-    <title></title>
+    <title>回复管理</title>
     <script  type="text/javascript">
   	$(function(){
   		
@@ -105,6 +105,8 @@
   				data:{title:content,id:id},
   				url:"${website}backend/reply/admin",
   				success:function(){
+  					$("#content").val("");
+  					
   					window.location.reload();
   				}
   				

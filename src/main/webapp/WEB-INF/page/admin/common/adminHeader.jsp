@@ -2,6 +2,7 @@
 <script type="text/javascript">
 	$(function(){
 		var page = $("#pageType").val();
+		
 		if(page == null || page == ""){
 		    $(".gzm_index").addClass("active");
 		}else if(page == 6){
@@ -38,11 +39,11 @@
           <a class="brand" href="#">古之美后台</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="gzm_index">
-                <a href="#">首页</a>
+              <li class="gzm_index" class="bootstro">
+                <a href="${website }backend/back/index">首页</a>
               </li>
               <li class="gzm_type" >
-                <a href="#" class="bootstro" data-bootstro-title=""
+                <a href="${website }backend/types" class="bootstro" data-bootstro-title=""
            data-bootstro-placement="bottom"  data-bootstro-step="0">类型管理</a>
               </li>
               <li class="gzm_constant">

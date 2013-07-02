@@ -3,7 +3,7 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>${news.title}</title>
+    <title>静态文件</title>
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel='stylesheet' href="${website}resources/css/bootstrap.css"/>
 	<link rel='stylesheet' href="${website}resources/css/adminLeftMenu.css"/>

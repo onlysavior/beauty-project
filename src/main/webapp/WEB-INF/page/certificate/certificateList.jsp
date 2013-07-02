@@ -4,7 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
-    <title>Product List</title>
+    <title>证书列表</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel='stylesheet' href="${website}resources/css/bootstrap.css"/>
 	<link rel='stylesheet' href="${website}resources/css/ie6.css"/>
