@@ -1,5 +1,7 @@
 package com.gzm.xm.common.enums;
 
+import java.util.HashMap;
+
 public enum TypeEnum {
 	
 	PRODUCT_TYPE( 1, "产品类型" ), PROJECT_TYPE( 2, "项目类型" ), NEWS_TYPE( 3, "新闻类型" ),
@@ -9,6 +11,14 @@ public enum TypeEnum {
 	private Integer id;
 	
 	private String desc;
+	
+	private static HashMap<Integer, String> maps = new HashMap<Integer, String>();
+	
+	static{
+		for(TypeEnum et : TypeEnum.values()){
+			maps.put(et.getId(), et.getDesc());
+		}
+	}
 
 	private TypeEnum(Integer id, String desc) {
 		this.id = id;
@@ -29,5 +39,9 @@ public enum TypeEnum {
 
 	public void setDesc(String desc) {
 		this.desc = desc;
+	}
+	
+	public static HashMap<Integer, String> getAll(){
+		return maps;
 	}
 }

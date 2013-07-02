@@ -20,10 +20,13 @@ public interface TypeDao extends PagingAndSortingRepository<Type,Integer> {
 
     @Query("select t from Type t where  parentType = ?1")
     public List<Type> getSubTypeListByType(Integer parentType);
+    
+    @Query("select t from Type t where  parentType != 0")
+    public List<Type> getAllTypes();
 
     @Query("select max(t.type)+1 from Type t")
     public Integer getMaxTypeId();
 
-    @Query("select t from Type t where t.parentType = 0")
+    @Query("select t from Type t where t.parentType = 0 group by t.parentType")
     public List<Type> getAllMainType();
 }

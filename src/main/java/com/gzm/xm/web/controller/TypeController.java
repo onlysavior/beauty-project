@@ -1,13 +1,20 @@
 package com.gzm.xm.web.controller;
 
-import com.gzm.xm.common.entity.Type;
-import com.gzm.xm.common.enums.PageEnum;
-import com.gzm.xm.service.TypeService;
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
+import com.gzm.xm.common.entity.Type;
+import com.gzm.xm.common.enums.PageEnum;
+import com.gzm.xm.common.enums.TypeEnum;
+import com.gzm.xm.service.TypeService;
 
 @Controller
 public class TypeController {
@@ -18,7 +25,13 @@ public class TypeController {
     List<Type> insertMainTypeList() {
         return typeService.getAllMainType();
     }
-
+    @RequestMapping(value = "/types",method = RequestMethod.GET)
+    public List<Type> getAllTypeList(@RequestParam(required = false)Integer id) {
+       List<Type> typeList = typeService.getAllType(id);
+       return typeList;
+    }
+    
+    
     @RequestMapping(value = "/type/getSub",method = RequestMethod.POST)
     public @ResponseBody List<Type> getSubTypeList(Integer id) {
        List<Type> typeList = typeService.getSubTypeListUnderType(id);
@@ -58,5 +71,10 @@ public class TypeController {
     @ModelAttribute("pageType")
     public Integer getPageType() {
         return PageEnum.TYPE.getId();
+    }
+    
+    @ModelAttribute("typeEnums")
+    public HashMap<Integer, String> getTypeEnums(){
+    	return TypeEnum.getAll();
     }
 }

@@ -11,6 +11,14 @@ import java.util.List;
 public class TypeService {
     @Autowired
     private TypeDao typeDao;
+    
+    public List<Type> getAllType(Integer parentId){
+    	if(parentId  == null){
+    		return typeDao.getAllTypes();
+    	}else{
+    		return typeDao.getSubTypeListByType(parentId);
+    	}
+    }
 
     public Type getType(Integer id) {
         return typeDao.findOne(id);

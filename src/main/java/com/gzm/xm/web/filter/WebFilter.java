@@ -10,12 +10,15 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+
+
 public class WebFilter implements Filter {
 
 	@Override
 	public void destroy() {
 		
 	}
+	
 
 	@Override
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
