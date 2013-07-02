@@ -70,6 +70,14 @@
 		    	<input type="text" class="input-xlarge" style="height:30px" name="title">
 		    </div>
 	    </div>
+        <div class="control-group">
+            <label class="control-label" >
+                图片：
+            </label>
+            <div class="controls">
+                <input type="file" name="file">
+            </div>
+        </div>
 	    <div class="control-group">    
 		    <label class="control-label" >
 				内容：

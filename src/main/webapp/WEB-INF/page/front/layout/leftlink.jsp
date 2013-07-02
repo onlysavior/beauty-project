@@ -16,7 +16,7 @@
             <a href="${website}front/showConstant/1" target="_self" class="titlemenu_9001">公司简介</a>
 
 
-            <a href="#" target="_self" class="titlemenu_9001">资格证书</a>
+            <a href="/front/certificate" target="_self" class="titlemenu_9001">资格证书</a>
 
 
             <a href="${website}front/typeproduct/1" target="_self" class="titlemenu_9001">产品推荐</a>
@@ -25,7 +25,8 @@
             <a href="${website}front/typeproject/2" target="_self" class="titlemenu_9001">服务项目</a>
 
 
-            <a href="${website}front/showConstant/2" target="_self" class="titlemenu_9001">公司风貌</a>
+            <a href="${website}front/pic" target="_self" class="titlemenu_9001">公司风貌</a>
+
 
 
             <a href="${website}front/news/typenews/1" target="_self" class="titlemenu_9001">新闻动态</a>

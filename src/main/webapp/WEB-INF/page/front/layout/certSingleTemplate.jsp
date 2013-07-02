@@ -14,7 +14,7 @@
             <tr>
                 <td align="center">
                     <div id="photoview">
-                        <img src="<c:url value='${news.picUrl}' />" border="0" id="photoloading" class="photoloading">
+                        <img src="<c:url value='${cert.picUrl}' />" border="0" id="photoloading" class="photoloading">
                     </div>
                 </td>
             </tr>
@@ -23,7 +23,7 @@
 
     </div>
     <div class="introzone">
-        <div class="title">企业风貌</div>
+        <div class="title">${cert.instruction}</div>
         <div id="memo" class="memo" style="display:none"><strong>图片说明：</strong></div>
         <div class="bzone">
             <input type="hidden" id="photoid" value="9">

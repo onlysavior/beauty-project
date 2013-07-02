@@ -33,7 +33,7 @@
 </div>
 <SCRIPT language=javascript>
     function g(formname)	{
-        var url = "http://www.baidu.com/baidu";
+        var url = "http://www.guzhimei.com/";
         formname.ct.value = "0";
         formname.action = url;
         return true;

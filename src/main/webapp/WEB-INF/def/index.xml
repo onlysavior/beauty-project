@@ -20,8 +20,16 @@
         <put-attribute name="content" value="/WEB-INF/page/front/layout/mutipicTemplate.jsp" />
     </definition>
 
+    <definition name="front/certificate" extends="front/contentTemplate">
+        <put-attribute name="content" value="/WEB-INF/page/front/layout/certMutiTemplate.jsp" />
+    </definition>
+
     <definition name="front/singlepic" extends="front/contentTemplate">
         <put-attribute name="cotent" value="/WEB-INF/page/front/layout/singlePicTemplate.jsp"/>
+    </definition>
+
+    <definition name="front/certOne" extends="front/contentTemplate">
+        <put-attribute name="cotent" value="/WEB-INF/page/front/layout/certSingleTemplate.jsp"/>
     </definition>
 
     <definition name="front/index"
@@ -72,7 +80,7 @@
         <put-attribute name="toplink" value="/WEB-INF/page/front/layout/toplink.jsp"/>
     </definition>
 
-    <definition name="front/projectList" template="/WEB-INF/page/front/layout/productlistTemplate.jsp">
+    <definition name="front/projectList" template="/WEB-INF/page/front/layout/projectListTemplate.jsp">
         <put-attribute name="searchform" value="/WEB-INF/page/front/layout/searchform.jsp" />
         <put-attribute name="bottomlink" value="/WEB-INF/page/front/layout/bottomlink.jsp" />
         <put-attribute name="toplink" value="/WEB-INF/page/front/layout/toplink.jsp"/>

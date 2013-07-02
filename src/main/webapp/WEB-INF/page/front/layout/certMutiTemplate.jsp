@@ -17,32 +17,32 @@
                     <c:choose>
                         <c:when test="${picList != null}">
                             <ul >
-                            <c:forEach var="i" items="${picList}">
-                                <li>
-                                    <div class="fang" style="width:190px;height:140px">
-                                        <div class="picFit" style="width:190px;height:140px">
-                                            <a href="/front/pic/${i.id}" target="_self" ><img src="${i.picUrl}" style="width:190px;height:140px" border="0" /></a>
+                                <c:forEach var="i" items="${picList}">
+                                    <li>
+                                        <div class="fang" style="width:190px;height:140px">
+                                            <div class="picFit" style="width:190px;height:140px">
+                                                <a href="/front/certificate/${i.id}" target="_self" ><img src="${i.picUrl}" style="width:190px;height:140px" border="0" /></a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="title"><a href="/front/pic/${i.id}" target="_self">${i.title}</a></div>
-                                </li>
-                            </c:forEach>
+                                        <div class="title"><a href="/front/certificate/${i.id}" target="_self">${i.instruction}</a></div>
+                                    </li>
+                                </c:forEach>
                             </ul>
                         </c:when>
                         <c:otherwise>
                             <ul>
-                                No Pic
+                                No Certifate
                             </ul>
                         </c:otherwise>
                     </c:choose>
                     <script>
-                    $(function() {
-                        $().picFit("fill");
-                    });
+                        $(function() {
+                            $().picFit("fill");
+                        });
                     </script>
                 </div>
                 <div id="showpages" >
-                    <c:set scope="request" var="navUrl" value="${website}front/pic" />
+                    <c:set scope="request" var="navUrl" value="/front/certificate" />
                     <c:set scope="request" var="navUrlEnd" value="${query}"/>
                     <c:set scope="request" var="currentPage" value="pageNo"/>
                     <%@ include file="../../common/page.jsp" %>
