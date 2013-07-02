@@ -16,7 +16,7 @@
              $(".mainSelect").change(function() {
                  $(".addBtn").attr("data",$(this).val());
                  $.ajax({
-                     url:"/backend/type/getSub",
+                     url:"${website}backend/type/getSub",
                      type:"post",
                      data:{id:$(this).val()},
                      success:function(json) {
@@ -96,7 +96,7 @@
           </div>
 
           <div class="editDiv">
-              <form class="editform" action="${websitebackend/type/editType" method="post">
+              <form class="editform" action="${website}backend/type/editType" method="post">
                   <input type="hidden" name="type.id" class="typeId">
                   <input type="hidden" name="type.parentType" class="typeParentId">
                   <input type="hidden" name="type.type" class="typeType">

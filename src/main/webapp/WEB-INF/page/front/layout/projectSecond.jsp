@@ -21,14 +21,14 @@
                         <div class="productquery_2_left">
                             <div class="fang" style="width:145px;height:145px">
                                 <div class="picFit" style="width:145px;height:145px">
-                                    <a href="/front/project/showOne/${i.id}" target="_self"><img
+                                    <a href="${website}front/project/showOne/${i.id}" target="_self"><img
                                             src="${i.picUrl}" style="width:145px;height:145px"
                                             border="0"/></a>
                                 </div>
                             </div>
                         </div>
                         <div class="productquery_2_right">
-                            <a href="/front/project/showOne/${i.id}" target="_self" class="prodtitle">${i.description}</a>
+                            <a href="${website}front/project/showOne/${i.id}" target="_self" class="prodtitle">${i.description}</a>
                         <span class="prop">
 
 
@@ -47,8 +47,8 @@
                 </script>
 
                 <div id="showpages">
-                    <c:set scope="request" var="navUrl" value="/backend/newsList" />
-                    <c:set scope="request" var="navUrlEnd" value="/front/news/typeproduct/${typeId}"/>
+                    <c:set scope="request" var="navUrl" value="${website }backend/newsList" />
+                    <c:set scope="request" var="navUrlEnd" value="${website}front/news/typeproduct/${typeId}"/>
                     <c:set scope="request" var="currentPage" value="pageNo"/>
                     <%@ include file="../../common/page.jsp" %>
                 </div>

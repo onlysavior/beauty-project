@@ -140,7 +140,7 @@
                 <div  style="padding:10px">
                     <link href="<c:url value = '/templates/css/searchform.css' />" rel="stylesheet" type="text/css" />
                     <div class="newssearchform">
-                        <form id="searchform" method="post" action="/front/news/search">
+                        <form id="searchform" method="post" action="${website}/front/news/search">
                             <div class="searchform">
                                 <select name="catid" id="catid"  >
                                     <option value="0" >请选择分类</option>
@@ -194,7 +194,7 @@
                     <link href="<c:url value='/templates/css/newsclass_menu703.css' />" rel="stylesheet" type="text/css" />
                     <div class="newsclass_menu703">
                         <c:forEach items="${newsTypes}" var="i">
-                            <a href="/front/news/typenews/${i.id}" target="_self" class="newsclass_menu703">${i.name}</a>
+                            <a href="${website}/front/news/typenews/${i.id}" target="_self" class="newsclass_menu703">${i.name}</a>
                         </c:forEach>
                     </div>
 

@@ -5,7 +5,7 @@
 <head>
 	<link rel='stylesheet' href="${website}resources/css/pagination.css">
 	<link rel='stylesheet' href="${website}resources/css/ie6.css"/>
-  	<script src="<c:url value='/webjars/jquery/1.9.1/jquery.js'/>"></script>
+  	<script  type="text/javascript" src="${website}resources/js/jquery.js"></script> 
   	  	<link rel='stylesheet' href="<c:url value='/webjars/bootstrap/2.3.1/css/bootstrap.css'/>">
   	<script src="<c:url value='/webjars/bootstrap/2.3.1/js/bootstrap.js'/>"></script> 
   	<script  type="text/javascript" src="${website}resources/js/jquery.pagination.js"></script> 

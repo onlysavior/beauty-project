@@ -42,7 +42,7 @@
                     </script>
                 </div>
                 <div id="showpages" >
-                    <c:set scope="request" var="navUrl" value="/front/pic" />
+                    <c:set scope="request" var="navUrl" value="${website}front/pic" />
                     <c:set scope="request" var="navUrlEnd" value="${query}"/>
                     <c:set scope="request" var="currentPage" value="pageNo"/>
                     <%@ include file="../../common/page.jsp" %>

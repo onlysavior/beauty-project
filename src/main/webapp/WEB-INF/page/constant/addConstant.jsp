@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Add News</title>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script  type="text/javascript" src="${website}resources/js/jquery.js"></script> 
     <script type="text/javascript" charset="utf-8"  src="<c:url value='/tiny_mce/tiny_mce.js'/>"></script>
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel='stylesheet' href="${website}resources/css/bootstrap.css"/>

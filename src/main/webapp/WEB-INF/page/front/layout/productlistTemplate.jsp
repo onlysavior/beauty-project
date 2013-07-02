@@ -11,11 +11,11 @@
     <meta content="" name="keywords"/>
     <meta content="" name="description"/>
     <link href="<c:url value='/base/templates/css/common.css'/>" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="<c:url value='/base/js/base.js' /></script>
-    <script type="text/javascript" src="<c:url value='/base/js/common.js' />"></script>
+    <script type="text/javascript" src="<c:url value='/base/js/base.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='/base/js/common.js'/>"></script>
     <script type="text/javascript" src="<c:url value='/base/js/form.js' />"></script>
     <script type="text/javascript" src="<c:url value='/base/js/blockui.js' />"></script>
-    <!-reload-!>
+    <!--  reload -->
 </head>
 <body style='background:#ffd700 url(<c:url value='/effect/source/bg/x09.jpg' />) no-repeat fixed center top'>
 <script>
@@ -130,14 +130,14 @@
     <div class="productquery_2_left">
         <div class="fang" style="width:145px;height:145px">
             <div class="picFit" style="width:145px;height:145px">
-                <a href="/front/showProduct/${i.id}" target="_self"><img
+                <a href="${website}front/showProduct/${i.id}" target="_self"><img
                         src="${i.picUrl}" style="width:145px;height:145px"
                         border="0"/></a>
             </div>
         </div>
     </div>
     <div class="productquery_2_right">
-        <a href="/front/showProduct/${i.id}" target="_self" class="prodtitle">${i.name}</a>
+        <a href="${website}front/showProduct/${i.id}" target="_self" class="prodtitle">${i.name}</a>
 		<span class="prop">
 
 货号：${i.id}<br>
@@ -159,7 +159,7 @@
 </script>
 
 <div id="showpages">
-                    <c:set scope="request" var="navUrl" value="/front//typeproduct/{typeId}" />
+                    <c:set scope="request" var="navUrl" value="${website}front//typeproduct/{typeId}" />
                     <c:set scope="request" var="navUrlEnd" value="&${query}"/>
                     <c:set scope="request" var="currentPage" value="pageNo"/>
                     <%@ include file="../../common/page.jsp" %>
@@ -191,7 +191,7 @@
                 <ul class="productclass">
 					<c:forEach items="${projectType}" var="i">
                     <li class="productclass7003">
-                        <a href="/front/typeproject/${i.id}" target="_self" class="productclass7003">${i.name}</a>
+                        <a href="${website}front/typeproject/${i.id}" target="_self" class="productclass7003">${i.name}</a>
                     </li>
 					</c:forEach>
                 </ul>
@@ -199,7 +199,7 @@
 				<ul class="productclass">
 					<c:forEach items="${productType}" var="j">
                     <li class="productclass7003">
-                        <a href="/front/typeproject/${i.id}" target="_self" class="productclass7003">${i.name}</a>
+                        <a href="${website}front/typeproject/${i.id}" target="_self" class="productclass7003">${i.name}</a>
                     </li>
 					</c:forEach>
 				</ul>

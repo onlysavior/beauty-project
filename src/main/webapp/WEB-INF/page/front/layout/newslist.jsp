@@ -13,7 +13,7 @@
                     <ul id="queryul">
                     <c:forEach items="${newsList}" var="i">
                         <li class="title">
-                            <div class="title"><a href="/front/news/showOne/${i.id}" target="_self">${i.title}</a></div>
+                            <div class="title"><a href="${website}front/news/showOne/${i.id}" target="_self">${i.title}</a></div>
                             <div class="time">
                                 <fmt:formatDate value="${i.updatetime}" pattern="yyyy/MM/dd" />
                             </div>
@@ -24,7 +24,7 @@
                 </div>
 
                 <div id="showpages">
-                    <c:set scope="request" var="navUrl" value="/front/news/search" />
+                    <c:set scope="request" var="navUrl" value="${website}front/news/search" />
                     <c:set scope="request" var="navUrlEnd" value="&${query}"/>
                     <c:set scope="request" var="currentPage" value="pageNo"/>
                     <%@ include file="../../common/page.jsp" %>
