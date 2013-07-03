@@ -89,15 +89,15 @@
 <div class="container-fluid ">
 
  <div class="row-fluid ">
- 	<div class="span3 bs-docs-sidebar" >  
+ 	<div class="span1 bs-docs-sidebar" >  
  		
  	</div>
- 	<div class="span9">
+ 	<div class="span10">
 		<form action="${website}backend/type/addType" class="form-search" id="form" method="post">
 		    类型名称：<input type="text" name="name" />
 		  类型所属模块:
 		   <select name="parentType">
-		   		<c:forEach items="${typeEnum}" var="i" >
+		   		<c:forEach items="${typeEnums}" var="i" >
 		   			<option value="${i.key }">${i.value }</option>
 		   		</c:forEach>
 		  	</select> 
@@ -148,6 +148,9 @@
 		<c:set scope="request" var="currentPage" value="pageNo"/>
 		<%@ include file="../common/page.jsp" %>
 	</div>
+	<div class="span1 " >  
+ 		
+ 	</div>
 	</div>
 </div>	
 </body>
