@@ -14,7 +14,7 @@ public class AbstractContoller {
    public static final String CAPTCHA_IMAGE_FORMAT = "jpeg";
 
 
-    public static final int pageSize = 1;
+    public static final int pageSize = 20;
     public static final int pic_page_size = 3;
 
     protected static final String BASE_UPLOAD_FOLDER = "\\upload";

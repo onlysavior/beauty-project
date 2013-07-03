@@ -44,7 +44,7 @@
               </li>
               <li class="gzm_type" >
                 <a href="${website }backend/types" class="bootstro" data-bootstro-title=""
-           data-bootstro-placement="bottom"  data-bootstro-step="0">类型管理</a>
+           data-bootstro-placement="bottom"  data-bootstro-step="0">产品类型管理</a>
               </li>
               <li class="gzm_constant">
                 <a href="${website }backend/constantList" class="bootstro" data-bootstro-title=""

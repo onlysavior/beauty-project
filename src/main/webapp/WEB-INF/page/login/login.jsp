@@ -8,27 +8,21 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            $(".captcha").click(function(){
+            /* $(".captcha").click(function(){
                 var date = new Date();
                 $(this).attr("src","/captcha.html?ver="+date.getMilliseconds());
-            });
+            }); */
 
-            $(".register").click(function(){
-                window.location = "/backend/register";
-            });
         });
     </script>
 </head>
 <body>
 
-	<form style="margin:20px" method="post" action="/backend/login">
+	<form style="margin:20px" method="post" action="${website }/backend/login">
 		<p style="color:red">${error}</p>
 		Login Name:<input type="text" name="name"/>
 		<p>Password ： <input type="password" name="pwd"/></p>
-        <p><input name="captcha"><img src="/captcha" class="captcha"></p>
 		<input type = "submit" value="submit"/>
-
 	</form>
-    <p><input type="button" value="register" class="register"></p>
 </body>
 </html>

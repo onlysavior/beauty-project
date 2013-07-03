@@ -32,7 +32,7 @@
   			$("#Pagination").pagination(num_entries, {
   				num_edge_entries: 2, //边缘页数
   				num_display_entries: 4, //主体页数
-  				items_per_page:1, //每页显示1项
+  				items_per_page:20, //每页显示1项
   				callback: pageselectCallback
   			});
   		 }();

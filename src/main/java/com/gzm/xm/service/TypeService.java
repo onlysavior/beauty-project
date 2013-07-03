@@ -32,7 +32,6 @@ public class TypeService {
         Type type = new Type();
         type.setName(name);
         type.setParentType(parentType);
-        type.setType(typeDao.getMaxTypeId());
 
         typeDao.save(type);
     }
@@ -41,10 +40,7 @@ public class TypeService {
         typeDao.delete(id);
     }
 
-    public List<Type> getAllMainType() {
-        return typeDao.getAllMainType();
-    }
-
+   
     public void saveType(Type t) {
         typeDao.save(t);
     }

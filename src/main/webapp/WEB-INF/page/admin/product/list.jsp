@@ -57,7 +57,7 @@
           <label class="control-label">所含成分</label>
           <div class="controls">
             <div class="textarea">
-                  <textarea type="" rows="4" class="" cols="20" name="include"> </textarea>
+                  <textarea  rows="4" class="" cols="20" name="include"> </textarea>
             </div>
           </div>
         </div><div class="control-group">
@@ -66,7 +66,7 @@
           <label class="control-label">功效</label>
           <div class="controls">
             <div class="textarea">
-                  <textarea type="" rows="4" class="" cols="20" name="function"> </textarea>
+                  <textarea  rows="4" class="" cols="20" name="function"> </textarea>
             </div>
           </div>
         </div><div class="control-group">

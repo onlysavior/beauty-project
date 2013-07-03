@@ -11,8 +11,7 @@ import com.gzm.xm.common.entity.Type;
 
 public interface TypeDao extends PagingAndSortingRepository<Type,Integer> {
 	
-	@Query("select t from Type t where type = ?1")
-	public List<Type> getTypeByType(Integer type);
+	
 	
 	@Modifying
 	@Query("update Type t set t.name = ?1 where t.id = ?2 ")
@@ -24,9 +23,7 @@ public interface TypeDao extends PagingAndSortingRepository<Type,Integer> {
     @Query("select t from Type t where  parentType != 0")
     public List<Type> getAllTypes();
 
-    @Query("select max(t.type)+1 from Type t")
-    public Integer getMaxTypeId();
+   
 
-    @Query("select t from Type t where t.parentType = 0 group by t.parentType")
-    public List<Type> getAllMainType();
+    
 }

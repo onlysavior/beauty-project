@@ -13,7 +13,6 @@
     <script type="text/javascript">
          $(document).ready(function(){
         	 var type_name;
-        	 var type_parent_name;
         	 var id;
         	 var oldTdHtml;
         	 
@@ -21,31 +20,11 @@
             	 var td = $(this).parent();
             	 var tr = $(this).parent().parent();
             	 id = $(this).attr("data");
-            	 var type_parent = tr.find(".type_parent").attr("data");
             	 type_name = tr.find(".type_name").html();
-            	 type_parent_name = tr.find(".type_parent").html();
             	 oldTdHtml = td.html();
-            	 
             	 td.html("<input type='button' class='btn btn-success sure_edit' value='修改'/><input type='button' class='btn btn-info cancel_type'  value='取消'/>")
             	 tr.find(".type_name").html("<input type='text' class='edit_type_name' value='"+type_name+"'/> ");
-            	 $.ajax({
-            		 type:"get",
-            		 url : "${website}backend/type/parents",
-            		 success: function(data){
-            			 var data = eval("("+data+")");
-            			 console.log(typeof(data));
-            			 var newhtml = "<select class='select_type'>"
-            			 for(var key in data){
-            				 if(key-0 == type_parent-0){
-            					newhtml = newhtml + "<option value ='"+key+"' selected='selected'>"+data[key]+"</option> "; 
-            				 }else{
-            					 newhtml = newhtml + "<option value ='"+key+"' >"+data[key]+"</option> "; 
-            				 }
-            			 }
-            			newhtml = newhtml +"</select>"
-            			 tr.find(".type_parent").html(newhtml);
-            		 }
-            	 })
+            
              });
              
              $(".cancel_type").live("click", function(){
@@ -56,11 +35,10 @@
             	 var thisTd = $(this).parent();
             	 var thisTr = $(this).parent().parent();
             	 var typeName= thisTr.find(".edit_type_name").val();
-            	 var parentID = thisTr.find(".select_type").val(); 
             	 
             	 $.ajax({
             		 type: "POST",
-            		 data :{name : typeName, parentType:parentID, id: id },
+            		 data :{name : typeName, parentType:1, id: id },
             		 url : "${website}backend/admin/type/editType",
             		 success:function(){
             			 alert("修改成功！");
@@ -94,21 +72,14 @@
  	</div>
  	<div class="span10">
 		<form action="${website}backend/type/addType" class="form-search" id="form" method="post">
-		    类型名称：<input type="text" name="name" />
-		  类型所属模块:
-		   <select name="parentType">
-		   		<c:forEach items="${typeEnums}" var="i" >
-		   			<option value="${i.key }">${i.value }</option>
-		   		</c:forEach>
-		  	</select> 
+		    产品类型名称：<input type="text" name="name" /><input name="parentType" value="1" type="hidden"/> 
 		    <input type="submit"  class="btn btn-info" value="添加" >
 		</form>
        <table class="table table-hover"> 
 		   	<thead>
 		   		<tr>
 		   			<th>序号</th>
-		   			<th>类型名称</th>
-		   			<th>父类别</th>
+		   			<th>产品类型名称</th>
 		   			<th>操作</th>
 		   		</tr>
 		   	</thead>
@@ -120,15 +91,6 @@
 		                    <td class="type_name">
 		                    	${i.name}
 		                    </td>
-		                    <td>
-			                     <span class="type_parent" data="${i.parentType }">
-			                    <c:forEach var="t" items="${typeEnums}">
-									<c:if test="${t.key == i.parentType}">
-										${t.value }
-									</c:if>
-								</c:forEach>
-			                    </span>
-		                    </td>
 		                    <td class="op_td">
 		                        <input type="button" value="修改" data="${i.id }" class="edit btn btn-success" />
 		                        <input type="button" value="删除" class="del btn btn-danger" data="${i.id}"/>
@@ -138,7 +100,7 @@
 		    </c:when>
 		    <c:otherwise>
 		        <tr>
-		        	<td colspan="2">暂无产品</td>
+		        	<td colspan="2">暂无产品类型</td>
 		        </tr>
 		    </c:otherwise>
 		</c:choose>

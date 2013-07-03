@@ -1,10 +1,12 @@
 package com.gzm.xm.web.controller;
 
-import com.gzm.xm.common.entity.Certificate;
-import com.gzm.xm.common.entity.Project;
-import com.gzm.xm.common.enums.PageEnum;
-import com.gzm.xm.common.util.PageUtil;
-import com.gzm.xm.service.CertificateService;
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,11 +19,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.IOException;
-import java.util.Date;
-import java.util.List;
+import com.gzm.xm.common.entity.Certificate;
+import com.gzm.xm.common.enums.PageEnum;
+import com.gzm.xm.common.util.PageUtil;
+import com.gzm.xm.service.CertificateService;
 
 @Controller
 public class CertificateController extends AbstractContoller {

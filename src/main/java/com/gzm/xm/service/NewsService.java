@@ -1,16 +1,8 @@
 package com.gzm.xm.service;
 
-import com.gzm.xm.common.entity.News;
-import com.gzm.xm.common.entity.News_;
-import com.gzm.xm.common.entity.Type;
-import com.gzm.xm.dao.NewsDao;
-import com.gzm.xm.dao.TypeDao;
-import org.hibernate.criterion.Order;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.domain.Specification;
-import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -18,9 +10,17 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
+import com.gzm.xm.common.entity.News;
+import com.gzm.xm.common.entity.News_;
+import com.gzm.xm.common.entity.Type;
+import com.gzm.xm.dao.NewsDao;
+import com.gzm.xm.dao.TypeDao;
 
 @Service
 public class NewsService {
