@@ -21,10 +21,10 @@
                                     <li>
                                         <div class="fang" style="width:190px;height:140px">
                                             <div class="picFit" style="width:190px;height:140px">
-                                                <a href="/front/certificate/${i.id}" target="_self" ><img src="${i.picUrl}" style="width:190px;height:140px" border="0" /></a>
+                                                <a href="${website}front/certificate/${i.id}" target="_self" ><img src="${i.picUrl}" style="width:190px;height:140px" border="0" /></a>
                                             </div>
                                         </div>
-                                        <div class="title"><a href="/front/certificate/${i.id}" target="_self">${i.instruction}</a></div>
+                                        <div class="title"><a href="${website}front/certificate/${i.id}" target="_self">${i.instruction}</a></div>
                                     </li>
                                 </c:forEach>
                             </ul>
@@ -42,8 +42,8 @@
                     </script>
                 </div>
                 <div id="showpages" >
-                    <c:set scope="request" var="navUrl" value="/front/certificate" />
-                    <c:set scope="request" var="navUrlEnd" value="${query}"/>
+                    <c:set scope="request" var="navUrl" value="${website}front/certificate" />
+                    <c:set scope="request" var="navUrlEnd" value="&${query}"/>
                     <c:set scope="request" var="currentPage" value="pageNo"/>
                     <%@ include file="../../common/page.jsp" %>
                 </div>

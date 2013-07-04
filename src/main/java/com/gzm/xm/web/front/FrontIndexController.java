@@ -28,8 +28,7 @@ public class FrontIndexController extends AbstractContoller {
     private NewsService newsService;
     @Autowired
     private ProductService productService;
-    @Autowired
-    private TypeService typeService;
+
     @Autowired
     private ProjectService projectService;
     @Autowired
@@ -40,9 +39,9 @@ public class FrontIndexController extends AbstractContoller {
         Constant gzm = constantService.getConstant(GZM_JIESHAO_ID);
         map.put("gzm", gzm);
 
-        List<News> ourNews = newsService.query(1, 5, "", null, null, TypeEnum.NEWS_SUB_OUR.getId());
+        List<News> ourNews = newsService.query(1, 5, "", null, null, typeCache.get(ourNewsKey));
         map.put("newList", ourNews);
-        List<News> indNews = newsService.query(1, 5, "", null, null, TypeEnum.NEW_SUB_LIND.getId());
+        List<News> indNews = newsService.query(1, 5, "", null, null, typeCache.get(indNewsKey));
         map.put("newList2", indNews);
         List<AbstractEntity> products = new ArrayList<AbstractEntity>();
         List<Product> product = productService.query(1,3,null);
@@ -64,7 +63,7 @@ public class FrontIndexController extends AbstractContoller {
         List<Crumb> crumbs = new ArrayList<Crumb>();
         Crumb root = new Crumb();
         root.setTitle("新闻动态");
-        root.setUrl("/front/news/list");
+        root.setUrl("news/list");
         Crumb leaf = new Crumb();
         leaf.setUrl("#");
         leaf.setTitle(news.getTitle());
@@ -74,22 +73,22 @@ public class FrontIndexController extends AbstractContoller {
 
         map.put("crumbList", crumbs);
 
-        List<Type> types = typeService.getSubTypeListUnderType(TypeEnum.NEWS_TYPE.getId());
+        List<Type> types = typeService.getNewsType();
         map.put("newsType", types);
 
         return "front/oneNews";
     }
 
     @RequestMapping(value = "/showProduct/{id}", method = RequestMethod.GET)
-    public String showOneProduct(@PathVariable Integer id,
-                                 ModelMap map) {
+         public String showOneProduct(@PathVariable Integer id,
+                                      ModelMap map) {
 
         List<Type> productTypes = typeService
                 .getSubTypeListUnderType(TypeEnum.PRODUCT_TYPE.getId());
         map.put("productTypes", productTypes);
         List<Type> projectTypes = typeService
                 .getSubTypeListUnderType(TypeEnum.PROJECT_TYPE.getId());
-        map.put("projectList", projectTypes);
+        map.put("projectTypes", projectTypes);
 
         Product p = productService.showOne(id);
         map.put("product", p);
@@ -103,6 +102,7 @@ public class FrontIndexController extends AbstractContoller {
 
         return "front/oneProduct";
     }
+
 
     @RequestMapping(value = "/news/search", method = RequestMethod.POST)
     public String searchNews(@RequestParam Integer catid,
@@ -122,7 +122,7 @@ public class FrontIndexController extends AbstractContoller {
         map.put("newsList", newsList);
         map.put("query", NewsController.appendParameter(key, null, null, catid));
 
-        List<Type> typeList = typeService.getSubTypeListUnderType(TypeEnum.NEWS_TYPE.getId());
+        List<Type> typeList = typeService.getNewsType();
         map.put("newsType",typeList);
         return "front/newsList";
     }
@@ -142,7 +142,7 @@ public class FrontIndexController extends AbstractContoller {
         newsList = newsService.query(pageNo,pageSize,null,null,null,typeId);
         map.put("newsList", newsList);
         map.put("query", NewsController.appendParameter(null, null, null, typeId));
-        List<Type> typeList = typeService.getSubTypeListUnderType(TypeEnum.NEWS_TYPE.getId());
+        List<Type> typeList = typeService.getNewsType();
         map.put("newsType",typeList);
         return "front/newsList";
     }
@@ -160,6 +160,15 @@ public class FrontIndexController extends AbstractContoller {
         map.put("page",page);
         List<Product> products = productService.query(pageNo,pic_page_size,null,id);
         map.put("productList",products);
+
+        List<Type> productTypes = typeService
+                .getSubTypeListUnderType(TypeEnum.PRODUCT_TYPE.getId());
+        map.put("productTypes", productTypes);
+        List<Type> projectTypes = typeService
+                .getSubTypeListUnderType(TypeEnum.PROJECT_TYPE.getId());
+        map.put("projectTypes", projectTypes);
+
+
         return "front/productList";
     }
 
@@ -176,7 +185,59 @@ public class FrontIndexController extends AbstractContoller {
         map.put("page",page);
         List<Project> projects = projectService.query(pageNo,pic_page_size,null,id);
         map.put("productList",projects);
+
+        List<Type> productTypes = typeService
+                .getSubTypeListUnderType(TypeEnum.PRODUCT_TYPE.getId());
+        map.put("productTypes", productTypes);
+        List<Type> projectTypes = typeService
+                .getSubTypeListUnderType(TypeEnum.PROJECT_TYPE.getId());
+        map.put("projectTypes", projectTypes);
+
         return "front/projectList";
+    }
+
+    @RequestMapping(value = "/project/all",method = RequestMethod.GET)
+    public String allProjectList(@RequestParam(required = false) Integer pageNo,
+                                 ModelMap map) {
+        if (pageNo == null || pageNo <= 0) {
+            pageNo = 1;
+        }
+        long count = projectService.countAll();
+        PageUtil page = new PageUtil(count,pic_page_size,pageNo);
+        map.put("page",page);
+        List<Project> projects = projectService.listAll(pageNo,pic_page_size);
+        map.put("productList",projects);
+
+        List<Type> productTypes = typeService
+                .getSubTypeListUnderType(TypeEnum.PRODUCT_TYPE.getId());
+        map.put("productTypes", productTypes);
+        List<Type> projectTypes = typeService
+                .getSubTypeListUnderType(TypeEnum.PROJECT_TYPE.getId());
+        map.put("projectTypes", projectTypes);
+
+        return "front/projectList";
+    }
+
+    @RequestMapping(value = "/product/all",method = RequestMethod.GET)
+    public String allProductList(@RequestParam(required = false) Integer pageNo,
+                                 ModelMap map) {
+        if (pageNo == null || pageNo <= 0) {
+            pageNo = 1;
+        }
+        long count = productService.countAll();
+        PageUtil page = new PageUtil(count,pic_page_size,pageNo);
+        map.put("page",page);
+        List<Product> products = productService.listAll(pageNo,pic_page_size);
+        map.put("productList",products);
+
+        List<Type> productTypes = typeService
+                .getSubTypeListUnderType(TypeEnum.PRODUCT_TYPE.getId());
+        map.put("productTypes", productTypes);
+        List<Type> projectTypes = typeService
+                .getSubTypeListUnderType(TypeEnum.PROJECT_TYPE.getId());
+        map.put("projectTypes", projectTypes);
+
+        return "front/productList";
     }
 
     @RequestMapping(value = "/certificate",method = RequestMethod.GET)
@@ -204,7 +265,7 @@ public class FrontIndexController extends AbstractContoller {
         map.put("productTypes", productTypes);
         List<Type> projectTypes = typeService
                 .getSubTypeListUnderType(TypeEnum.PROJECT_TYPE.getId());
-        map.put("projectList", projectTypes);
+        map.put("projectTypes", projectTypes);
 
         Project p = projectService.showOne(id);
         map.put("product", p);

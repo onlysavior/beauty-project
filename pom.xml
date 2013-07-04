@@ -223,15 +223,35 @@
             <version>2.3.0-jaxb-1.0.6</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-ehcache</artifactId>
+            <version>4.1.2.Final</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>net.sf.ehcache</groupId>
+                    <artifactId>ehcache</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.9.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
+            <version>1.9.12</version>
+        </dependency>
 	</dependencies>
 
 	<build>
 		<finalName>gzm</finalName>
 		<plugins>
-
-
-
-               <!--  <plugin>
+                <!--
+                <plugin>
                     <groupId>com.mysema.maven</groupId>
                     <artifactId>maven-apt-plugin</artifactId>
                     <version>1.0</version>
@@ -242,13 +262,13 @@
                                 <goal>process</goal>
                             </goals>
                             <configuration>
-                                <processor>com.mysema.query.apt.jpa.JPAAnnotationProcessor</processor>
+                                <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
                                 <outputDirectory>target/metamodel</outputDirectory>
                             </configuration>
                         </execution>
                     </executions>
                 </plugin>
- -->
+              -->
 
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -256,14 +276,13 @@
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
-					<compilerArguments>
-						<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
-					</compilerArguments>
                     <encoding>UTF-8</encoding>
 				</configuration>
+
 			</plugin> 
 
-			<!-- <plugin>
+            <!--
+			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
 				<version>1.3</version>
@@ -281,7 +300,8 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin> -->
+			</plugin>
+            -->
 
 			<plugin>
 				<artifactId>maven-eclipse-plugin</artifactId>

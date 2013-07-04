@@ -28,6 +28,10 @@ public class TypeService {
         return typeDao.getSubTypeListByType(id);
     }
 
+    public List<Type> getNewsType() {
+        return typeDao.getNewsType();
+    }
+
     public void addType(String name, Integer parentType) {
         Type type = new Type();
         type.setName(name);
@@ -43,5 +47,9 @@ public class TypeService {
    
     public void saveType(Type t) {
         typeDao.save(t);
+    }
+
+    public Type getTypeByNameAndParent(String name, Integer id) {
+       return typeDao.getTypeByNameAndParent(name, id);
     }
 }

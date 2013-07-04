@@ -17,13 +17,16 @@ public interface TypeDao extends PagingAndSortingRepository<Type,Integer> {
 	@Query("update Type t set t.name = ?1 where t.id = ?2 ")
 	public void update(String name, Integer id);
 
-    @Query("select t from Type t where  parentType = ?1")
+    @Query("select t from Type t where  t.parentType = ?1")
     public List<Type> getSubTypeListByType(Integer parentType);
     
-    @Query("select t from Type t where  parentType != 0")
+    @Query("select t from Type t where  t.parentType != 0")
     public List<Type> getAllTypes();
 
-   
+    @Query("select t from Type t where t.parentType = ?2 and t.name = ?1")
+    public Type getTypeByNameAndParent(String name, Integer id);
 
+    @Query("select t from Type t where t.parentType = 3 and t.id != 7")
+    public List<Type> getNewsType();
     
 }

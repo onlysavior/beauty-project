@@ -51,8 +51,8 @@
                 </script>
 
                 <div id="showpages">
-                    <c:set scope="request" var="navUrl" value="/backend/newsList" />
-                    <c:set scope="request" var="navUrlEnd" value="/front/news/typeproduct/${typeId}"/>
+                    <c:set scope="request" var="navUrl" value="${website}front/typeproduct/${typeId}" />
+                    <c:set scope="request" var="navUrlEnd" value=""/>
                     <c:set scope="request" var="currentPage" value="pageNo"/>
                     <%@ include file="../../common/page.jsp" %>
                 </div>

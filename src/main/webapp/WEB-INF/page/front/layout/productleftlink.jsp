@@ -17,7 +17,7 @@
                 <link href="<c:url value='/templates/css/productclass_menu703.css' />" rel="stylesheet" type="text/css"/>
                 <div class="productclass_menu703">
                    <c:forEach items="${productTypes}" var="i">
-                     <a href="#" target="_self" class="productclass_menu703">${i.name}</a>
+                     <a href="${website}front/typeproduct/${i.id}" target="_self" class="productclass_menu703">${i.name}</a>
                    </c:forEach>
                 </div>
 
@@ -43,8 +43,8 @@
 
                 <link href="<c:url value='/templates/css/productclass_menu703.css' />" rel="stylesheet" type="text/css"/>
                 <div class="productclass_menu703">
-                   <c:forEach items="${projectList}" var="i">
-                    <a href="#" target="_self" class="productclass_menu703">${i.name}</a>
+                   <c:forEach items="${projectTypes}" var="i">
+                    <a href="${website}front/typeproject/${i.id}" target="_self" class="productclass_menu703">${i.name}</a>
                    </c:forEach>
                 </div>
 

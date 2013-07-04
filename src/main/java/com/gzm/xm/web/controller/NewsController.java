@@ -29,8 +29,7 @@ import java.util.List;
 public class NewsController extends AbstractContoller{
     @Autowired
     private NewsService newsService;
-    @Autowired
-    private TypeService typeService;
+
 
     @RequestMapping(value = "/addNews",method = RequestMethod.GET)
     public String toNewAddPage() {
@@ -53,7 +52,7 @@ public class NewsController extends AbstractContoller{
                           HttpServletRequest request)
             throws Exception {
         String fileName = null;
-        if (file != null) {
+        if (!file.isEmpty()) {
             fileName = new Date().getTime() + "."
                     + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."),file.getOriginalFilename().length());
             String path = request.getRealPath("");

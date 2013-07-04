@@ -193,8 +193,8 @@
 
                     <link href="<c:url value='/templates/css/newsclass_menu703.css' />" rel="stylesheet" type="text/css" />
                     <div class="newsclass_menu703">
-                        <c:forEach items="${newsTypes}" var="i">
-                            <a href="${website}/front/news/typenews/${i.id}" target="_self" class="newsclass_menu703">${i.name}</a>
+                        <c:forEach items="${newsType}" var="i">
+                            <a href="${website}front/news/typenews/${i.id}" target="_self" class="newsclass_menu703">${i.name}</a>
                         </c:forEach>
                     </div>
 
@@ -222,9 +222,8 @@
                 </div>
                 <div style="padding:0px">
                     <div style="width:100%;text-align:center;font:12px/20px Arial, Helvetica, sans-serif">
-                        <p style="MARGIN: 0px; COLOR: #ffffff">健康美容SPA养生馆 Copyright(C)2009-2010</p>
+                        <p style="MARGIN: 0px; COLOR: #ffffff">古之美美容养生馆 Copyright(C)2009-2010</p>
                     </div>
-
                 </div>
             </div>
 

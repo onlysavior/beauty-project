@@ -20,6 +20,7 @@ public class IndexController extends AbstractContoller {
     @Qualifier("imageCaptchaService")
     private ImageCaptchaService imageCaptchaService;
 
+    /*
     @RequestMapping(value = "/back/index",method = RequestMethod.GET)
     public String goBackIndex() {
        return "admin/backend";

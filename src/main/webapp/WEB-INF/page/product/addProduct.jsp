@@ -71,7 +71,7 @@
 		    	<select name="type">
                 <c:if test="${typeList != null}">
                     <c:forEach items="${typeList}" var="i">
-                        <option value="${i.type}">${i.name}</option>
+                        <option value="${i.id}">${i.name}</option>
                     </c:forEach>
                 </c:if>
             </select>

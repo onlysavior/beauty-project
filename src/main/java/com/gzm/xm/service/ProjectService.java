@@ -5,11 +5,13 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import com.gzm.xm.common.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -36,7 +38,8 @@ public class ProjectService {
                            Integer type) {
         Project project = new Project();
         project.setDescription(description);
-        project.setPicUrl(picUrl);
+        if (StringUtils.hasText(picUrl))
+            project.setPicUrl(picUrl);
         project.setType(typeDao.findOne(type));
 
         productDao.save(project);
@@ -95,6 +98,23 @@ public class ProjectService {
         if(where != null)
             count.where(where);
         return em.createQuery(count).getSingleResult();
+    }
+
+    public long countAll() {
+        return  productDao.count();
+    }
+
+    public List<Project> listAll(int pageNo,
+                                 int size) {
+        int firstPosistion;
+        if (pageNo == 1) {
+            firstPosistion = 0;
+        } else {
+            firstPosistion = (pageNo - 1) * size;
+        }
+        EntityManager em = entityManagerFactory.createEntityManager();
+        Query query = em.createNativeQuery("select * from project order by id desc",Project.class);
+        return query.setFirstResult(firstPosistion).setMaxResults(size).getResultList();
     }
 
     public List<Project> query(int pageNo,

@@ -10,8 +10,6 @@ public class LoginIntercepter  extends HandlerInterceptorAdapter {
 	    public boolean preHandle(HttpServletRequest request,
 	                             HttpServletResponse response,
 	                             Object handler) throws Exception {
-	    	System.out.print("我被拦截了");
-	       
 	    	if(request.getSession().getAttribute("uid") == null){
 	    		response.sendRedirect(request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/"+"backend/login"); 
 	    		return false;

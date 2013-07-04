@@ -130,14 +130,14 @@
                             <div class="productquery_2_left">
                                 <div class="fang" style="width:145px;height:145px">
                                     <div class="picFit" style="width:145px;height:145px">
-                                        <a href="/front/showProduct/${i.id}" target="_self"><img
+                                        <a href="${website}front//project/showOne/${i.id}" target="_self"><img
                                                 src="${i.picUrl}" style="width:145px;height:145px"
                                                 border="0"/></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="productquery_2_right">
-                                <a href="/front/showProduct/${i.id}" target="_self" class="prodtitle">${i.description}</a>
+                                <a href="${website}front//project/showOne/${i.id}" target="_self" class="prodtitle">${i.description}</a>
 		<span class="prop">
 
 		</span>
@@ -151,8 +151,8 @@
                     </script>
 
                     <div id="showpages">
-                        <c:set scope="request" var="navUrl" value="/front/typeproject/{typeId}" />
-                        <c:set scope="request" var="navUrlEnd" value="${query}"/>
+                        <c:set scope="request" var="navUrl" value="${website}front/typeproject/${typeId}" />
+                        <c:set scope="request" var="navUrlEnd" value="&${query}"/>
                         <c:set scope="request" var="currentPage" value="pageNo"/>
                         <%@ include file="../../common/page.jsp" %>
                     </div>
@@ -166,41 +166,7 @@
 
     <!-- 产品逐级分类 -->
 
-    <div id='pdv_5190' class='pdv_class' title='分类导航' style='width:222px;height:182px;top:5px;left:5px; z-index:9'>
-        <div id='spdv_5190' class='pdv_content' style='overflow:visible;width:100%;'>
-            <div class="pdv_border" style="border:1px #ffd2a3 solid;background:#fff;padding:0px;margin:0px;height:100%">
-                <div style="background:#fff5dd;height:26px;border-bottom:1px #ffd2a3 solid">
-                    <div style="float:left;background:url(../../base/border/509/images/li.gif) 10px no-repeat;padding-left:28px;color:#555;text-align:left;font:12px/26px simsun;">
-                        分类导航
-                    </div>
-                    <div style="float:right;margin-right:8px">
-                        <a href="-1" style="font:12px/24px simsun;color:#555;display:none">更多&gt;&gt;</a>
-                    </div>
-                </div>
-                <div style="padding:12px">
-
-                    <link href="<c:url value='/templates/css/productclass7003.css' />" rel="stylesheet" type="text/css"/>
-                    <ul class="productclass">
-                        <c:forEach items="${projectType}" var="i">
-                            <li class="productclass7003">
-                                <a href="/front/typeproject/${i.id}" target="_self" class="productclass7003">${i.name}</a>
-                            </li>
-                        </c:forEach>
-                    </ul>
-
-                    <ul class="productclass">
-                        <c:forEach items="${productType}" var="j">
-                            <li class="productclass7003">
-                                <a href="/front/typeproject/${i.id}" target="_self" class="productclass7003">${i.name}</a>
-                            </li>
-                        </c:forEach>
-                    </ul>
-
-                </div>
-            </div>
-
-        </div>
-    </div>
+    <tiles:insertAttribute name="productleftlink" />
 </div>
 <div id='bottom' style='width:990px;height:40px;background:url(<c:url value='/effect/source/bg/x09.jpg' />) #000000'>
 
@@ -228,7 +194,7 @@
                 </div>
                 <div style="padding:0px">
                     <div style="width:100%;text-align:center;font:12px/20px Arial, Helvetica, sans-serif">
-                        <p style="MARGIN: 0px; COLOR: #ffffff">健康美容SPA养生馆 Copyright(C)2009-2010</p>
+                        <p style="MARGIN: 0px; COLOR: #ffffff">古之美美容养生馆 Copyright(C)2009-2010</p>
                     </div>
 
                 </div>

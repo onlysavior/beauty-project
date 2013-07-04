@@ -33,8 +33,7 @@ import com.gzm.xm.service.TypeService;
 public class ProductController extends AbstractContoller{
     @Autowired
     private ProductService productService;
-    @Autowired
-    private TypeService typeService;
+
 
     @RequestMapping(value = "/toAddProduct",method = RequestMethod.GET)
     public String toAddProduct(){
@@ -49,20 +48,24 @@ public class ProductController extends AbstractContoller{
                              @RequestParam String include,
                              @RequestParam String volume,
                              @RequestParam String description,
-                             @RequestParam MultipartFile file,
+                             @RequestParam(required = false) MultipartFile file,
                              MultipartHttpServletRequest request) throws IOException {
-        String fileName = new Date().getTime() + "."
-                + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".")+1,file.getOriginalFilename().length());
-        String path = request.getRealPath("");
-        File container = new File((path + BASE_UPLOAD_FOLDER));
-        if(!container.exists()){
-            container.mkdirs();
+        String fileName = null;
+        if (!file.isEmpty()) {
+            fileName = new Date().getTime() + "."
+                    + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".")+1,file.getOriginalFilename().length());
+            String path = request.getRealPath("");
+            File container = new File((path + BASE_UPLOAD_FOLDER));
+            if(!container.exists()){
+                container.mkdirs();
+            }
+            File dist = new File(container,fileName);
+            FileCopyUtils.copy(file.getBytes(), dist);
         }
-        File dist = new File(container,fileName);
-        FileCopyUtils.copy(file.getBytes(), dist);
 
         productService.addProduct(name,function,price,include,volume,description,
-                request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER+fileName,type);
+                fileName != null ? request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER+fileName :null
+                ,type);
 
        return "redirect:productList";
     }

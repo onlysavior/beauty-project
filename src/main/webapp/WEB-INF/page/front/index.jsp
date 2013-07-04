@@ -177,11 +177,11 @@
                 <div class="productlist">
                     <div class="fang" style="width:135px;height:115px">
                         <div class="picFit" style="width:135px;height:115px">
-                            <a href="${website}front//showProduct/${p.id}" target="_self" ><img src="<c:url value='${p.picUrl}' />" style="width:135px;height:115px" border="0" /></a>
+                            <a href="${website}front/showProduct/${p.id}" target="_self" ><img src="<c:url value='${p.picUrl}' />" style="width:135px;height:115px" border="0" /></a>
                         </div>
                     </div>
                     <div class="title">
-                        <a href="${website}front//showProduct/${p.id}" target="_self" class="title" >${p.name}</a>
+                        <a href="${website}front/showProduct/${p.id}" target="_self" class="title" >${p.name}</a>
                     </div>
                 </div>
                 </c:forEach>
@@ -200,7 +200,7 @@
             <div style="background:#fff5dd;height:26px;border-bottom:1px #ffd2a3 solid">
                 <div style="float:left;background:url(<c:url value='/base/border/509/images/li.gif' />) 10px no-repeat;padding-left:28px;color:#555;text-align:left;font:12px/26px simsun;">企业新闻</div>
                 <div style="float:right;margin-right:8px">
-                    <a href="${website}front//news/typenews/1" style="font:12px/24px simsun;color:#555;display:inline">更多&gt;&gt;</a>
+                    <a href="${website}front/news/typenews/1" style="font:12px/24px simsun;color:#555;display:inline">更多&gt;&gt;</a>
                 </div>
             </div>
             <div  style="padding:12px">
@@ -212,7 +212,7 @@
                             <div class="time">
                               <fmt:formatDate value="${i.updatetime}" pattern="yyyy/MM/dd" />
                             </div>
-                            <a href="${website}front//news/showOne/${i.id}" target="_self" class="newslist_time"   >${i.title}</a>
+                            <a href="${website}front/news/showOne/${i.id}" target="_self" class="newslist_time"   >${i.title}</a>
                         </li>
                     </c:forEach>
 
@@ -277,7 +277,7 @@
             <div style="background:#fff5dd;height:26px;border-bottom:1px #ffd2a3 solid">
                 <div style="float:left;background:url(<c:url value='/base/border/509/images/li.gif' />) 10px no-repeat;padding-left:28px;color:#555;text-align:left;font:12px/26px simsun;">行业资讯</div>
                 <div style="float:right;margin-right:8px">
-                    <a href="${website}front//typenews/2" style="font:12px/24px simsun;color:#555;display:inline">更多&gt;&gt;</a>
+                    <a href="${website}front/news/typenews/2" style="font:12px/24px simsun;color:#555;display:inline">更多&gt;&gt;</a>
                 </div>
             </div>
             <div  style="padding:12px">
@@ -289,7 +289,7 @@
                             <div class="time">
                                 <fmt:formatDate value="${i.updatetime}" pattern="yyyy/MM/dd" />
                             </div>
-                            <a href="${website}front//new/showOne/${i.id}" target="_self" class="newslist_time">${i.title}</a>
+                            <a href="${website}front/news/showOne/${i.id}" target="_self" class="newslist_time">${i.title}</a>
                         </li>
                     </c:forEach>
                 </ul>
@@ -344,7 +344,7 @@
                 </div>
                 <div style="padding:0px">
                     <div style="width:100%;text-align:center;font:12px/20px Arial, Helvetica, sans-serif">
-                        <p style="MARGIN: 0px; COLOR: #ffffff">健康美容SPA养生馆 Copyright(C)2009-2010</p>
+                        <p style="MARGIN: 0px; COLOR: #ffffff">古之美美容养生馆 Copyright(C)2009-2010</p>
                     </div>
 
                 </div>

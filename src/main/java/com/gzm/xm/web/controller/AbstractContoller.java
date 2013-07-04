@@ -1,9 +1,16 @@
 package com.gzm.xm.web.controller;
 
+import com.gzm.xm.common.entity.Type;
+import com.gzm.xm.common.enums.TypeEnum;
+import com.gzm.xm.common.util.StaticAutoWired;
+import com.gzm.xm.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.gzm.xm.service.LoginService;
+
+import java.util.HashMap;
+import java.util.Map;
 //import com.gzm.xm.service.ReplyService;
 
 
@@ -22,5 +29,18 @@ public class AbstractContoller {
 
     protected static final int GZM_JIESHAO_ID = 1;
     protected static final int product_pagesize = 12;
+    public static final String ourNewsKey = "our";
+    public static final String indNewsKey = "ind";
+
+    @Autowired
+    protected TypeService typeService;
+
+    //ugly
+    public static Map<String,Integer> typeCache = new HashMap<String, Integer>();
+
+    static {
+        typeCache.put("our",1);
+        typeCache.put("ind",2);
+    }
 
 }

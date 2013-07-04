@@ -43,20 +43,23 @@ public class ProjectController extends AbstractContoller{
     @RequestMapping(value = "/addProject",method = RequestMethod.POST)
     public String addProject(@RequestParam String description,
                              @RequestParam Integer type,
-                             @RequestParam MultipartFile file,
+                             @RequestParam(required = false) MultipartFile file,
                              HttpServletRequest request) throws IOException {
-        String fileName = new Date().getTime() + "."
-                + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".")+1,file.getOriginalFilename().length());
-        String path = request.getRealPath("");
-        File container = new File((path + BASE_UPLOAD_FOLDER));
-        if(!container.exists()){
-            container.mkdirs();
+        String fileName = null;
+        if (!file.isEmpty()) {
+            fileName = new Date().getTime() + "."
+                    + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".")+1,file.getOriginalFilename().length());
+            String path = request.getRealPath("");
+            File container = new File((path + BASE_UPLOAD_FOLDER));
+            if(!container.exists()){
+                container.mkdirs();
+            }
+            File dist = new File(container,fileName);
+            FileCopyUtils.copy(file.getBytes(), dist);
         }
-        File dist = new File(container,fileName);
-        FileCopyUtils.copy(file.getBytes(), dist);
 
         projectService.addProduct(description,
-                request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER + fileName,
+                (!file.isEmpty())?request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER + fileName : null,
                 type);
 
         return "redirect:projectList";

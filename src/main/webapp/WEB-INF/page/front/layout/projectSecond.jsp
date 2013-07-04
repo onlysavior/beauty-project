@@ -47,7 +47,7 @@
                 </script>
 
                 <div id="showpages">
-                    <c:set scope="request" var="navUrl" value="${website }backend/newsList" />
+                    <c:set scope="request" var="navUrl" value="${website}backend/newsList" />
                     <c:set scope="request" var="navUrlEnd" value="${website}front/news/typeproduct/${typeId}"/>
                     <c:set scope="request" var="currentPage" value="pageNo"/>
                     <%@ include file="../../common/page.jsp" %>

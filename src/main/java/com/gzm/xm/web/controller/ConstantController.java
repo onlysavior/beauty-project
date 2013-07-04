@@ -46,18 +46,21 @@ public class ConstantController extends AbstractContoller{
                               String content,
                               MultipartFile file,
                               HttpServletRequest request) throws Exception{
-        String fileName = new Date().getTime() + "."
-                + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."),file.getOriginalFilename().length());
-        String path = request.getRealPath("");
-        File container = new File((path + BASE_UPLOAD_FOLDER));
-        if(!container.exists()){
-            container.mkdirs();
+        String fileName = null;
+        if (!file.isEmpty()) {
+            fileName = new Date().getTime() + "."
+                    + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."),file.getOriginalFilename().length());
+            String path = request.getRealPath("");
+            File container = new File((path + BASE_UPLOAD_FOLDER));
+            if(!container.exists()){
+                container.mkdirs();
+            }
+            File dist = new File(container,fileName);
+            FileCopyUtils.copy(file.getBytes(), dist);
         }
-        File dist = new File(container,fileName);
-        FileCopyUtils.copy(file.getBytes(), dist);
         constantService.saveConstant(title,
                 content,
-                request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER+fileName);
+                fileName != null ?request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER+fileName:null);
         return "redirect:constantList";
     }
 

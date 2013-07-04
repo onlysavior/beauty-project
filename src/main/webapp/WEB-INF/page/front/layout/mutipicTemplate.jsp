@@ -21,10 +21,10 @@
                                 <li>
                                     <div class="fang" style="width:190px;height:140px">
                                         <div class="picFit" style="width:190px;height:140px">
-                                            <a href="/front/pic/${i.id}" target="_self" ><img src="${i.picUrl}" style="width:190px;height:140px" border="0" /></a>
+                                            <a href="${website}front/pic/${i.id}" target="_self" ><img src="${i.picUrl}" style="width:190px;height:140px" border="0" /></a>
                                         </div>
                                     </div>
-                                    <div class="title"><a href="/front/pic/${i.id}" target="_self">${i.title}</a></div>
+                                    <div class="title"><a href="${website}front/pic/${i.id}" target="_self">${i.title}</a></div>
                                 </li>
                             </c:forEach>
                             </ul>
@@ -43,7 +43,7 @@
                 </div>
                 <div id="showpages" >
                     <c:set scope="request" var="navUrl" value="${website}front/pic" />
-                    <c:set scope="request" var="navUrlEnd" value="${query}"/>
+                    <c:set scope="request" var="navUrlEnd" value="&${query}"/>
                     <c:set scope="request" var="currentPage" value="pageNo"/>
                     <%@ include file="../../common/page.jsp" %>
                 </div>

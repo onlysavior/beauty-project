@@ -61,7 +61,7 @@
 		</ul>
  	</div>
  	<div class="span9">
-    <form id="form" action="${website}backend/addNews" method="post" class="form-horizontal">
+    <form id="form" action="${website}backend/addNews" method="post" class="form-horizontal" enctype="multipart/form-data">
     	<div class="control-group">    
 		    <label class="control-label" >
 				标题：
@@ -94,7 +94,7 @@
 		    	<select name="type">
                 <c:if test="${typeList != null}">
                     <c:forEach items="${typeList}" var="i">
-                        <option value="${i.type}">${i.name}</option>
+                        <option value="${i.id}">${i.name}</option>
                     </c:forEach>
                 </c:if>
             </select>

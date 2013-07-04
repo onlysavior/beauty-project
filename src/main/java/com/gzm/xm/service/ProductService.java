@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -40,7 +41,8 @@ public class ProductService {
         product.setFunction(function);
         product.setInclude(include);
         product.setName(name);
-        product.setPicUrl(picUrl);
+        if (StringUtils.hasText(picUrl))
+            product.setPicUrl(picUrl);
         product.setVolume(volume);
         product.setType(typeDao.findOne(type));
 
@@ -72,6 +74,23 @@ public class ProductService {
         if(title != null)
             count.where(title);
         return em.createQuery(count).getSingleResult();
+    }
+
+    public long countAll() {
+        return productDao.count();
+    }
+
+    public List<Product> listAll(Integer pageNo, Integer size) {
+        int firstPosistion;
+        if (pageNo == 1) {
+            firstPosistion = 0;
+        } else {
+            firstPosistion = (pageNo - 1) * size;
+        }
+
+        EntityManager em = entityManagerFactory.createEntityManager();
+        Query query = em.createNativeQuery("select * from product order by id desc",Product.class);
+        return query.setFirstResult(firstPosistion).setMaxResults(size).getResultList();
     }
 
     public long count(String key,Integer typeId) {

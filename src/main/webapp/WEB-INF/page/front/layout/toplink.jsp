@@ -17,27 +17,27 @@
             <div class="mainmenuright"></div>
 
             <div id="menumain_" class="menumain">
-                <a href="#">网站首页</a>
+                <a href="${website}front/index">网站首页</a>
             </div>
 
 
             <div id="menumain_" class="menumain">
-                <a href="#">公司简介</a>
+                <a href="${website}front/showConstant/1">公司简介</a>
             </div>
 
 
             <div id="menumain_" class="menumain">
-                <a href="#">新闻动态</a>
+                <a href="${website}front/news/typenews/1">新闻动态</a>
             </div>
 
 
             <div id="menumain_" class="menumain">
-                <a href="#">服务项目</a>
+                <a href="${website}front/typeproject/2">服务项目</a>
             </div>
 
 
             <div id="menumain_" class="menumain">
-                <a href="#">产品展示</a>
+                <a href="${website}front/typeproduct/1">产品展示</a>
             </div>
 
 

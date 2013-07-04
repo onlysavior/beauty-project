@@ -4,6 +4,7 @@ import com.gzm.xm.common.entity.Constant;
 import com.gzm.xm.dao.ConstantDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -22,7 +23,8 @@ public class ConstantService {
         Constant constant = new Constant();
         constant.setContent(content);
         constant.setTitle(title);
-        constant.setPicUrl(picUrl);
+        if (StringUtils.hasText(picUrl))
+            constant.setPicUrl(picUrl);
         constantDao.save(constant);
     }
 
