@@ -44,7 +44,8 @@ public class CertificateController extends AbstractContoller {
         File dist = new File((path + BASE_UPLOAD_FOLDER), fileName);
         FileCopyUtils.copy(file.getBytes(), dist);
 
-        certificateService.addProduct(description, request.getAttribute("baseUrl") + SHOW_UPLOAD_FOLDER + fileName);
+        //certificateService.addProduct(description, request.getAttribute("baseUrl") + SHOW_UPLOAD_FOLDER + fileName);
+        certificateService.addProduct(description, SHOW_UPLOAD_FOLDER + fileName);
 
         return "redirect:certificateList";
     }

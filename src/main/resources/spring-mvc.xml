@@ -40,6 +40,6 @@
         <property name="suffix" value=".jsp" />
         <property name="prefix" value="/WEB-INF/page/"/>
     </bean>
-    <bean class="com.octo.captcha.service.image.DefaultManageableImageCaptchaService" id="imageCaptchaService"/>
-
+   <!--  <bean class="com.octo.captcha.service.image.DefaultManageableImageCaptchaService" id="imageCaptchaService"/>
+ -->
 </beans>

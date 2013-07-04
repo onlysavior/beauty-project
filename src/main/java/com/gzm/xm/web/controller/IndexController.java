@@ -2,8 +2,6 @@ package com.gzm.xm.web.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,16 +9,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gzm.xm.common.entity.User;
-import com.octo.captcha.service.image.ImageCaptchaService;
+
 
 @Controller
 public class IndexController extends AbstractContoller {
 
-    @Autowired
+   /* @Autowired
     @Qualifier("imageCaptchaService")
-    private ImageCaptchaService imageCaptchaService;
+    private ImageCaptchaService imageCaptchaService;*/
 
-    /*
+    
     @RequestMapping(value = "/back/index",method = RequestMethod.GET)
     public String goBackIndex() {
        return "admin/backend";

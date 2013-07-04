@@ -17,7 +17,7 @@
 
             <a href="#" target="_self">联系方法</a>|
 
-            <a href="#" target="_self">友情链接</a
+            <a href="#" target="_self">友情链接</a>
         </div>
 
 

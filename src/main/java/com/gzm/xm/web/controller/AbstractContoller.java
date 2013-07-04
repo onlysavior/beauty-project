@@ -1,16 +1,13 @@
 package com.gzm.xm.web.controller;
 
-import com.gzm.xm.common.entity.Type;
-import com.gzm.xm.common.enums.TypeEnum;
-import com.gzm.xm.common.util.StaticAutoWired;
-import com.gzm.xm.service.TypeService;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.gzm.xm.service.LoginService;
-
-import java.util.HashMap;
-import java.util.Map;
+import com.gzm.xm.service.TypeService;
 //import com.gzm.xm.service.ReplyService;
 
 

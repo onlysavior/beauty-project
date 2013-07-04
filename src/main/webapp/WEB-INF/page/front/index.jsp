@@ -313,12 +313,12 @@
             </div>
             <div  style="padding:12px">
 
-                <div style="font:12px/20px simsun">地址：杭州市莫干山路2168号<br />
-                    邮编: 300009<br />
-                    电话：0571-98765432<br />
-                    传真：0573-12345678<br />
-                    网址: www.abcde.com<br />
-                    邮箱: boss@gmail.com</div>
+                <div style="font:12px/20px simsun">地址：厦门市嘉禾路332号冠宏花园3号楼407室(吕厝天虹正对面)<br />
+                    邮编: 361009<br />
+                    电话：13328402618<br />
+        QQ ：2689167815<br />
+                    网址: http://guzhimei.cn<br />
+                    邮箱: 2689167815@qq.com</div>
 
             </div>
         </div>
