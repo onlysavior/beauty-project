@@ -31,7 +31,7 @@
 					图片：
 				</label>    
 				<div class="controls">      
-			    	<img src="${project.picUrl}">
+			    	<img src="${website}${project.picUrl}">
 			    </div>
 		    </div>
 		     <div class="control-group">    

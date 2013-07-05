@@ -38,7 +38,7 @@
 				图片：
 			</label>    
 			<div class="controls">   
-				 ${constant.picUrl}
+				 ${website}${constant.picUrl}
 		    </div>
 	    </div>
 	     <div class="control-group">    

@@ -59,7 +59,7 @@ public class ProjectController extends AbstractContoller{
         }
 
         projectService.addProduct(description,
-                (!file.isEmpty())?request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER + fileName : null,
+                (!file.isEmpty())? SHOW_UPLOAD_FOLDER + fileName : null,
                 type);
 
         return "redirect:projectList";

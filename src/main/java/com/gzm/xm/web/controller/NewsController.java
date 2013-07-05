@@ -65,7 +65,7 @@ public class NewsController extends AbstractContoller{
         }
         if (fileName != null) {
             newsService.addNews(title, content, type,
-                request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER+fileName);
+                SHOW_UPLOAD_FOLDER+fileName);
         } else {
             newsService.addNews(title,content,type);
         }

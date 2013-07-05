@@ -64,7 +64,7 @@ public class ProductController extends AbstractContoller{
         }
 
         productService.addProduct(name,function,price,include,volume,description,
-                fileName != null ? request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER+fileName :null
+                fileName != null ? SHOW_UPLOAD_FOLDER+fileName :null
                 ,type);
 
        return "redirect:productList";

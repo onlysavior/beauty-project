@@ -21,7 +21,7 @@
                                 <li>
                                     <div class="fang" style="width:190px;height:140px">
                                         <div class="picFit" style="width:190px;height:140px">
-                                            <a href="${website}front/pic/${i.id}" target="_self" ><img src="${i.picUrl}" style="width:190px;height:140px" border="0" /></a>
+                                            <a href="${website}front/pic/${i.id}" target="_self" ><img src="${website}${i.picUrl}" style="width:190px;height:140px" border="0" /></a>
                                         </div>
                                     </div>
                                     <div class="title"><a href="${website}front/pic/${i.id}" target="_self">${i.title}</a></div>

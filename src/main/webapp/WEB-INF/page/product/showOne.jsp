@@ -27,7 +27,7 @@
 		    <label class="control-label" >
 			</label>    
 			<div class="controls">      
-		    	<img src="${product.picUrl}">
+		    	<img src="${website}${product.picUrl}">
 		    </div>
 	    </div>
 	     <div class="control-group">    

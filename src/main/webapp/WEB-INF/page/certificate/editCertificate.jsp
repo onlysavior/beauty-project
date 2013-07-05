@@ -68,7 +68,7 @@
 					图片
 				</label>    
 				<div class="controls">      
-			    	<img src="${p.picUrl}">
+			    	<img src="${website}${p.picUrl}">
 		        	<input type="file" name="file">
 			    </div>
 		    </div>

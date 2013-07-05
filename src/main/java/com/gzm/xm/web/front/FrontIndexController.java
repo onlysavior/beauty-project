@@ -244,7 +244,7 @@ public class FrontIndexController extends AbstractContoller {
     public String certificateList(@RequestParam(required = false) Integer pageNo,
                                   ModelMap map) {
         List<Certificate> certificates = certificateService.query(pageNo,
-                pic_page_size,null);
+                1000,null);
         map.put("picList",certificates);
         return "front/certificate";
     }

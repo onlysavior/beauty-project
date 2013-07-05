@@ -63,7 +63,7 @@
         <div class="span9">
             <form id="form" action="${website }backend/saveConstant" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="id" value="${constant.id}">
-                <input type="hidden" name="picUrl" value="${constant.picUrl}">
+                <input type="hidden" name="picUrl" value="${website}${constant.picUrl}">
                 <div class="control-group">
                     <label class="control-label" >
                         标题：

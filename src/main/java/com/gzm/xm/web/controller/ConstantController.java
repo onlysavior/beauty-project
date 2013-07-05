@@ -60,7 +60,7 @@ public class ConstantController extends AbstractContoller{
         }
         constantService.saveConstant(title,
                 content,
-                fileName != null ?request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER+fileName:null);
+                fileName != null ?SHOW_UPLOAD_FOLDER+fileName:null);
         return "redirect:constantList";
     }
 

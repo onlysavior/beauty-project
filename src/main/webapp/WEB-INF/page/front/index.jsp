@@ -95,11 +95,6 @@
                     </div>
                 </div>
                 <div style="padding:0px">
-
-
-                    <%-- <a href="#"><img src="<c:url value='/advs/pics/20090623/1245725370.gif' />" border="0" /></a> --%>
-
-
                 </div>
             </div>
 
@@ -240,7 +235,7 @@
             <div style="padding:3px">
 
 
-                <img src="<c:url value='${gzm.picUrl}' />" border="0" width="100%" />
+                <img src="<c:url value='${website}${gzm.picUrl}' />" border="0" width="100%" />
 
             </div>
         </div>

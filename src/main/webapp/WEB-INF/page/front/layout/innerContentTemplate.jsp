@@ -95,11 +95,6 @@
                     </div>
                 </div>
                 <div style="padding:0px">
-
-
-                    <a href="default.htm#"><img src="<c:url value='/advs/pics/20090623/1245725370.gif' />" border="0" /></a>
-
-
                 </div>
             </div>
 

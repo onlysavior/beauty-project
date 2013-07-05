@@ -14,7 +14,7 @@
             <tr>
                 <td align="center">
                     <div id="photoview">
-                        <img src="<c:url value='${news.picUrl}' />" border="0" id="photoloading" class="photoloading">
+                        <img src="<c:url value='${website}${news.picUrl}' />" border="0" id="photoloading" class="photoloading">
                     </div>
                 </td>
             </tr>

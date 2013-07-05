@@ -125,7 +125,7 @@
 				产品图片：
 			</label>    
 			<div class="controls">      
-		    	<img src="${product.picUrl}">
+		    	<img src="${website}${product.picUrl}">
         		<input type="file" name="file">
 		    </div>
 	    </div>
