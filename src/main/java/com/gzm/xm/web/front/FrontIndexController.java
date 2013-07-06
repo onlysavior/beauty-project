@@ -215,7 +215,7 @@ public class FrontIndexController extends AbstractContoller {
                 .getSubTypeListUnderType(TypeEnum.PROJECT_TYPE.getId());
         map.put("projectTypes", projectTypes);
 
-        return "front/projectList";
+        return "front/projectAll";
     }
 
     @RequestMapping(value = "/product/all",method = RequestMethod.GET)
@@ -237,7 +237,7 @@ public class FrontIndexController extends AbstractContoller {
                 .getSubTypeListUnderType(TypeEnum.PROJECT_TYPE.getId());
         map.put("projectTypes", projectTypes);
 
-        return "front/productList";
+        return "front/productAll";
     }
 
     @RequestMapping(value = "/certificate",method = RequestMethod.GET)

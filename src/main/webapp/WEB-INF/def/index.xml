@@ -87,4 +87,18 @@
         <put-attribute name="toplink" value="/WEB-INF/page/front/layout/toplink.jsp"/>
         <put-attribute name="productleftlink" value="/WEB-INF/page/front/layout/productleftlink.jsp" />
     </definition>
+
+    <definition name="front/projectAll" template="/WEB-INF/page/front/layout/projectAllListTemplate.jsp">
+        <put-attribute name="searchform" value="/WEB-INF/page/front/layout/searchform.jsp" />
+        <put-attribute name="bottomlink" value="/WEB-INF/page/front/layout/bottomlink.jsp" />
+        <put-attribute name="toplink" value="/WEB-INF/page/front/layout/toplink.jsp"/>
+        <put-attribute name="productleftlink" value="/WEB-INF/page/front/layout/productleftlink.jsp" />
+    </definition>
+
+    <definition name="front/productAll" template="/WEB-INF/page/front/layout/prductAllListTemplate.jsp">
+        <put-attribute name="searchform" value="/WEB-INF/page/front/layout/searchform.jsp" />
+        <put-attribute name="bottomlink" value="/WEB-INF/page/front/layout/bottomlink.jsp" />
+        <put-attribute name="toplink" value="/WEB-INF/page/front/layout/toplink.jsp"/>
+        <put-attribute name="productleftlink" value="/WEB-INF/page/front/layout/productleftlink.jsp" />
+    </definition>
 </tiles-definitions>
