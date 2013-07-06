@@ -112,7 +112,7 @@ public class ProjectController extends AbstractContoller{
         FileCopyUtils.copy(file.getBytes(), dist);
 
         projectService.saveProduct(p,
-                request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER+fileName,
+                SHOW_UPLOAD_FOLDER+fileName,
                 type);
 
         return "redirect:projectList";

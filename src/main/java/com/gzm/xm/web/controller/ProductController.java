@@ -116,7 +116,7 @@ public class ProductController extends AbstractContoller{
         File dist = new File((path + BASE_UPLOAD_FOLDER),fileName);
         FileCopyUtils.copy(file.getBytes(), dist);
 
-        productService.saveProduct(p,request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER+fileName,type);
+        productService.saveProduct(p,SHOW_UPLOAD_FOLDER+fileName,type);
 
         return "redirect:productList";
     }

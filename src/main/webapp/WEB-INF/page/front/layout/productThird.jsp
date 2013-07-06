@@ -16,7 +16,7 @@
             <div style="padding:12px">
 
                 <link href="<c:url value='/templates/css/productcontent.css' />" rel="stylesheet" type="text/css" />
-                <script type=text/javascript src="<c:url value='/js/productcontent.js' />"></script>
+                <script type=text/javascript  src="<c:url value='/js/productcontent.js' />"></script>
 
                 <div id="productcontent">
                     <div class="productpics">
@@ -25,7 +25,7 @@
                                 <tr>
                                     <td align="center">
                                         <div id="productview">
-                                            <img src="<c:url value='${product.picUrl}'/>" border="0" id="productloading" class="productloading">
+                                            <img style="width: 300px; height: 300px;margin-top:0px" src="<c:url value='${product.picUrl}'/>" border="0" id="productloading" class="productloading">
                                         </div>
                                     </td>
                                 </tr>

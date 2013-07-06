@@ -15,7 +15,7 @@
     <script type="text/javascript" src="<c:url value='/base/js/common.js' />"></script>
     <script type="text/javascript" src="<c:url value='/base/js/form.js' />"></script>
     <script type="text/javascript" src="<c:url value='/base/js/blockui.js' />"></script>
-    <!-reload-!>
+    <!--  reload-->
 </head>
 <body style='background:#ffd700 url(<c:url value='/effect/source/bg/x09.jpg' />) no-repeat fixed center top'>
 <script>
@@ -146,10 +146,10 @@
                                 </select>
                             </div>
                             <div class="searchform">
-                                <input name="key" type="text" id="key" value="" size="16" class="input">
+                                <input name="key" type="text" id="key" value="" size="16" class="input" />
                             </div>
                             <div class="searchform">
-                                <input name="imageField" id="button" type="image" src="<c:url value='/templates/images/search5.gif' />" >
+                                <input name="imageField" id="button" type="image" src="<c:url value='/templates/images/search5.gif' />" />
                             </div>
                         </form>
                     </div>

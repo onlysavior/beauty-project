@@ -48,7 +48,7 @@ public class ConstantController extends AbstractContoller{
                               HttpServletRequest request) throws Exception{
         String fileName = null;
         if (!file.isEmpty()) {
-            fileName = new Date().getTime() + "."
+            fileName = new Date().getTime()
                     + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."),file.getOriginalFilename().length());
             String path = request.getRealPath("");
             File container = new File((path + BASE_UPLOAD_FOLDER));
@@ -101,7 +101,7 @@ public class ConstantController extends AbstractContoller{
             }
             File dist = new File(container,fileName);
             FileCopyUtils.copy(file.getBytes(), dist);
-            constant.setPicUrl(request.getAttribute("baseUrl")+SHOW_UPLOAD_FOLDER+fileName);
+            constant.setPicUrl(SHOW_UPLOAD_FOLDER+fileName);
         } else {
             if (StringUtils.hasText(picUrl)) {
                 constant.setPicUrl(picUrl);

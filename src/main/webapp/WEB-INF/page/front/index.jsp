@@ -131,7 +131,7 @@
 
                 <div style="float:left;background:url(<c:url value='/base/border/509/images/li.gif' />) 10px no-repeat;padding-left:28px;color:#555;text-align:left;font:12px/26px simsun;">公司简介</div>
                 <div style="float:right;margin-right:8px">
-                    <a href="page/html/company.htm" style="font:12px/24px simsun;color:#555;display:inline">更多&gt;&gt;</a>
+                    <a href="${website}front/showConstant/1" style="font:12px/24px simsun;color:#555;display:inline">更多&gt;&gt;</a>
                 </div>
             </div>
             <div  style="padding:0px">
@@ -361,9 +361,9 @@
 
 </div>
 <script>
-    $(function() {
+   /*  $(function() {
         $().picFit("fill");
-    });
+    }); */
 </script>
 </body>
 </html>

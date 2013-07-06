@@ -31,7 +31,7 @@
                         </c:when>
                         <c:otherwise>
                             <ul>
-                                No Certifate
+                                No Certifate 
                             </ul>
                         </c:otherwise>
                     </c:choose>

@@ -30,7 +30,7 @@
             });
             
             $(".edit").click(function(){
-            	window.location.href="/backend/editConstant/"+$(this).attr("data");
+            	window.location.href="${website}backend/editConstant/"+$(this).attr("data");
             })
         });
     </script>

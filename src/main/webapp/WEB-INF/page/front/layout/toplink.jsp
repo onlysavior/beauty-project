@@ -32,12 +32,12 @@
 
 
             <div id="menumain_" class="menumain">
-                <a href="${website}front/typeproject/2">服务项目</a>
+                <a href="${website}front/project/all">服务项目</a>
             </div>
 
 
             <div id="menumain_" class="menumain">
-                <a href="${website}front/typeproduct/1">产品展示</a>
+                <a href="${website}front/product/all">产品展示</a>
             </div>
 
 
