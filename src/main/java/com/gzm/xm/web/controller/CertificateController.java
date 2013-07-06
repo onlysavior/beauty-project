@@ -39,17 +39,22 @@ public class CertificateController extends AbstractContoller {
     public String addProject(@RequestParam String description,
                              @RequestParam MultipartFile file,
                              HttpServletRequest request) throws IOException {
-        String fileName = new Date().getTime()
-                + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") , file.getOriginalFilename().length());
-        String path = request.getRealPath("");
-        File container = new File((path + BASE_UPLOAD_FOLDER));
-        if(!container.exists()){
-            container.mkdirs();
-        }
-        File dist = new File(container,fileName);
-        FileCopyUtils.copy(file.getBytes(), dist);
-        //certificateService.addProduct(description, request.getAttribute("baseUrl") + SHOW_UPLOAD_FOLDER + fileName);
-        certificateService.addProduct(description, SHOW_UPLOAD_FOLDER + fileName);
+    	if(file != null && !file.isEmpty()){
+    		String fileName = new Date().getTime()
+                    + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") , file.getOriginalFilename().length());
+            String path = request.getRealPath("");
+            File container = new File((path + BASE_UPLOAD_FOLDER));
+            if(!container.exists()){
+                container.mkdirs();
+            }
+            File dist = new File(container,fileName);
+            FileCopyUtils.copy(file.getBytes(), dist);
+            //certificateService.addProduct(description, request.getAttribute("baseUrl") + SHOW_UPLOAD_FOLDER + fileName);
+            certificateService.addProduct(description, SHOW_UPLOAD_FOLDER + fileName);
+    	}else{
+    		certificateService.addProduct(description, null);
+    	}
+        
 
         return "redirect:certificateList";
     }
@@ -93,13 +98,19 @@ public class CertificateController extends AbstractContoller {
     public String saveProduct(Certificate p,
                               @RequestParam MultipartFile file,
                               HttpServletRequest request) throws IOException {
-        String fileName = new Date().getTime()
-                + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") , file.getOriginalFilename().length());
-        String path = request.getRealPath("");
-        File dist = new File((path + BASE_UPLOAD_FOLDER), fileName);
-        FileCopyUtils.copy(file.getBytes(), dist);
+    	if(file != null && !file.isEmpty()){
+    		String fileName = new Date().getTime()
+                    + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") , file.getOriginalFilename().length());
+            String path = request.getRealPath("");
+            File dist = new File((path + BASE_UPLOAD_FOLDER), fileName);
+            FileCopyUtils.copy(file.getBytes(), dist);
 
-        certificateService.saveProduct(p,   SHOW_UPLOAD_FOLDER + fileName);
+            certificateService.saveProduct(p,   SHOW_UPLOAD_FOLDER + fileName);
+    	}else{
+    		certificateService.saveProduct(p, p.getPicUrl());
+    	}
+    	
+        
 
         return "redirect:certificateList";
     }

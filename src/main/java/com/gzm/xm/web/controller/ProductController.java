@@ -27,7 +27,6 @@ import com.gzm.xm.common.enums.PageEnum;
 import com.gzm.xm.common.enums.TypeEnum;
 import com.gzm.xm.common.util.PageUtil;
 import com.gzm.xm.service.ProductService;
-import com.gzm.xm.service.TypeService;
 
 @Controller
 public class ProductController extends AbstractContoller{
@@ -110,13 +109,18 @@ public class ProductController extends AbstractContoller{
                               Integer type,
                               @RequestParam MultipartFile file,
                               HttpServletRequest request) throws IOException{
-        String fileName = new Date().getTime()
-                + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."),file.getOriginalFilename().length());
-        String path = request.getRealPath("");
-        File dist = new File((path + BASE_UPLOAD_FOLDER),fileName);
-        FileCopyUtils.copy(file.getBytes(), dist);
+    	if(file != null && !file.isEmpty()){
+    		 String fileName = new Date().getTime()
+    	                + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."),file.getOriginalFilename().length());
+    	        String path = request.getRealPath("");
+    	        File dist = new File((path + BASE_UPLOAD_FOLDER),fileName);
+    	        FileCopyUtils.copy(file.getBytes(), dist);
 
-        productService.saveProduct(p,SHOW_UPLOAD_FOLDER+fileName,type);
+    	        productService.saveProduct(p,SHOW_UPLOAD_FOLDER+fileName,type);
+    	}else{
+    		 productService.saveProduct(p, p.getPicUrl(), type);
+    	}
+       
 
         return "redirect:productList";
     }

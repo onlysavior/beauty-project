@@ -15,15 +15,17 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $(".del").click(function(){
+            	var id = $(this).attr("data");
+            	var thisObj = $(this);
                 if(confirm("Detele it ?")){
                     $.ajax({
                         url:"${website}backend/delConstant",
                         type:"post",
                         data:{
-                            id:$(this).attribute("data")
+                            id:id
                         },
                         success:function(){
-                            $(this).parent().parent().remove();
+                            thisObj.parent().parent().remove();
                         }
                     });
                 }
@@ -64,7 +66,7 @@
 		                <tr>
 		                    <td>${i.id}</td>
 		                    <td>
-		                        <a href="/backend/constant/showOne/${i.id}">
+		                        <a href="${website }backend/constant/showOne/${i.id}">
 		                                ${i.title}
 		                        </a>
 		                    </td>

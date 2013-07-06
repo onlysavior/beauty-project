@@ -68,7 +68,7 @@
 					图片
 				</label>    
 				<div class="controls">      
-			    	<img src="${website}${p.picUrl}">
+			    	<img src="${website}${product.picUrl}" width="250px" height="250px" />
 		        	<input type="file" name="file">
 			    </div>
 		    </div>
@@ -89,7 +89,7 @@
 		        	<input type="reset" value="重置" class="btn btn-primary">
 			    </div>
 		    </div>
-		    
+		   <input type="hidden"  name="picUrl" value="${product.picUrl }" />
 		</form>
 	</div>
 	</div>

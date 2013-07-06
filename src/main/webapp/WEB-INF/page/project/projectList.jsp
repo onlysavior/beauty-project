@@ -14,15 +14,17 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $(".del").click(function(){
+            	var id = $(this).attr("data");
+            	var thisObj = $(this);
                 if(confirm("Detele it ?")){
                     $.ajax({
                         url:"/backend/delProject",
                         type:"post",
                         data:{
-                            id:$(this).attribute("data")
+                            id:id
                         },
                         success:function(){
-                            $(this).parent().parent().remove();
+                            thisObj.parent().parent().remove();
                         }
                     });
                 }

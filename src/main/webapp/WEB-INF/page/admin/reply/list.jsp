@@ -49,7 +49,7 @@
 				success: function(data) { 
 					data = eval("("+data+")");
 					if(data.size>0&& data.content!= null && data.content.length > 0){
-						for(var i= 0 ;i < data.size; i++){
+						for(var i= 0 ;i < data.content.length; i++){
 							if(data.content[i].flag == 1){
 								newHtml = newHtml+"<tr><td>"+(pageSize*page_index+i+1)+"</td>"+
 										"<td><span style='color:red'>管理员说：</span><span class='title'>"+data.content[i].title+"</span></td>"+

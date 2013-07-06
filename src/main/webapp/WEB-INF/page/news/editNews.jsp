@@ -89,9 +89,16 @@
 				<div class="controls">      
 			    	 <select name="type">
 			            <c:if test="${typeList != null}">
-			                <c:forEach items="${typeList}" var="i">
-			                    <option value="${i.id}">${i.name}</option>
-			                </c:forEach>
+			            	<c:forEach items="${typeList}" var="i">
+			                <c:choose>
+			                	<c:when test="${i.id == news.type.id }">
+				                    <option value="${i.id}" selected="selected">${i.name}</option>
+			                	</c:when>
+			                	<c:otherwise>
+				                    <option value="${i.id}">${i.name}</option>
+			                	</c:otherwise>
+			                </c:choose>
+		                </c:forEach>
 			            </c:if>
 			        </select>
 			    </div>

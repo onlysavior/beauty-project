@@ -47,7 +47,7 @@ public class ConstantController extends AbstractContoller{
                               MultipartFile file,
                               HttpServletRequest request) throws Exception{
         String fileName = null;
-        if (!file.isEmpty()) {
+        if (file != null && !file.isEmpty()) {
             fileName = new Date().getTime()
                     + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."),file.getOriginalFilename().length());
             String path = request.getRealPath("");

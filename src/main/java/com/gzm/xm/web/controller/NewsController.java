@@ -1,12 +1,13 @@
 package com.gzm.xm.web.controller;
 
-import com.gzm.xm.common.entity.News;
-import com.gzm.xm.common.entity.Type;
-import com.gzm.xm.common.enums.PageEnum;
-import com.gzm.xm.common.enums.TypeEnum;
-import com.gzm.xm.common.util.PageUtil;
-import com.gzm.xm.service.NewsService;
-import com.gzm.xm.service.TypeService;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -14,16 +15,21 @@ import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.ServletRequestDataBinder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
+import com.gzm.xm.common.entity.News;
+import com.gzm.xm.common.entity.Type;
+import com.gzm.xm.common.enums.PageEnum;
+import com.gzm.xm.common.enums.TypeEnum;
+import com.gzm.xm.common.util.PageUtil;
+import com.gzm.xm.service.NewsService;
 
 @Controller
 public class NewsController extends AbstractContoller{
@@ -52,7 +58,7 @@ public class NewsController extends AbstractContoller{
                           HttpServletRequest request)
             throws Exception {
         String fileName = null;
-        if (!file.isEmpty()) {
+        if (file != null && !file.isEmpty()) {
             fileName = new Date().getTime()
                     + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."),file.getOriginalFilename().length());
             String path = request.getRealPath("");

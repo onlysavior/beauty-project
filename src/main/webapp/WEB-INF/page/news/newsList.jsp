@@ -15,15 +15,17 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $(".del").click(function(){
+            	var id = $(this).attr("data");
+            	var thisObj = $(this);
                 if(confirm("Detele it ?")){
                     $.ajax({
                         url:"/backend/delNews",
                         type:"post",
                         data:{
-                            id:$(this).attribute("data")
+                            id:id
                         },
                         success:function(){
-                            $(this).parent().parent().remove();
+                            thisObj.parent().parent().remove();
                         }
                     });
                 }
@@ -44,7 +46,7 @@
  	<div class="span3 bs-docs-sidebar" >  
  		<ul class="nav nav-list bs-docs-sidenav">
 	      <li class="active"><a href="${website }backend/newsList"><i class="icon-chevron-right"></i> 新闻列表</a></li>
-	      <li><a href="${website }/backend/addNews"><i class="icon-chevron-right"></i>添加新闻 </a></li>
+	      <li><a href="${website }backend/addNews"><i class="icon-chevron-right"></i>添加新闻 </a></li>
 		</ul>
  	</div>
  	<div class="span9">

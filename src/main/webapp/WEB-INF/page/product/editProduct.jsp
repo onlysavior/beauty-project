@@ -62,7 +62,7 @@
  	</div>
  	<div class="span9">
 
-<form id="form" action="${website }/backend/saveProduct" method="post" enctype="multipart/form-data"  class="form-horizontal">
+<form id="form" action="${website }backend/saveProduct" method="post" enctype="multipart/form-data"  class="form-horizontal">
 <div class="control-group">    
 		    <label class="control-label" >
 				产品类型：
@@ -71,7 +71,14 @@
 		    	<select name="type">
 		            <c:if test="${typeList != null}">
 		                <c:forEach items="${typeList}" var="i">
-		                    <option value="${i.id}">${i.name}</option>
+			                <c:choose>
+			                	<c:when test="${i.id == product.type.id }">
+				                    <option value="${i.id}" selected="selected">${i.name}</option>
+			                	</c:when>
+			                	<c:otherwise>
+				                    <option value="${i.id}">${i.name}</option>
+			                	</c:otherwise>
+			                </c:choose>
 		                </c:forEach>
 		            </c:if>
 		        </select>
@@ -135,7 +142,7 @@
 				产品描述：
 			</label>    
 			<div class="controls">      
-		    	<textarea name="description" rows="25">${product.description}</textarea>
+		    	<textarea name="description" name="description" rows="25">${product.description}</textarea>
 		    </div>
 	    </div>
         
@@ -148,6 +155,7 @@
 		    </div>
 	    </div>
 	    <input type="hidden" name="id" value="${product.id}">
+	    
     </form>
     </div>
    </div>
