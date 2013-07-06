@@ -158,7 +158,7 @@ public class NewsController extends AbstractContoller{
     public String upload(@RequestParam("img")MultipartFile file,
                          MultipartHttpServletRequest request,
                          ModelMap map) throws IOException {
-        String fileName = new Date().getTime() + "."
+        String fileName = new Date().getTime()
                 + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."),file.getOriginalFilename().length());
         String path = request.getRealPath("");
         File container = new File((path + BASE_UPLOAD_FOLDER));

@@ -52,8 +52,8 @@ public class ProductController extends AbstractContoller{
                              MultipartHttpServletRequest request) throws IOException {
         String fileName = null;
         if (!file.isEmpty()) {
-            fileName = new Date().getTime() + "."
-                    + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".")+1,file.getOriginalFilename().length());
+            fileName = new Date().getTime()
+                    + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."),file.getOriginalFilename().length());
             String path = request.getRealPath("");
             File container = new File((path + BASE_UPLOAD_FOLDER));
             if(!container.exists()){
@@ -110,8 +110,8 @@ public class ProductController extends AbstractContoller{
                               Integer type,
                               @RequestParam MultipartFile file,
                               HttpServletRequest request) throws IOException{
-        String fileName = new Date().getTime() + "."
-                + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".")+1,file.getOriginalFilename().length());
+        String fileName = new Date().getTime()
+                + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."),file.getOriginalFilename().length());
         String path = request.getRealPath("");
         File dist = new File((path + BASE_UPLOAD_FOLDER),fileName);
         FileCopyUtils.copy(file.getBytes(), dist);

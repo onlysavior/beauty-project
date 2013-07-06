@@ -93,7 +93,7 @@ public class ConstantController extends AbstractContoller{
         Constant constant = constantService.getConstant(id);
         if(file != null && !file.isEmpty()){
             String fileName = new Date().getTime() + "."
-                    + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."),file.getOriginalFilename().length());
+                    + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1,file.getOriginalFilename().length());
             String path = request.getRealPath("");
             File container = new File((path + BASE_UPLOAD_FOLDER));
             if(!container.exists()){
