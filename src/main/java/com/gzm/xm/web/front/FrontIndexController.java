@@ -63,7 +63,7 @@ public class FrontIndexController extends AbstractContoller {
         List<Crumb> crumbs = new ArrayList<Crumb>();
         Crumb root = new Crumb();
         root.setTitle("新闻动态");
-        root.setUrl("news/list");
+        root.setUrl("news/all");
         Crumb leaf = new Crumb();
         leaf.setUrl("#");
         leaf.setTitle(news.getTitle());
