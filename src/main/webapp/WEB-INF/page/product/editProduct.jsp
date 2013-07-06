@@ -82,7 +82,7 @@
 				产品名称：
 			</label>    
 			<div class="controls">      
-		    	<input type="text" name="product.name" value="${product.name}">
+		    	<input type="text" name="name" value="${product.name}">
 		    </div>
 	    </div>
 	    <div class="control-group">    
@@ -90,7 +90,7 @@
 				产品功能：
 			</label>    
 			<div class="controls">      
-		    	<input type="text" name="product.function" value="${product.function}">
+		    	<input type="text" name="function" value="${product.function}">
 		    </div>
 	    </div>
         
@@ -99,7 +99,7 @@
 				产品价格：
 			</label>    
 			<div class="controls">      
-		    	<input type="text" name="product.price" value="${product.price}">
+		    	<input type="text" name="price" value="${product.price}">
 		    </div>
 	    </div>
          <div class="control-group">    
@@ -107,7 +107,7 @@
 				产品成分：
 			</label>    
 			<div class="controls">      
-		    	<input type="text" name="product.include" value="${product.include}">
+		    	<input type="text" name="include" value="${product.include}">
 		    </div>
 	    </div>
         
@@ -116,7 +116,7 @@
 				产品容量：
 			</label>    
 			<div class="controls">      
-		    	 <input type="text" name="product.volume" value="${product.volume}">
+		    	 <input type="text" name="volume" value="${product.volume}">
 		    </div>
 	    </div>
         
@@ -135,7 +135,7 @@
 				产品描述：
 			</label>    
 			<div class="controls">      
-		    	<textarea name="product.description" rows="25">${product.description}</textarea>
+		    	<textarea name="description" rows="25">${product.description}</textarea>
 		    </div>
 	    </div>
         
@@ -147,7 +147,7 @@
 		        <input type="reset" value="重置" class="btn btn-primary">
 		    </div>
 	    </div>
-	    <input type="hidden" name="product.id" value="${product.id}">
+	    <input type="hidden" name="id" value="${product.id}">
     </form>
     </div>
    </div>

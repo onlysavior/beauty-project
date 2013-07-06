@@ -21,23 +21,23 @@
                     <div class="productquery_2_left">
                         <div class="fang" style="width:145px;height:145px">
                             <div class="picFit" style="width:145px;height:145px">
-                                <a href="/front/product/showOne/${i.id}" target="_self"><img
-                                        src="${i.picUrl}" style="width:145px;height:145px"
+                                <a href="${website }front/product/showOne/${i.id}" target="_self"><img
+                                        src="${website }${i.picUrl}" style="width:145px;height:145px"
                                         border="0"/></a>
                             </div>
                         </div>
                     </div>
                     <div class="productquery_2_right">
-                        <a href="/front/product/showOne/${i.id}" target="_self" class="prodtitle">${i.name}</a>
+                        <a href="${website }front/product/showOne/${i.id}" target="_self" class="prodtitle">${i.name}</a>
                         <span class="prop">
 
-                        货号：${i.id}<br>
+                        货号：${i.id}<br/>
 
-                        价格：${i.price}元<br>
+                        价格：${i.price}元<br/>
 
-                        容量：${i.volume}<br>
+                        容量：${i.volume}<br/>
 
-                        功效：${i.function}<br>
+                        功效：${i.function}<br/>
 
                         </span>
                     </div>

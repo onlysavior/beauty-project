@@ -72,7 +72,14 @@
 				<input type="file" name="file" id="file" style="height:30px">   
 		    </div>
 	    </div>
-		    
+		  <div class="control-group">    
+		    <label class="control-label" >
+				项目名称：
+			</label>    
+			<div class="controls">      
+		    	<input type="text" name="name">  
+		    </div>
+	    </div>   
 	    <div class="control-group">    
 		    <label class="control-label" >
 				项目类型：

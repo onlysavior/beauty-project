@@ -73,7 +73,15 @@
         		<input type="file" name="file"> 
 		    </div>
 	    </div>
-		    
+		 <div class="control-group">    
+		    <label class="control-label" >
+				项目名称：
+			</label>    
+			<div class="controls">      
+		    	<input type="text" name="name" value="${name }"/>
+		    	
+		    </div>
+	    </div>   
 	    <div class="control-group">    
 		    <label class="control-label" >
 				项目类型：
@@ -94,7 +102,7 @@
 				项目描述：
 			</label>    
 			<div class="controls">   
-				<textarea name="project.description" rows="25">${product.description}</textarea>
+				<textarea name="description" rows="25">${product.description}</textarea>
 		    </div>
 	    </div>
 		    
@@ -106,7 +114,7 @@
 	        	<input type="reset" value="重置" class="btn btn-primary">
 		    </div>
 	    </div>
-    <input type="hidden" name="project.id" value="${product.id}">
+    <input type="hidden" name="id" value="${product.id}">
    
 </form>
 </div>

@@ -62,7 +62,7 @@
  	</div>
  	<div class="span9">
 		<form id="form" action="${website }backend/saveCertificate" method="post" enctype="multipart/form-data" class="form-horizontal">
-		    <input type="hidden" name="p.id" value="${product.id}">
+		    <input type="hidden" name="id" value="${product.id}">
 		    <div class="control-group">    
 			    <label class="control-label" >
 					图片
@@ -77,7 +77,7 @@
 					描述
 				</label>    
 				<div class="controls">      
-			    	<textarea name="p.instruction" rows="25">${product.instruction}</textarea>
+			    	<textarea name="instruction" rows="25">${product.instruction}</textarea>
 			    </div>
 		    </div>
 		    

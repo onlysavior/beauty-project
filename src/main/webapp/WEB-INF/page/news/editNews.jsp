@@ -69,7 +69,7 @@
 					标题：
 				</label>    
 				<div class="controls">      
-			    	<input type="text" name="news.title" style="height:30px" value="${news.title}" class="input-large"/>
+			    	<input type="text" name="title" style="height:30px" value="${news.title}" class="input-large"/>
 			    </div>
 		    </div>
 		    
@@ -105,7 +105,7 @@
 		        	<input type="reset" value="重置" class="btn btn-primary">
 			    </div>
 		    </div>
-		    <input type="hidden" name="news.id" value="${news.id}">
+		    <input type="hidden" name="id" value="${news.id}">
 		</form>
 		</div>
 	</div>

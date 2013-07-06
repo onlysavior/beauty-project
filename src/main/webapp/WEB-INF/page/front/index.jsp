@@ -172,7 +172,7 @@
                 <div class="productlist">
                     <div class="fang" style="width:135px;height:115px">
                         <div class="picFit" style="width:135px;height:115px">
-                            <a href="${website}front/showProduct/${p.id}" target="_self" ><img src="<c:url value='${p.picUrl}' />" style="width:135px;height:115px" border="0" /></a>
+                            <a href="${website}front/showProduct/${p.id}" target="_self" ><img src="<c:url value='${website }${p.picUrl}' />" style="width:135px;height:115px" border="0" /></a>
                         </div>
                     </div>
                     <div class="title">
@@ -235,7 +235,7 @@
             <div style="padding:3px">
 
 
-                <img src="<c:url value='${website}${gzm.picUrl}' />" border="0" width="100%" />
+                <img src="<c:url value='${website}${gzm.picUrl}' />" border="0" width="200px" height="167px" />
 
             </div>
         </div>
@@ -339,7 +339,7 @@
                 </div>
                 <div style="padding:0px">
                     <div style="width:100%;text-align:center;font:12px/20px Arial, Helvetica, sans-serif">
-                        <p style="MARGIN: 0px; COLOR: #ffffff">古之美美容养生馆 Copyright(C)2009-2010</p>
+                        <p style="MARGIN: 0px; COLOR: #ffffff">古之美美容养生馆 Copyright(C)2013</p>
                     </div>
 
                 </div>

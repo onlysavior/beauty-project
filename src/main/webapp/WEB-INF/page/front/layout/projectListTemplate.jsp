@@ -71,9 +71,9 @@
                     <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
                             codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0"
                             width="100%" height="100%">
-                        <param name="movie" value="<c:url value='/effect/templates/images/traflash/4.swf'/>">
-                        <param name="quality" value="high">
-                        <param name="wmode" value="transparent">
+                        <param name="movie" value="<c:url value='/effect/templates/images/traflash/4.swf'/>"/>
+                        <param name="quality" value="high"/>
+                        <param name="wmode" value="transparent"/>
                         <embed src="<c:url value='/effect/templates/images/traflash/4.swf'/>" wmode="transparent" quality="high"
                                pluginspage="http://www.macromedia.com/go/getflashplayer"
                                type="application/x-shockwave-flash" width="100%" height="100%"></embed>
@@ -111,12 +111,12 @@
 
     <!-- 产品检索搜索 -->
 
-    <div id='pdv_4730' class='pdv_class' title='产品服务' style='width:752px;height:642px;top:5px;left:232px; z-index:4'>
+    <div id='pdv_4730' class='pdv_class' title='项目服务' style='width:752px;height:642px;top:5px;left:232px; z-index:4'>
         <div id='spdv_4730' class='pdv_content' style='overflow:visible;width:100%;'>
             <div class="pdv_border" style="border:1px #ffd2a3 solid;background:#fff;padding:0px;margin:0px;height:100%">
                 <div style="background:#fff5dd;height:26px;border-bottom:1px #ffd2a3 solid">
                     <div style="float:left;background:url(<c:url value='/base/border/509/images/li.gif' />) 10px no-repeat;padding-left:28px;color:#555;text-align:left;font:12px/26px simsun;">
-                        产品服务
+                        项目服务
                     </div>
                     <div style="float:right;margin-right:8px">
                         <a href="#" style="font:12px/24px simsun;color:#555;display:none">更多&gt;&gt;</a>
@@ -130,14 +130,14 @@
                             <div class="productquery_2_left">
                                 <div class="fang" style="width:145px;height:145px">
                                     <div class="picFit" style="width:145px;height:145px">
-                                        <a href="${website}front//project/showOne/${i.id}" target="_self"><img
-                                                src="${i.picUrl}" style="width:145px;height:145px"
+                                        <a href="${website}front/project/showOne/${i.id}" target="_self"><img
+                                                src="${website }${i.picUrl}" style="width:145px;height:145px"
                                                 border="0"/></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="productquery_2_right">
-                                <a href="${website}front//project/showOne/${i.id}" target="_self" class="prodtitle">${i.description}</a>
+                                <a href="${website}front/project/showOne/${i.id}" target="_self" class="prodtitle">${i.name}</a>
 		<span class="prop">
 
 		</span>
@@ -194,7 +194,7 @@
                 </div>
                 <div style="padding:0px">
                     <div style="width:100%;text-align:center;font:12px/20px Arial, Helvetica, sans-serif">
-                        <p style="MARGIN: 0px; COLOR: #ffffff">古之美美容养生馆 Copyright(C)2009-2010</p>
+                        <p style="MARGIN: 0px; COLOR: #ffffff">古之美美容养生馆 Copyright(C)2013</p>
                     </div>
 
                 </div>

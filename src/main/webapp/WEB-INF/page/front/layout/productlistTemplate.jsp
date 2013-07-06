@@ -71,9 +71,9 @@
                     <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
                             codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0"
                             width="100%" height="100%">
-                        <param name="movie" value="<c:url value='/effect/templates/images/traflash/4.swf'/>">
-                        <param name="quality" value="high">
-                        <param name="wmode" value="transparent">
+                        <param name="movie" value="<c:url value='/effect/templates/images/traflash/4.swf'/>" />
+                        <param name="quality" value="high" />
+                        <param name="wmode" value="transparent" />
                         <embed src="<c:url value='/effect/templates/images/traflash/4.swf'/>" wmode="transparent" quality="high"
                                pluginspage="http://www.macromedia.com/go/getflashplayer"
                                type="application/x-shockwave-flash" width="100%" height="100%"></embed>
@@ -131,7 +131,7 @@
         <div class="fang" style="width:145px;height:145px">
             <div class="picFit" style="width:145px;height:145px">
                 <a href="${website}front/showProduct/${i.id}" target="_self"><img
-                        src="${i.picUrl}" style="width:145px;height:145px"
+                        src="${website }${i.picUrl}" style="width:145px;height:145px"
                         border="0"/></a>
             </div>
         </div>
@@ -140,13 +140,13 @@
         <a href="${website}front/showProduct/${i.id}" target="_self" class="prodtitle">${i.name}</a>
 		<span class="prop">
 
-货号：${i.id}<br>
+货号：${i.id}<br/>
 
-价格：${i.price}元<br>
+价格：${i.price}元<br/>
 
-容量：${i.volume}<br>
+容量：${i.volume}<br/>
 
-适用：${i.include}<br>
+适用：${i.include}<br/>
 
 		</span>
     </div>
@@ -202,7 +202,7 @@
                 </div>
                 <div style="padding:0px">
                     <div style="width:100%;text-align:center;font:12px/20px Arial, Helvetica, sans-serif">
-                        <p style="MARGIN: 0px; COLOR: #ffffff">健康美容SPA养生馆 Copyright(C)2009-2010</p>
+                        <p style="MARGIN: 0px; COLOR: #ffffff">健康美容SPA养生馆 Copyright(C)2013</p>
                     </div>
 
                 </div>

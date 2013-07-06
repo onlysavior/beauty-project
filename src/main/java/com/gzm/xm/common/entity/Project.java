@@ -21,12 +21,23 @@ public class Project extends AbstractEntity {
 	
 	private String description;
 	
+	private String name;
+	
 	@Column( name="pic_url" )
 	private String picUrl;
 	
 	@ManyToOne( optional = false, fetch = FetchType.EAGER )
 	@JoinColumn(name = "type_id") 
 	private Type type;
+
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public Integer getId() {
 		return id;

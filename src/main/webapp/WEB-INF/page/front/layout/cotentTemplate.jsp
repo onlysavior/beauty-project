@@ -151,7 +151,7 @@
                 </div>
                 <div style="padding:0px">
                     <div style="width:100%;text-align:center;font:12px/20px Arial, Helvetica, sans-serif">
-                        <p style="MARGIN: 0px; COLOR: #ffffff">古之美美容养生馆 Copyright(C)2009-2010</p>
+                        <p style="MARGIN: 0px; COLOR: #ffffff">古之美美容养生馆 Copyright(C)2013</p>
                     </div>
 
                 </div>

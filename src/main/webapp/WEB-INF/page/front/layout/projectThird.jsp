@@ -25,7 +25,7 @@
                                 <tr>
                                     <td align="center">
                                         <div id="productview">
-                                            <img style="width: 300px; height: 300px;margin-top:0px" src="<c:url value='${product.picUrl}'/>" border="0" id="productloading" class="productloading">
+                                            <img style="width: 300px; height: 300px;margin-top:0px" src="<c:url value='${website }${product.picUrl}'/>" border="0" id="productloading" class="productloading">
                                         </div>
                                     </td>
                                 </tr>
@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="introzone">
-                        <div id="prodtitle">${product.description}</div>
+                        <div id="prodtitle">${product.name}</div>
                         <div id="prop">
                             介绍：${product.description}<br>
                         </div>

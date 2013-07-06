@@ -31,7 +31,7 @@
                         </c:when>
                         <c:otherwise>
                             <ul>
-                                No Certifate 
+                               <li> 暂无信息<li> 
                             </ul>
                         </c:otherwise>
                     </c:choose>
