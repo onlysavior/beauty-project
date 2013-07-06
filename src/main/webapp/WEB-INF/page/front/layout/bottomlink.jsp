@@ -13,7 +13,7 @@
 
         <link href="<c:url value='/menu/templates/images/bottommenu_1/E.css' />" rel="stylesheet" type="text/css"/>
         <div id="bottommenu">|
-            <a href="${website}front/showConstant/1" target="_self">公司介绍</a>|
+            <a href="${website}front/news/all" target="_self">公司介绍</a>|
 
             <a href="#" target="_self">联系方法</a>|
 

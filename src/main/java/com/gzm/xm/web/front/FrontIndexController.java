@@ -147,6 +147,23 @@ public class FrontIndexController extends AbstractContoller {
         return "front/newsList";
     }
 
+    @RequestMapping(value = "/news/all",method = RequestMethod.GET)
+    public String allNewsList(@RequestParam(required = false) Integer pageNo,
+                              ModelMap map) {
+        if (pageNo == null || pageNo <= 0) {
+            pageNo = 1;
+        }
+        long count = newsService.countAll();
+        PageUtil page = new PageUtil(count,pageSize,pageNo);
+        map.put("page", page);
+        List<News> newsList;
+        newsList = newsService.getAllNewsExceptId7(pageNo,pageSize);
+        map.put("newsList", newsList);
+        List<Type> typeList = typeService.getNewsType();
+        map.put("newsType",typeList);
+        return "front/newsList";
+    }
+
     @RequestMapping(value = "/typeproduct/{id}", method = RequestMethod.GET)
     public String productList(@PathVariable Integer id,
                               @RequestParam(required = false) Integer pageNo,

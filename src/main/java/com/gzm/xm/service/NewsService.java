@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -62,6 +63,27 @@ public class NewsService {
 
     public News showOne(Integer id) {
         return newsDao.findOne(id);
+    }
+
+    public long countAll() {
+        return newsDao.countAll();
+    }
+
+    public List<News> getAllNewsExceptId7(int pageNo, int size) {
+        int firstPosistion;
+        if (pageNo == 1) {
+            firstPosistion = 0;
+        } else {
+            firstPosistion = (pageNo - 1) * size;
+        }
+
+        EntityManager em = entityManagerFactory.createEntityManager();
+        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+        CriteriaQuery<News> count = criteriaBuilder.createQuery(News.class);
+        Root<News> root = count.from(News.class);
+        Predicate where =  criteriaBuilder.notEqual(root.get(News_.type),typeDao.findOne(7));
+        count.where(where);
+        return em.createQuery(count).setFirstResult(firstPosistion).setMaxResults(size).getResultList();
     }
 
     public long count(String key,
